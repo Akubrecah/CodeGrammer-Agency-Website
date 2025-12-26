@@ -4,7 +4,7 @@
   <!-- [Head] start -->
 
   <head>
-    <title>All Custom Pages - The CodeGrammer</title>
+    <title>Services - The CodeGrammer</title>
     <!-- [Meta] -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
@@ -16,24 +16,24 @@
     <meta name="author" content="phoenixcoded" />
 
     <!-- [Favicon] icon -->
-    <link rel="icon" href="https://agency.thecodegrammer.net/media/app_config/facicon.png" type="image/x-icon">
-      <link rel="shortcut icon" href="https://agency.thecodegrammer.net/media/app_config/facicon.png" type="image/x-icon">
+    <link rel="icon" href="/media/app_config/facicon.png" type="image/x-icon">
+      <link rel="shortcut icon" href="/media/app_config/facicon.png" type="image/x-icon">
  <!-- [Google Font : Public Sans] icon -->
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <!-- [phosphor Icons] https://phosphoricons.com/ -->
-<link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/phosphor/duotone/style.css" />
+<link rel="stylesheet" href="/static/dashboard/assets/fonts/phosphor/duotone/style.css" />
 <!-- [Tabler Icons] https://tablericons.com -->
-<link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/tabler-icons.min.css" />
+<link rel="stylesheet" href="/static/dashboard/assets/fonts/tabler-icons.min.css" />
 <!-- [Feather Icons] https://feathericons.com -->
-<link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/feather.css" />
+<link rel="stylesheet" href="/static/dashboard/assets/fonts/feather.css" />
 <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
-<link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/fontawesome.css" />
+<link rel="stylesheet" href="/static/dashboard/assets/fonts/fontawesome.css" />
 <!-- [Material Icons] https://fonts.google.com/icons -->
-<link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/material.css" />
+<link rel="stylesheet" href="/static/dashboard/assets/fonts/material.css" />
 <!-- [Template CSS Files] -->
-<link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/css/style.css" id="main-style-link" />
-<link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/css/style-preset.css" />
-<link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/css/plugins/style.css" />
+<link rel="stylesheet" href="/static/dashboard/assets/css/style.css" id="main-style-link" />
+<link rel="stylesheet" href="/static/dashboard/assets/css/style-preset.css" />
+<link rel="stylesheet" href="/static/dashboard/assets/css/plugins/style.css" />
     <style>
       .ckf{
     border:none !important; 
@@ -84,8 +84,8 @@
     <div class="m-header">
       <a href="/admin/dashboard/index.html" class="b-brand text-primary">
           <!-- ========   Change your logo from here   ============ -->
-          <img src="https://agency.thecodegrammer.net/media/app_config/logolight.png" alt="logo image" class="logo-light" width="200" height="45" />
-          <img src="https://agency.thecodegrammer.net/media/app_config/logodark.png" alt="logo image" class="logo-dark" width="200" height="45" />
+          <img src="/media/app_config/logolight.png" alt="logo image" class="logo-light" width="200" height="45" />
+          <img src="/media/app_config/logodark.png" alt="logo image" class="logo-dark" width="200" height="45" />
       </a>
     </div>
     <div class="navbar-content">
@@ -496,14 +496,14 @@
         <div class="row align-items-center">
           <div class="col-md-12">
             <ul class="breadcrumb">
-              <li class="breadcrumb-item"><a href="../dashboard/index.html">Dashboard</a></li>
-              <li class="breadcrumb-item"><a href="javascript: void(0)">Pages</a></li>
-              <li class="breadcrumb-item" aria-current="page">Custom Pages</li>
+              <li class="breadcrumb-item"><a href="/admin/dashboard/index.html">Dashboard</a></li>
+              <li class="breadcrumb-item"><a href="/admin/services">Services</a></li>
+              <li class="breadcrumb-item" aria-current="All Services">All Services</li>
             </ul>
           </div>
           <div class="col-md-12">
             <div class="page-header-title">
-              <h2 class="mb-0">Custom Pages</h2>
+              <h2 class="mb-0">All Services</h2>
             </div>
           </div>
         </div>
@@ -520,15 +520,15 @@
         <div class="card">
           <div class="card-body">
             <div class="d-flex align-items-center justify-content-between">
-              <h5 class="mb-0">All Custom Pages</h5>
-              <a class="btn btn-primary" href="/admin/custom-pages/create.html"> <svg
+              <h5 class="mb-0">All Services</h5>
+              <a class="btn btn-primary" href="/admin/service/create"> <svg
                   xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                   class="feather feather-plus-square">
                   <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
                   <line x1="12" y1="8" x2="12" y2="16"></line>
                   <line x1="8" y1="12" x2="16" y2="12"></line>
-                </svg>Create New Page</a>
+                </svg>Create New Service</a>
             </div>
           </div>
         </div>
@@ -542,18 +542,169 @@
           <div class="card border-0 table-card user-profile-list">
             <div class="card-body p-0">
               <div class="table-responsive">
-                <table class="table table-hover" data-table="true">
+                <table class="table table-hover table-v-center" data-table="true">
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Title</th>
+                      <th>Image</th>
+                      <th>Name</th>
                       <th>Slug</th>
-                      <th>Visit</th>
+                      <th>Short Description</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
 
+                    
+                    <tr>
+                      <td class="f-w-600">1</td>
+                      <td class="f-w-600">
+                          <img src="/media/Services/blog-thumnail.jpg" width="50" alt="serviceimage" style="border-radius:5px;">
+                      </td>
+                      <td class="f-w-600"><a href="/admin/service/edit/1">Web Design...</a></td>
+                      <td class="f-w-600">web-design</td>
+                      <td class="f-w-600">Integer purus odio, placerat n...</td>
+                      <td>
+                        <div class="">
+                          <ul class="list-inline mb-0">
+                            <li class="list-inline-item m-0"><a href="/admin/service/edit/1"
+                                class="btn btn-primary btn-sm"><i class="ti ti-pencil f-18 text-white"></i></a></li>
+                            <li class="list-inline-item m-0"><button type="button" class="btn bg-danger btn-sm"
+                                data-bs-toggle="modal" data-bs-target="#deleteModal1"><i
+                                  class="ti ti-trash f-18 text-white"></i></button></li>
+
+                            <div class="modal fade" id="deleteModal1" tabindex="-1"
+                              aria-labelledby="deleteModalLabel1" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel1">
+                                      <i class="ti ti-alert-triangle text-danger me-2"></i>
+                                      Confirm Delete
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                      aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Are you sure you want to delete <strong>"Web Design"</strong>?</p>
+                                    <p class="text-muted mb-0">This action cannot be undone.</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                      data-bs-dismiss="modal">Cancel</button>
+                                    <a href="/admin/service/delete/1" class="btn btn-danger">
+                                      <i class="ti ti-trash me-1"></i>
+                                      Delete Service
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td class="f-w-600">2</td>
+                      <td class="f-w-600">
+                          <img src="/static/front/assets/img/placeholder.jpg" width="50" alt="serviceimage" style="border-radius:5px;">
+                      </td>
+                      <td class="f-w-600"><a href="/admin/service/edit/2">UI/UX Design...</a></td>
+                      <td class="f-w-600">uiux-design</td>
+                      <td class="f-w-600">Integer purus odio, placerat n...</td>
+                      <td>
+                        <div class="">
+                          <ul class="list-inline mb-0">
+                            <li class="list-inline-item m-0"><a href="/admin/service/edit/2"
+                                class="btn btn-primary btn-sm"><i class="ti ti-pencil f-18 text-white"></i></a></li>
+                            <li class="list-inline-item m-0"><button type="button" class="btn bg-danger btn-sm"
+                                data-bs-toggle="modal" data-bs-target="#deleteModal2"><i
+                                  class="ti ti-trash f-18 text-white"></i></button></li>
+
+                            <div class="modal fade" id="deleteModal2" tabindex="-1"
+                              aria-labelledby="deleteModalLabel2" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel2">
+                                      <i class="ti ti-alert-triangle text-danger me-2"></i>
+                                      Confirm Delete
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                      aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Are you sure you want to delete <strong>"UI/UX Design"</strong>?</p>
+                                    <p class="text-muted mb-0">This action cannot be undone.</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                      data-bs-dismiss="modal">Cancel</button>
+                                    <a href="/admin/service/delete/2" class="btn btn-danger">
+                                      <i class="ti ti-trash me-1"></i>
+                                      Delete Service
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td class="f-w-600">3</td>
+                      <td class="f-w-600">
+                          <img src="/static/front/assets/img/placeholder.jpg" width="50" alt="serviceimage" style="border-radius:5px;">
+                      </td>
+                      <td class="f-w-600"><a href="/admin/service/edit/3">Software Development...</a></td>
+                      <td class="f-w-600">software-development</td>
+                      <td class="f-w-600">Integer purus odio, placerat n...</td>
+                      <td>
+                        <div class="">
+                          <ul class="list-inline mb-0">
+                            <li class="list-inline-item m-0"><a href="/admin/service/edit/3"
+                                class="btn btn-primary btn-sm"><i class="ti ti-pencil f-18 text-white"></i></a></li>
+                            <li class="list-inline-item m-0"><button type="button" class="btn bg-danger btn-sm"
+                                data-bs-toggle="modal" data-bs-target="#deleteModal3"><i
+                                  class="ti ti-trash f-18 text-white"></i></button></li>
+
+                            <div class="modal fade" id="deleteModal3" tabindex="-1"
+                              aria-labelledby="deleteModalLabel3" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel3">
+                                      <i class="ti ti-alert-triangle text-danger me-2"></i>
+                                      Confirm Delete
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                      aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Are you sure you want to delete <strong>"Software Development"</strong>?</p>
+                                    <p class="text-muted mb-0">This action cannot be undone.</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                      data-bs-dismiss="modal">Cancel</button>
+                                    <a href="/admin/service/delete/3" class="btn btn-danger">
+                                      <i class="ti ti-trash me-1"></i>
+                                      Delete Service
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
                     
 
                   </tbody>
@@ -584,17 +735,17 @@
       </div>
     </footer>
  <!-- Required Js -->
-<script data-cfasync="false" src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/popper.min.js"></script>
-<script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/simplebar.min.js"></script>
-<script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/bootstrap.min.js"></script>
-<script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/i18next.min.js"></script>
-<script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/i18nextHttpBackend.min.js"></script>
-<script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/icon/custom-font.js"></script>
-<script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/script.js"></script>
-<script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/theme.js"></script>
-<script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/multi-lang.js"></script>
-<script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/feather.min.js"></script>
-<script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/simple-datatables.js"></script>
+<script data-cfasync="false" src="/static/dashboard/assets/js/plugins/popper.min.js"></script>
+<script src="/static/dashboard/assets/js/plugins/simplebar.min.js"></script>
+<script src="/static/dashboard/assets/js/plugins/bootstrap.min.js"></script>
+<script src="/static/dashboard/assets/js/plugins/i18next.min.js"></script>
+<script src="/static/dashboard/assets/js/plugins/i18nextHttpBackend.min.js"></script>
+<script src="/static/dashboard/assets/js/icon/custom-font.js"></script>
+<script src="/static/dashboard/assets/js/script.js"></script>
+<script src="/static/dashboard/assets/js/theme.js"></script>
+<script src="/static/dashboard/assets/js/multi-lang.js"></script>
+<script src="/static/dashboard/assets/js/plugins/feather.min.js"></script>
+<script src="/static/dashboard/assets/js/plugins/simple-datatables.js"></script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {

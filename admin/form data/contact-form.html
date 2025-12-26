@@ -1,0 +1,1669 @@
+
+<!doctype html>
+<html lang="en">
+  <!-- [Head] start -->
+
+  <head>
+    <title>Contacts - The CodeGrammer</title>
+    <!-- [Meta] -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Light Able admin and dashboard template offer a variety of UI elements and pages, ensuring your admin panel is both fast and effective."
+    />
+    <meta name="author" content="phoenixcoded" />
+
+    <!-- [Favicon] icon -->
+    <link rel="icon" href="/media/app_config/facicon.png" type="image/x-icon">
+      <link rel="shortcut icon" href="/media/app_config/facicon.png" type="image/x-icon">
+ <!-- [Google Font : Public Sans] icon -->
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<!-- [phosphor Icons] https://phosphoricons.com/ -->
+<link rel="stylesheet" href="/static/dashboard/assets/fonts/phosphor/duotone/style.css" />
+<!-- [Tabler Icons] https://tablericons.com -->
+<link rel="stylesheet" href="/static/dashboard/assets/fonts/tabler-icons.min.css" />
+<!-- [Feather Icons] https://feathericons.com -->
+<link rel="stylesheet" href="/static/dashboard/assets/fonts/feather.css" />
+<!-- [Font Awesome Icons] https://fontawesome.com/icons -->
+<link rel="stylesheet" href="/static/dashboard/assets/fonts/fontawesome.css" />
+<!-- [Material Icons] https://fonts.google.com/icons -->
+<link rel="stylesheet" href="/static/dashboard/assets/fonts/material.css" />
+<!-- [Template CSS Files] -->
+<link rel="stylesheet" href="/static/dashboard/assets/css/style.css" id="main-style-link" />
+<link rel="stylesheet" href="/static/dashboard/assets/css/style-preset.css" />
+<link rel="stylesheet" href="/static/dashboard/assets/css/plugins/style.css" />
+    <style>
+      .ckf{
+    border:none !important; 
+    background:transparent !important; 
+    padding: 0px !important;
+    }
+    .cke {
+      width: 100% !important;
+      }
+
+      .django-ckeditor-widget {
+    width: 100% !important;
+}
+
+      /* Logo theme switching */
+      .logo-light {
+        display: none;
+      }
+      .logo-dark {
+        display: block;
+      }
+      
+      [data-pc-theme="dark"] .logo-light,
+      [data-bs-theme="dark"] .logo-light {
+        display: block;
+      }
+      
+      [data-pc-theme="dark"] .logo-dark,
+      [data-bs-theme="dark"] .logo-dark {
+        display: none;
+      }
+    </style>
+  </head>
+  <!-- [Head] end -->
+  <!-- [Body] Start -->
+
+  <body data-pc-preset="preset-1" data-pc-sidebar-theme="light" data-pc-sidebar-caption="true" data-pc-direction="ltr">
+    <!-- [ Pre-loader ] start -->
+<div class="loader-bg">
+  <div class="loader-track">
+    <div class="loader-fill"></div>
+  </div>
+</div>
+<!-- [ Pre-loader ] End -->
+ <!-- [ Sidebar Menu ] start -->
+<nav class="pc-sidebar">
+  <div class="navbar-wrapper">
+    <div class="m-header">
+      <a href="/admin/dashboard" class="b-brand text-primary">
+          <!-- ========   Change your logo from here   ============ -->
+          <img src="/media/app_config/logolight.png" alt="logo image" class="logo-light" width="200" height="45" />
+          <img src="/media/app_config/logodark.png" alt="logo image" class="logo-dark" width="200" height="45" />
+      </a>
+    </div>
+    <div class="navbar-content">
+      <ul class="pc-navbar">
+        <li class="pc-item pc-caption">
+          <label data-i18n="Navigation">Navigation</label>
+          <i class="ph-duotone ph-gauge"></i>
+        </li>
+        <li class="pc-item">
+          <a href="/admin/dashboard" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-gauge"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Dashboard">Dashboard</span>
+          </a>
+        </li>
+        
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-file"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Pages">Pages</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/home-page" data-i18n="Home Page">Home Page</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/about-page" data-i18n="About Page">About Page</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/service-page" data-i18n="Service Page">Service Page</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/project-page" data-i18n="Project Page">Project Page</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/pricing-page" data-i18n="Pricing Page">Pricing Page</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/contact-page" data-i18n="Contact Page">Contact Page</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/blog-page" data-i18n="Blog Page">Blog Page</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/terms-page" data-i18n="Terms Page">Terms Page</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/policy-page" data-i18n="Policy Page">Policy Page</a></li>
+          </ul>
+        </li>
+        
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-file-text"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Custom Pages">Custom Pages</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/custom-pages/" data-i18n="All Pages">All Pages</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/create/custom-page/" data-i18n="Create Page">Create Page</a></li>
+          </ul>
+        </li>
+        
+        <li class="pc-item pc-caption">
+          <label data-i18n="Others">Site Configuration</label>
+          <i class="ph-duotone ph-chart-pie"></i>
+        </li>
+        
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-file-text"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Blogs">Blogs</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/blogs" data-i18n="Blog Lists">Blog Lists</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/blog/create" data-i18n="Create Blog">Create Blog</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/blog-category" data-i18n="Blog Categories">Blog Categories</a></li>
+          </ul>
+        </li>
+
+        
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-briefcase"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Projects">Projects</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/projects" data-i18n="Project Lists">Project Lists</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/project/create" data-i18n="Create Project">Create Project</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/project-category" data-i18n="Project Categories">Project Categories</a></li>
+          </ul>
+        </li>
+
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-wrench"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Services">Services</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/services" data-i18n="Service Lists">Service Lists</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/service/create" data-i18n="Create Service">Create Service</a></li>
+          </ul>
+        </li>
+
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-package"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Elements">Elements</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/element/sliders" data-i18n="Slider">Slider</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/element/fun-facts" data-i18n="Fun Facts">Fun Facts</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/element/clients" data-i18n="Clients">Clients</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/element/testimonials" data-i18n="Testimonials">Testimonials</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/element/teams" data-i18n="Team Members">Team Members</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/element/pricings" data-i18n="Pricing">Pricing</a></li>
+          </ul>
+        </li>
+
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-user"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Users">Users</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/users/user-list/" data-i18n="User Lists">User Lists</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/user/create" data-i18n="Create User">Create User</a></li>
+          </ul>
+        </li>
+
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-table"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Form Data">Form Data</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/contacts" data-i18n="Contact Form">Contact Form</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/subscribers" data-i18n="Subscribe Form">Subscribe Form</a></li>
+          </ul>
+        </li>
+
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-link"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Menus">Menus</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/menus/primary-menu" data-i18n="Primary Menu">Primary Menu</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/menus/sub-menu" data-i18n="Sub Menu">Sub Menu</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/primary-menu/create" data-i18n="Create New">Create New</a></li>
+          </ul>
+        </li>
+
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-gear"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Settings">Settings</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/settings/website-settings" data-i18n="Website Settings">Website Settings</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/settings/template-settings" data-i18n="Template Settings">Template Settings</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/settings/header-footer" data-i18n="Header Footer">Header Footer</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/settings/seo" data-i18n="SEO">SEO</a></li>
+          </ul>
+        </li>
+        
+
+        <li class="pc-item pc-caption">
+          <label data-i18n="Applications">Applications</label>
+          <i class="ph-duotone ph-chart-pie"></i>
+        </li>
+
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-paper-plane-tilt"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Marketing Tools">Marketing Tools</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            
+            <li class="pc-item"><a class="pc-link" href="/admin/marketing/email-marketing/" data-i18n="Email Marketing">Email Marketing</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/marketing/sms-marketing/" data-i18n="SMS Marketing">SMS Marketing</a></li>
+            
+            <li class="pc-item"><a class="pc-link" href="/admin/marketing/email-formator/" data-i18n="Email Formator">Email Formator</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/marketing/number-formator/" data-i18n="Number Formator">Number Formator</a></li>
+          </ul>
+        </li>
+
+        <li class="pc-item">
+          <a href="https://agency.thecodegrammer.net/sitemap.xml" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-compass"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Sitemap">Sitemap</span>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+    <div class="card pc-user-card">
+      <div class="card-body">
+        <div class="d-flex align-items-center">
+          <div class="flex-shrink-0">
+            <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="user-image" class="user-avtar wid-45 rounded-circle" />
+          </div>
+          <div class="flex-grow-1 ms-3">
+            <div class="dropdown">
+              <a href="javascript:void(0)" class="arrow-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,20">
+                <div class="d-flex align-items-center">
+                  <div class="flex-grow-1 me-2">
+                    <h6 class="mb-0">admin</h6>
+                    <small>Admin</small>
+                  </div>
+                  <div class="flex-shrink-0">
+                    <div class="btn btn-icon btn-link-secondary avtar">
+                      <i class="ph-duotone ph-windows-logo"></i>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <div class="dropdown-menu">
+                <ul>
+                  <li>
+                    <a class="pc-user-links" href="/admin/edit-profile/1">
+                      <i class="ph-duotone ph-user"></i>
+                      <span>My Account</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="pc-user-links" href="/admin/user/change-password/1">
+                      <i class="ph-duotone ph-key"></i>
+                      <span>Change Pass</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="pc-user-links" href="/admin/settings/website-settings">
+                      <i class="ph-duotone ph-gear"></i>
+                      <span>Settings</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="pc-user-links" href="/logout/">
+                      <i class="ph-duotone ph-power"></i>
+                      <span>Logout</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- [ Sidebar Menu ] end -->
+ <!-- [ Header Topbar ] start -->
+<header class="pc-header">
+  <div class="header-wrapper"> <!-- [Mobile Media Block] start -->
+<div class="me-auto pc-mob-drp">
+  <ul class="list-unstyled">
+    <!-- ======= Menu collapse Icon ===== -->
+    <li class="pc-h-item pc-sidebar-collapse">
+      <a href="javascript:void(0)" class="pc-head-link ms-0" id="sidebar-hide">
+        <i class="ti ti-menu-2"></i>
+      </a>
+    </li>
+    <li class="pc-h-item pc-sidebar-popup">
+      <a href="javascript:void(0)" class="pc-head-link ms-0" id="mobile-collapse">
+        <i class="ti ti-menu-2"></i>
+      </a>
+    </li>
+    <li class="dropdown pc-h-item d-inline-flex d-md-none">
+      <a
+        class="pc-head-link dropdown-toggle arrow-none m-0"
+        data-bs-toggle="dropdown"
+        href="javascript:void(0)"
+        role="button"
+        aria-haspopup="false"
+        aria-expanded="false"
+      >
+        <i class="ph-duotone ph-magnifying-glass"></i>
+      </a>
+      <div class="dropdown-menu pc-h-dropdown drp-search">
+        <form class="px-3">
+          <div class="mb-0 d-flex align-items-center">
+            <input type="search" class="form-control border-0 shadow-none" placeholder="Search..." />
+            <button class="btn btn-light-secondary btn-search">Search</button>
+          </div>
+        </form>
+      </div>
+    </li>
+    <li class="pc-h-item d-none d-md-inline-flex">
+      <form class="form-search">
+        <i class="ph-duotone ph-magnifying-glass icon-search"></i>
+        <input type="search" class="form-control" placeholder="Search..." />
+
+        <button class="btn btn-search" style="padding: 0"><kbd>ctrl+k</kbd></button>
+      </form>
+    </li>
+  </ul>
+</div>
+<!-- [Mobile Media Block end] -->
+<div class="ms-auto">
+  <ul class="list-unstyled">
+    <li class="pc-h-item">
+      <a
+        class="pc-head-link arrow-none me-0"
+        id="pc-theme-toggle"
+        href="javascript:void(0)"
+        role="button"
+        aria-haspopup="false"
+        aria-expanded="false"
+      >
+        <i class="ph-duotone ph-sun-dim"></i>
+      </a>
+    </li>
+    <li class="pc-h-item">
+      <a class="pc-head-link pct-c-btn" href="javascript:void(0)" data-bs-toggle="offcanvas" data-bs-target="#offcanvas_pc_layout">
+        <i class="ph-duotone ph-gear-six"></i>
+      </a>
+    </li>
+    <li class="dropdown pc-h-item header-user-profile">
+      <a
+        class="pc-head-link dropdown-toggle arrow-none me-0"
+        data-bs-toggle="dropdown"
+        href="javascript:void(0)"
+        role="button"
+        aria-haspopup="false"
+        data-bs-auto-close="outside"
+        aria-expanded="false"
+      >
+        <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="user-image" class="user-avtar" />
+      </a>
+      <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
+        <div class="dropdown-header d-flex align-items-center justify-content-between">
+          <h5 class="m-0">Profile</h5>
+        </div>
+        <div class="dropdown-body">
+          <div class="profile-notification-scroll position-relative" style="max-height: calc(100vh - 225px)">
+            <ul class="list-group list-group-flush w-100">
+              <li class="list-group-item">
+                <div class="d-flex align-items-center">
+                  <div class="flex-shrink-0">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="user-image" class="wid-50 rounded-circle" />
+                  </div>
+                  <div class="flex-grow-1 mx-3">
+                    <h5 class="mb-0">admin</h5>
+                    <a class="link-primary" href="mailto:admin@gmail.com">admin@gmail.com</a>
+                  </div>
+                  <span class="badge bg-primary">Admin</span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <a href="/admin/user/change-password/1" class="dropdown-item">
+                  <span class="d-flex align-items-center">
+                    <i class="ph-duotone ph-key"></i>
+                    <span>Change password</span>
+                  </span>
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="/admin/edit-profile/1" class="dropdown-item">
+                  <span class="d-flex align-items-center">
+                    <i class="ph-duotone ph-user-circle"></i>
+                    <span>Edit profile</span>
+                  </span>
+                </a>
+                
+                <a href="/admin/settings/website-settings" class="dropdown-item">
+                  <span class="d-flex align-items-center">
+                    <i class="ph-duotone ph-gear-six"></i>
+                    <span>Settings</span>
+                  </span>
+                </a>
+                
+              </li>
+              <li class="list-group-item">
+                <a href="/logout/" class="dropdown-item">
+                  <span class="d-flex align-items-center">
+                    <i class="ph-duotone ph-power"></i>
+                    <span>Logout</span>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+ </div>
+</header>
+<!-- [ Header ] end -->
+
+
+<!-- [ Main Content ] start -->
+<div class="pc-container">
+  <div class="pc-content">
+    <!-- [ breadcrumb ] start -->
+    <div class="page-header">
+      <div class="page-block">
+        <div class="row align-items-center">
+          <div class="col-md-12">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+              <li class="breadcrumb-item"><a href="#">Form Data</a></li>
+              <li class="breadcrumb-item" aria-current="Contact Submissions">Contact Submissions</li>
+            </ul>
+          </div>
+          <div class="col-md-12">
+            <div class="page-header-title">
+              <h2 class="mb-0">Contact Submissions</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- [ breadcrumb ] end -->
+
+    <!-- [ Main Content ] start -->
+    <div class="row">
+
+      
+
+      
+
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between">
+              <h5 class="mb-0">All Contact Submissions</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- [ sample-page ] start -->
+    <div class="card">
+      <div class="card-body">
+        <div class="col-sm-12">
+          <div class="card border-0 table-card user-profile-list">
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table table-hover table-v-center" data-table="true">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Subject</th>
+                      <th>Date</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    
+                    <tr>
+                      <td class="f-w-600">1</td>
+                      <td class="f-w-600">Moses Iribhogbe</td>
+                      <td class="f-w-600">mosesiribhogbe@gmail.com</td>
+                      <td class="f-w-600">09012949372</td>
+                      <td class="f-w-600">Account is verified...</td>
+                      <td class="f-w-600">Jul 06, 2025</td>
+                      <td>
+                        <div class="">
+                          <ul class="list-inline mb-0">
+                            <li class="list-inline-item m-0">
+                              <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#viewContactModal1">
+                                <i class="ti ti-eye f-18 text-white"></i>
+                              </button>
+                            </li>
+                            <li class="list-inline-item m-0">
+                              <button type="button" class="btn bg-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal1">
+                                <i class="ti ti-trash f-18 text-white"></i>
+                              </button>
+                            </li>
+
+                            <!-- View Contact Modal -->
+                            <div class="modal fade" id="viewContactModal1" tabindex="-1" aria-labelledby="viewContactModalLabel1" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="viewContactModalLabel1">
+                                      <i class="ti ti-user me-2"></i>
+                                      Moses Iribhogbe's Submission
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Name:</strong></label>
+                                          <p class="form-control-static">Moses Iribhogbe</p>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Email:</strong></label>
+                                          <p class="form-control-static">
+                                            <a href="mailto:mosesiribhogbe@gmail.com">mosesiribhogbe@gmail.com</a>
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Phone:</strong></label>
+                                          <p class="form-control-static">09012949372</p>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Date:</strong></label>
+                                          <p class="form-control-static">Jul 06, 2025</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="form-label"><strong>Subject:</strong></label>
+                                      <p class="form-control-static">Account is verified</p>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="form-label"><strong>Message:</strong></label>
+                                      <div class="mt-2 p-3 bg-light rounded" style="word-wrap: break-word; white-space: pre-wrap;">Ggg</div>
+                                    </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a href="mailto:mosesiribhogbe@gmail.com?subject=Re: Account is verified" class="btn btn-primary">
+                                      <i class="ti ti-mail me-1"></i>
+                                      Reply
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Delete Modal -->
+                            <div class="modal fade" id="deleteModal1" tabindex="-1" aria-labelledby="deleteModalLabel1" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel1">
+                                      <i class="ti ti-alert-triangle text-danger me-2"></i>
+                                      Confirm Delete
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Are you sure you want to delete <strong>"Moses Iribhogbe"</strong>'s submission?</p>
+                                    <p class="text-muted mb-0">This action cannot be undone.</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <a href="/admin/contact/delete/1" class="btn btn-danger">
+                                      <i class="ti ti-trash me-1"></i>
+                                      Delete Contact
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td class="f-w-600">2</td>
+                      <td class="f-w-600">Uzzal Hossain</td>
+                      <td class="f-w-600">cvbcvb@sfs.com</td>
+                      <td class="f-w-600">None</td>
+                      <td class="f-w-600">cf...</td>
+                      <td class="f-w-600">Aug 26, 2025</td>
+                      <td>
+                        <div class="">
+                          <ul class="list-inline mb-0">
+                            <li class="list-inline-item m-0">
+                              <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#viewContactModal2">
+                                <i class="ti ti-eye f-18 text-white"></i>
+                              </button>
+                            </li>
+                            <li class="list-inline-item m-0">
+                              <button type="button" class="btn bg-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal2">
+                                <i class="ti ti-trash f-18 text-white"></i>
+                              </button>
+                            </li>
+
+                            <!-- View Contact Modal -->
+                            <div class="modal fade" id="viewContactModal2" tabindex="-1" aria-labelledby="viewContactModalLabel2" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="viewContactModalLabel2">
+                                      <i class="ti ti-user me-2"></i>
+                                      Uzzal Hossain's Submission
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Name:</strong></label>
+                                          <p class="form-control-static">Uzzal Hossain</p>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Email:</strong></label>
+                                          <p class="form-control-static">
+                                            <a href="mailto:cvbcvb@sfs.com">cvbcvb@sfs.com</a>
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Phone:</strong></label>
+                                          <p class="form-control-static">None</p>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Date:</strong></label>
+                                          <p class="form-control-static">Aug 26, 2025</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="form-label"><strong>Subject:</strong></label>
+                                      <p class="form-control-static">cf</p>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="form-label"><strong>Message:</strong></label>
+                                      <div class="mt-2 p-3 bg-light rounded" style="word-wrap: break-word; white-space: pre-wrap;">cccccccccccccccccccccccccccccc</div>
+                                    </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a href="mailto:cvbcvb@sfs.com?subject=Re: cf" class="btn btn-primary">
+                                      <i class="ti ti-mail me-1"></i>
+                                      Reply
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Delete Modal -->
+                            <div class="modal fade" id="deleteModal2" tabindex="-1" aria-labelledby="deleteModalLabel2" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel2">
+                                      <i class="ti ti-alert-triangle text-danger me-2"></i>
+                                      Confirm Delete
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Are you sure you want to delete <strong>"Uzzal Hossain"</strong>'s submission?</p>
+                                    <p class="text-muted mb-0">This action cannot be undone.</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <a href="/admin/contact/delete/2" class="btn btn-danger">
+                                      <i class="ti ti-trash me-1"></i>
+                                      Delete Contact
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td class="f-w-600">3</td>
+                      <td class="f-w-600">Test</td>
+                      <td class="f-w-600">test@gmail.com</td>
+                      <td class="f-w-600">1548484946799464</td>
+                      <td class="f-w-600">Test...</td>
+                      <td class="f-w-600">Sep 25, 2025</td>
+                      <td>
+                        <div class="">
+                          <ul class="list-inline mb-0">
+                            <li class="list-inline-item m-0">
+                              <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#viewContactModal3">
+                                <i class="ti ti-eye f-18 text-white"></i>
+                              </button>
+                            </li>
+                            <li class="list-inline-item m-0">
+                              <button type="button" class="btn bg-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal3">
+                                <i class="ti ti-trash f-18 text-white"></i>
+                              </button>
+                            </li>
+
+                            <!-- View Contact Modal -->
+                            <div class="modal fade" id="viewContactModal3" tabindex="-1" aria-labelledby="viewContactModalLabel3" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="viewContactModalLabel3">
+                                      <i class="ti ti-user me-2"></i>
+                                      Test's Submission
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Name:</strong></label>
+                                          <p class="form-control-static">Test</p>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Email:</strong></label>
+                                          <p class="form-control-static">
+                                            <a href="mailto:test@gmail.com">test@gmail.com</a>
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Phone:</strong></label>
+                                          <p class="form-control-static">1548484946799464</p>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Date:</strong></label>
+                                          <p class="form-control-static">Sep 25, 2025</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="form-label"><strong>Subject:</strong></label>
+                                      <p class="form-control-static">Test</p>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="form-label"><strong>Message:</strong></label>
+                                      <div class="mt-2 p-3 bg-light rounded" style="word-wrap: break-word; white-space: pre-wrap;">Test</div>
+                                    </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a href="mailto:test@gmail.com?subject=Re: Test" class="btn btn-primary">
+                                      <i class="ti ti-mail me-1"></i>
+                                      Reply
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Delete Modal -->
+                            <div class="modal fade" id="deleteModal3" tabindex="-1" aria-labelledby="deleteModalLabel3" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel3">
+                                      <i class="ti ti-alert-triangle text-danger me-2"></i>
+                                      Confirm Delete
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Are you sure you want to delete <strong>"Test"</strong>'s submission?</p>
+                                    <p class="text-muted mb-0">This action cannot be undone.</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <a href="/admin/contact/delete/3" class="btn btn-danger">
+                                      <i class="ti ti-trash me-1"></i>
+                                      Delete Contact
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td class="f-w-600">4</td>
+                      <td class="f-w-600">4rr</td>
+                      <td class="f-w-600">alshaari@outlook.com</td>
+                      <td class="f-w-600">05434546</td>
+                      <td class="f-w-600">tt...</td>
+                      <td class="f-w-600">Nov 15, 2025</td>
+                      <td>
+                        <div class="">
+                          <ul class="list-inline mb-0">
+                            <li class="list-inline-item m-0">
+                              <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#viewContactModal4">
+                                <i class="ti ti-eye f-18 text-white"></i>
+                              </button>
+                            </li>
+                            <li class="list-inline-item m-0">
+                              <button type="button" class="btn bg-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal4">
+                                <i class="ti ti-trash f-18 text-white"></i>
+                              </button>
+                            </li>
+
+                            <!-- View Contact Modal -->
+                            <div class="modal fade" id="viewContactModal4" tabindex="-1" aria-labelledby="viewContactModalLabel4" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="viewContactModalLabel4">
+                                      <i class="ti ti-user me-2"></i>
+                                      4rr's Submission
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Name:</strong></label>
+                                          <p class="form-control-static">4rr</p>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Email:</strong></label>
+                                          <p class="form-control-static">
+                                            <a href="mailto:alshaari@outlook.com">alshaari@outlook.com</a>
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Phone:</strong></label>
+                                          <p class="form-control-static">05434546</p>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Date:</strong></label>
+                                          <p class="form-control-static">Nov 15, 2025</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="form-label"><strong>Subject:</strong></label>
+                                      <p class="form-control-static">tt</p>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="form-label"><strong>Message:</strong></label>
+                                      <div class="mt-2 p-3 bg-light rounded" style="word-wrap: break-word; white-space: pre-wrap;">test</div>
+                                    </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a href="mailto:alshaari@outlook.com?subject=Re: tt" class="btn btn-primary">
+                                      <i class="ti ti-mail me-1"></i>
+                                      Reply
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Delete Modal -->
+                            <div class="modal fade" id="deleteModal4" tabindex="-1" aria-labelledby="deleteModalLabel4" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel4">
+                                      <i class="ti ti-alert-triangle text-danger me-2"></i>
+                                      Confirm Delete
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Are you sure you want to delete <strong>"4rr"</strong>'s submission?</p>
+                                    <p class="text-muted mb-0">This action cannot be undone.</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <a href="/admin/contact/delete/4" class="btn btn-danger">
+                                      <i class="ti ti-trash me-1"></i>
+                                      Delete Contact
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td class="f-w-600">5</td>
+                      <td class="f-w-600">aasdfg</td>
+                      <td class="f-w-600">aaa@gmail.com</td>
+                      <td class="f-w-600">1234567810</td>
+                      <td class="f-w-600">test...</td>
+                      <td class="f-w-600">Nov 25, 2025</td>
+                      <td>
+                        <div class="">
+                          <ul class="list-inline mb-0">
+                            <li class="list-inline-item m-0">
+                              <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#viewContactModal5">
+                                <i class="ti ti-eye f-18 text-white"></i>
+                              </button>
+                            </li>
+                            <li class="list-inline-item m-0">
+                              <button type="button" class="btn bg-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal5">
+                                <i class="ti ti-trash f-18 text-white"></i>
+                              </button>
+                            </li>
+
+                            <!-- View Contact Modal -->
+                            <div class="modal fade" id="viewContactModal5" tabindex="-1" aria-labelledby="viewContactModalLabel5" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="viewContactModalLabel5">
+                                      <i class="ti ti-user me-2"></i>
+                                      aasdfg's Submission
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Name:</strong></label>
+                                          <p class="form-control-static">aasdfg</p>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Email:</strong></label>
+                                          <p class="form-control-static">
+                                            <a href="mailto:aaa@gmail.com">aaa@gmail.com</a>
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Phone:</strong></label>
+                                          <p class="form-control-static">1234567810</p>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Date:</strong></label>
+                                          <p class="form-control-static">Nov 25, 2025</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="form-label"><strong>Subject:</strong></label>
+                                      <p class="form-control-static">test</p>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="form-label"><strong>Message:</strong></label>
+                                      <div class="mt-2 p-3 bg-light rounded" style="word-wrap: break-word; white-space: pre-wrap;">asdfghjk</div>
+                                    </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a href="mailto:aaa@gmail.com?subject=Re: test" class="btn btn-primary">
+                                      <i class="ti ti-mail me-1"></i>
+                                      Reply
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Delete Modal -->
+                            <div class="modal fade" id="deleteModal5" tabindex="-1" aria-labelledby="deleteModalLabel5" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel5">
+                                      <i class="ti ti-alert-triangle text-danger me-2"></i>
+                                      Confirm Delete
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Are you sure you want to delete <strong>"aasdfg"</strong>'s submission?</p>
+                                    <p class="text-muted mb-0">This action cannot be undone.</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <a href="/admin/contact/delete/5" class="btn btn-danger">
+                                      <i class="ti ti-trash me-1"></i>
+                                      Delete Contact
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    
+                    <tr>
+                      <td class="f-w-600">6</td>
+                      <td class="f-w-600">puneeta</td>
+                      <td class="f-w-600">pu@gmail.com</td>
+                      <td class="f-w-600">1234567810</td>
+                      <td class="f-w-600">suck...</td>
+                      <td class="f-w-600">Nov 25, 2025</td>
+                      <td>
+                        <div class="">
+                          <ul class="list-inline mb-0">
+                            <li class="list-inline-item m-0">
+                              <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#viewContactModal6">
+                                <i class="ti ti-eye f-18 text-white"></i>
+                              </button>
+                            </li>
+                            <li class="list-inline-item m-0">
+                              <button type="button" class="btn bg-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal6">
+                                <i class="ti ti-trash f-18 text-white"></i>
+                              </button>
+                            </li>
+
+                            <!-- View Contact Modal -->
+                            <div class="modal fade" id="viewContactModal6" tabindex="-1" aria-labelledby="viewContactModalLabel6" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="viewContactModalLabel6">
+                                      <i class="ti ti-user me-2"></i>
+                                      puneeta's Submission
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Name:</strong></label>
+                                          <p class="form-control-static">puneeta</p>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Email:</strong></label>
+                                          <p class="form-control-static">
+                                            <a href="mailto:pu@gmail.com">pu@gmail.com</a>
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Phone:</strong></label>
+                                          <p class="form-control-static">1234567810</p>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="form-label"><strong>Date:</strong></label>
+                                          <p class="form-control-static">Nov 25, 2025</p>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="form-label"><strong>Subject:</strong></label>
+                                      <p class="form-control-static">suck</p>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="form-label"><strong>Message:</strong></label>
+                                      <div class="mt-2 p-3 bg-light rounded" style="word-wrap: break-word; white-space: pre-wrap;">fuck</div>
+                                    </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a href="mailto:pu@gmail.com?subject=Re: suck" class="btn btn-primary">
+                                      <i class="ti ti-mail me-1"></i>
+                                      Reply
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Delete Modal -->
+                            <div class="modal fade" id="deleteModal6" tabindex="-1" aria-labelledby="deleteModalLabel6" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteModalLabel6">
+                                      <i class="ti ti-alert-triangle text-danger me-2"></i>
+                                      Confirm Delete
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>Are you sure you want to delete <strong>"puneeta"</strong>'s submission?</p>
+                                    <p class="text-muted mb-0">This action cannot be undone.</p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <a href="/admin/contact/delete/6" class="btn btn-danger">
+                                      <i class="ti ti-trash me-1"></i>
+                                      Delete Contact
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </ul>
+                        </div>
+                      </td>
+                    </tr>
+                    
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- [ sample-page ] end -->
+  </div>
+  <!-- [ Main Content ] end -->
+</div>
+</div>
+<!-- [ Main Content ] end -->
+
+
+
+    <footer class="pc-footer">
+      <div class="footer-wrapper container-fluid">
+        <div class="row">
+          <div class="col-sm-6 my-1">
+            <p class="m-0">Copyright © 2025 <a href="#">The CodeGrammer</a></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+ <!-- Required Js -->
+<script data-cfasync="false" src="/static/dashboard/assets/js/plugins/popper.min.js"></script>
+<script src="/static/dashboard/assets/js/plugins/simplebar.min.js"></script>
+<script src="/static/dashboard/assets/js/plugins/bootstrap.min.js"></script>
+<script src="/static/dashboard/assets/js/plugins/i18next.min.js"></script>
+<script src="/static/dashboard/assets/js/plugins/i18nextHttpBackend.min.js"></script>
+<script src="/static/dashboard/assets/js/icon/custom-font.js"></script>
+<script src="/static/dashboard/assets/js/script.js"></script>
+<script src="/static/dashboard/assets/js/theme.js"></script>
+<script src="/static/dashboard/assets/js/multi-lang.js"></script>
+<script src="/static/dashboard/assets/js/plugins/feather.min.js"></script>
+<script src="/static/dashboard/assets/js/plugins/simple-datatables.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const themeToggleButton = document.getElementById('pc-theme-toggle');
+    if (themeToggleButton) {
+      const themeIcon = themeToggleButton.querySelector('i');
+
+      const updateIcon = () => {
+        const currentTheme = document.body.getAttribute('data-pc-theme') || document.documentElement.getAttribute('data-bs-theme');
+        if (currentTheme === 'dark') {
+          themeIcon.className = 'ph-duotone ph-moon';
+        } else {
+          themeIcon.className = 'ph-duotone ph-sun-dim';
+        }
+      };
+
+      // Function to update logo visibility based on theme
+      const updateLogoVisibility = () => {
+        const currentTheme = document.body.getAttribute('data-pc-theme') || document.documentElement.getAttribute('data-bs-theme');
+        const logoLight = document.querySelector('.logo-light');
+        const logoDark = document.querySelector('.logo-dark');
+        
+        if (logoLight && logoDark) {
+          if (currentTheme === 'dark') {
+            logoLight.style.display = 'block';
+            logoDark.style.display = 'none';
+          } else {
+            logoLight.style.display = 'none';
+            logoDark.style.display = 'block';
+          }
+        }
+      };
+
+      themeToggleButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        let theme = 'light';
+        try {
+          const storedTheme = localStorage.getItem('theme-mode');
+          if(storedTheme) {
+            theme = storedTheme;
+          }
+        } catch (err) {
+          console.error("Could not access localStorage: ", err);
+        }
+
+        if (theme === 'dark') {
+          layout_change('light');
+        } else {
+          layout_change('dark');
+        }
+      });
+
+      // Set the initial icon and logo visibility
+      updateIcon();
+      updateLogoVisibility();
+      
+      const observer = new MutationObserver(mutations => {
+          mutations.forEach(mutation => {
+              if (mutation.type === 'attributes' && (mutation.attributeName === 'data-pc-theme' || mutation.attributeName === 'data-bs-theme')) {
+                  updateIcon();
+                  updateLogoVisibility();
+              }
+          });
+      });
+
+      observer.observe(document.body, { attributes: true, attributeFilter: ['data-pc-theme'] });
+      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-bs-theme'] });
+    }
+  });
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.querySelector('.form-search .form-control');
+    const pcNavbar = document.querySelector('.pc-navbar');
+
+    if (searchInput && pcNavbar) {
+        const allMenuItems = Array.from(pcNavbar.querySelectorAll('.pc-item'));
+        const allHasMenu = Array.from(pcNavbar.querySelectorAll('.pc-hasmenu'));
+        const allSubMenus = Array.from(pcNavbar.querySelectorAll('.pc-submenu'));
+        const allCaptions = Array.from(pcNavbar.querySelectorAll('.pc-caption'));
+
+        searchInput.addEventListener('keyup', function () {
+            const filter = searchInput.value.trim().toUpperCase();
+
+            // 1. Reset state when input is empty
+            if (filter === '') {
+                allMenuItems.forEach(item => { item.style.display = ''; });
+                allHasMenu.forEach(menu => { menu.classList.remove('pc-trigger'); });
+                allSubMenus.forEach(submenu => { submenu.style.display = ''; });
+                allCaptions.forEach(caption => { caption.style.display = ''; });
+                return;
+            }
+
+            // 2. Hide all captions when searching
+            allCaptions.forEach(caption => { caption.style.display = 'none'; });
+
+            // 3. Filter leaf nodes (items that are not parents)
+            allMenuItems.forEach(item => {
+                if (item.classList.contains('pc-hasmenu')) return;
+                const link = item.querySelector('.pc-link');
+                const text = (link ? link.innerText : item.innerText).trim().toUpperCase();
+                item.style.display = text.indexOf(filter) > -1 ? '' : 'none';
+            });
+
+            // 4. Update parent menu visibility and expansion
+            allHasMenu.forEach(menu => {
+                const parentLink = menu.querySelector(':scope > .pc-link');
+                const parentText = (parentLink ? parentLink.innerText : '').trim().toUpperCase();
+                const subMenu = menu.querySelector(':scope > .pc-submenu');
+                
+                let hasVisibleChild = false;
+                if (subMenu) {
+                    hasVisibleChild = Array.from(subMenu.querySelectorAll('.pc-item')).some(child => child.style.display !== 'none');
+                }
+                
+                if (parentText.indexOf(filter) > -1 || hasVisibleChild) {
+                    menu.style.display = '';
+                    menu.classList.add('pc-trigger');
+                    if (subMenu) subMenu.style.display = 'block';
+                } else {
+                    menu.style.display = 'none';
+                    menu.classList.remove('pc-trigger');
+                    if (subMenu) subMenu.style.display = 'none';
+                }
+            });
+        });
+    }
+
+    document.addEventListener('keydown', function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+            e.preventDefault();
+            if (searchInput) {
+                searchInput.focus();
+            }
+        }
+    });
+});
+</script>
+   
+ <div class="offcanvas border-0 pct-offcanvas offcanvas-end" tabindex="-1" id="offcanvas_pc_layout">
+  <div class="offcanvas-header justify-content-between">
+    <h5 class="offcanvas-title">Settings</h5>
+    <button type="button" class="btn btn-icon btn-link-danger" data-bs-dismiss="offcanvas" aria-label="Close"
+      ><i class="ti ti-x"></i
+    ></button>
+  </div>
+  <div class="pct-body customizer-body">
+    <div class="offcanvas-body py-0">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div class="pc-dark">
+            <h6 class="mb-1">Theme Mode</h6>
+            <p class="text-muted text-sm">Choose light or dark mode</p>
+            <div class="row theme-color theme-layout">
+              <div class="col-6">
+                <div class="d-grid">
+                  <button class="preset-btn btn active" data-value="true" onclick="layout_change('light');">
+                    <span class="btn-label">Light</span>
+                    <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
+                  </button>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="d-grid">
+                  <button class="preset-btn btn" data-value="false" onclick="layout_change('dark');">
+                    <span class="btn-label">Dark</span>
+                    <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item pc-sidebar-color">
+          <h6 class="mb-1">Sidebar Theme</h6>
+          <p class="text-muted text-sm">Choose Sidebar Theme</p>
+          <div class="row theme-color theme-sidebar-color">
+            <div class="col-6">
+              <div class="d-grid">
+                <button class="preset-btn btn" data-value="true" onclick="layout_sidebar_change('dark');">
+                  <span class="btn-label">Dark</span>
+                  <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
+                </button>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="d-grid">
+                <button class="preset-btn btn active" data-value="false" onclick="layout_sidebar_change('light');">
+                  <span class="btn-label">Light</span>
+                  <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <h6 class="mb-1">Accent color</h6>
+          <p class="text-muted text-sm">Choose your primary theme color</p>
+          <div class="theme-color preset-color">
+            <a href="javascript:void(0)" class="active" data-value="preset-1"><i class="ti ti-check"></i></a>
+            <a href="javascript:void(0)" data-value="preset-2"><i class="ti ti-check"></i></a>
+            <a href="javascript:void(0)" data-value="preset-3"><i class="ti ti-check"></i></a>
+            <a href="javascript:void(0)" data-value="preset-4"><i class="ti ti-check"></i></a>
+            <a href="javascript:void(0)" data-value="preset-5"><i class="ti ti-check"></i></a>
+            <a href="javascript:void(0)" data-value="preset-6"><i class="ti ti-check"></i></a>
+            <a href="javascript:void(0)" data-value="preset-7"><i class="ti ti-check"></i></a>
+            <a href="javascript:void(0)" data-value="preset-8"><i class="ti ti-check"></i></a>
+            <a href="javascript:void(0)" data-value="preset-9"><i class="ti ti-check"></i></a>
+            <a href="javascript:void(0)" data-value="preset-10"><i class="ti ti-check"></i></a>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <h6 class="mb-1">Sidebar Caption</h6>
+          <p class="text-muted text-sm">Sidebar Caption Hide/Show</p>
+          <div class="row theme-color theme-nav-caption">
+            <div class="col-6">
+              <div class="d-grid">
+                <button class="preset-btn btn active" data-value="true" onclick="layout_caption_change('true');">
+                  <span class="btn-label">Caption Show</span>
+                  <span class="pc-lay-icon"
+                    ><span></span><span></span><span><span></span><span></span></span><span></span
+                  ></span>
+                </button>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="d-grid">
+                <button class="preset-btn btn" data-value="false" onclick="layout_caption_change('false');">
+                  <span class="btn-label">Caption Hide</span>
+                  <span class="pc-lay-icon"
+                    ><span></span><span></span><span><span></span><span></span></span><span></span
+                  ></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="pc-rtl">
+            <h6 class="mb-1">Theme Layout</h6>
+            <p class="text-muted text-sm">LTR/RTL</p>
+            <div class="row theme-color theme-direction">
+              <div class="col-6">
+                <div class="d-grid">
+                  <button class="preset-btn btn active" data-value="false" onclick="layout_rtl_change('false');">
+                    <span class="btn-label">LTR</span>
+                    <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
+                  </button>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="d-grid">
+                  <button class="preset-btn btn" data-value="true" onclick="layout_rtl_change('true');">
+                    <span class="btn-label">RTL</span>
+                    <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item pc-box-width">
+          <div class="pc-container-width">
+            <h6 class="mb-1">Layout Width</h6>
+            <p class="text-muted text-sm">Choose Full or Container Layout</p>
+            <div class="row theme-color theme-container">
+              <div class="col-6">
+                <div class="d-grid">
+                  <button class="preset-btn btn active" data-value="false" onclick="change_box_container('false')">
+                    <span class="btn-label">Full Width</span>
+                    <span class="pc-lay-icon"
+                      ><span></span><span></span><span></span><span><span></span></span
+                    ></span>
+                  </button>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="d-grid">
+                  <button class="preset-btn btn" data-value="true" onclick="change_box_container('true')">
+                    <span class="btn-label">Fixed Width</span>
+                    <span class="pc-lay-icon"
+                      ><span></span><span></span><span></span><span><span></span></span
+                    ></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="d-grid">
+            <button class="btn btn-light-danger" id="layoutreset">Reset Layout</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<style>
+.demo-alert {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff4444;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    max-width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.demo-alert.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.demo-alert-close {
+    background: none;
+    border: none;
+    color: white;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0 5px;
+}
+
+.demo-alert-message {
+    margin-right: 10px;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Create alert element
+    const alertTemplate = document.createElement('div');
+    alertTemplate.className = 'demo-alert';
+    alertTemplate.innerHTML = `
+        <span class="demo-alert-message"></span>
+        <button class="demo-alert-close">&times;</button>
+    `;
+    document.body.appendChild(alertTemplate);
+
+    // Alert function
+    function showDemoAlert(message) {
+        const alert = document.querySelector('.demo-alert');
+        const messageEl = alert.querySelector('.demo-alert-message');
+        messageEl.textContent = message;
+        alert.classList.add('show');
+
+        // Auto hide after 5 seconds
+        setTimeout(() => {
+            alert.classList.remove('show');
+        }, 5000);
+    }
+
+    // Close button handler
+    document.querySelector('.demo-alert-close').addEventListener('click', function() {
+        document.querySelector('.demo-alert').classList.remove('show');
+    });
+
+    // Handle all form submissions
+    document.addEventListener('submit', function(event) {
+        event.preventDefault();
+        showDemoAlert('Modifications are not allowed in demo mode.');
+    });
+
+    // Handle delete links
+    document.addEventListener('click', function(event) {
+        const link = event.target.closest('a');
+        if (link && link.href && link.href.includes('delete')) {
+            event.preventDefault();
+            showDemoAlert('Deletion is not allowed in demo mode.');
+        }
+    });
+});
+</script>
+
+
+  </body>
+  <!-- [Body] end -->
+</html>

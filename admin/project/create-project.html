@@ -4,7 +4,7 @@
   <!-- [Head] start -->
 
   <head>
-    <title>All Custom Pages - The CodeGrammer</title>
+    <title>Create Project - The CodeGrammer</title>
     <!-- [Meta] -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
@@ -489,89 +489,137 @@
 
 <!-- [ Main Content ] start -->
 <div class="pc-container">
-  <div class="pc-content">
-    <!-- [ breadcrumb ] start -->
-    <div class="page-header">
-      <div class="page-block">
-        <div class="row align-items-center">
-          <div class="col-md-12">
-            <ul class="breadcrumb">
-              <li class="breadcrumb-item"><a href="../dashboard/index.html">Dashboard</a></li>
-              <li class="breadcrumb-item"><a href="javascript: void(0)">Pages</a></li>
-              <li class="breadcrumb-item" aria-current="page">Custom Pages</li>
-            </ul>
-          </div>
-          <div class="col-md-12">
-            <div class="page-header-title">
-              <h2 class="mb-0">Custom Pages</h2>
+    <div class="pc-content">
+      <!-- [ breadcrumb ] start -->
+      <div class="page-header">
+        <div class="page-block">
+          <div class="row align-items-center">
+            <div class="col-md-12">
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/admin/dashboard/index.html">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="/admin/project/project-list.html">Projects</a></li>
+                <li class="breadcrumb-item" aria-current="Create Project">Create Project</li>
+              </ul>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- [ breadcrumb ] end -->
-
-    <!-- [ Main Content ] start -->
-    <div class="row">
-
-      
-
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-body">
-            <div class="d-flex align-items-center justify-content-between">
-              <h5 class="mb-0">All Custom Pages</h5>
-              <a class="btn btn-primary" href="/admin/custom-pages/create.html"> <svg
-                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="feather feather-plus-square">
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                  <line x1="12" y1="8" x2="12" y2="16"></line>
-                  <line x1="8" y1="12" x2="16" y2="12"></line>
-                </svg>Create New Page</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- [ sample-page ] start -->
-    <div class="card">
-      <div class="card-body">
-        <div class="col-sm-12">
-          <div class="card border-0 table-card user-profile-list">
-            <div class="card-body p-0">
-              <div class="table-responsive">
-                <table class="table table-hover" data-table="true">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Title</th>
-                      <th>Slug</th>
-                      <th>Visit</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-
-                    
-
-                  </tbody>
-                </table>
+            <div class="col-md-12">
+              <div class="page-header-title">
+                <h2 class="mb-0">Create Project</h2>
               </div>
             </div>
           </div>
         </div>
-
       </div>
-    </div>
+      <!-- [ breadcrumb ] end -->
 
-    <!-- [ sample-page ] end -->
+
+      <!-- [ Main Content ] start -->
+      <div class="row">
+        <!-- [ sample-page ] start -->
+        <div class="col-sm-12">
+         <form method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="csrfmiddlewaretoken" value="UmuqI2SMwnWJ7IdAqozGpjgKz3Rkj6vjBmfySu4IgCYgwiPjftpQyhgu9eP1UDPH">
+            <script src="https://agency.thecodegrammer.net/static/ckeditor/ckeditor-init.js" data-ckeditor-basepath="/static/ckeditor/ckeditor/" id="ckeditor-init-script"></script>
+<script src="https://agency.thecodegrammer.net/static/ckeditor/ckeditor/ckeditor.js"></script>   
+                               
+            <div class="row mb-3">
+               <div class="col-md-12">
+                  <div class="card">
+                     <div class="card-body">
+                        <label for="id_image" class="form-label">Image</label>
+                        <input type="file" name="image" accept="image/*" class="form-control" id="id_image">
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row mb-3">
+               <div class="col-md-6">
+                  <div class="card">
+                     <div class="card-body">
+                        <label for="id_title" class="form-label">Title</label>
+                        <input type="text" name="title" maxlength="200" class="form-control" id="id_title">
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="card">
+                     <div class="card-body">
+                        <label for="id_slug" class="form-label">Slug ( Read Only )</label>
+                        <input type="text" name="slug" readonly="readonly" maxlength="50" class="form-control" id="id_slug">
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row mb-3">
+               <div class="col-md-6">
+                  <div class="card">
+                     <div class="card-body">
+                        <label for="id_category" class="form-label">Category<span class="text-danger">*</span></label>
+                        <select name="category" class="form-control" id="id_category">
+  <option value="" selected>---------</option>
+
+  <option value="1">Software</option>
+
+  <option value="2">UI/UX</option>
+
+  <option value="3">Web Design</option>
+
+  <option value="4">Developing</option>
+
+  <option value="5">Graphic Design</option>
+
+</select>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="card">
+                     <div class="card-body">
+                        <label for="id_client" class="form-label">Client</label>
+                        <input type="text" name="client" maxlength="200" class="form-control" id="id_client">
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row mb-3">
+               <div class="col-md-6">
+                  <div class="card">
+                     <div class="card-body">
+                        <label for="id_company" class="form-label">Company</label>
+                        <input type="text" name="company" maxlength="200" class="form-control" id="id_company">
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="card">
+                     <div class="card-body">
+                        <label for="id_duration" class="form-label">Duration</label>
+                        <input type="text" name="duration" maxlength="100" class="form-control" id="id_duration">
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row mb-1">
+               <div class="col-md-12">
+                  <div class="card">
+                     <div class="card-body">
+                        <label for="id_description" class="form-label">Description</label>
+                        <br>
+                        <div class="form-control ckf"><div class="django-ckeditor-widget" data-field-id="id_description" style="display: inline-block;">
+    <textarea name="description" cols="40" rows="10" class="form-control" id="id_description" data-processed="0" data-config="{&quot;skin&quot;: &quot;moono-lisa&quot;, &quot;toolbar_Basic&quot;: [[&quot;Source&quot;, &quot;-&quot;, &quot;Bold&quot;, &quot;Italic&quot;]], &quot;toolbar_Full&quot;: [[&quot;Styles&quot;, &quot;Format&quot;, &quot;Bold&quot;, &quot;Italic&quot;, &quot;Underline&quot;, &quot;Strike&quot;, &quot;SpellChecker&quot;, &quot;Undo&quot;, &quot;Redo&quot;], [&quot;Link&quot;, &quot;Unlink&quot;, &quot;Anchor&quot;], [&quot;Image&quot;, &quot;Flash&quot;, &quot;Table&quot;, &quot;HorizontalRule&quot;], [&quot;TextColor&quot;, &quot;BGColor&quot;], [&quot;Smiley&quot;, &quot;SpecialChar&quot;], [&quot;Source&quot;]], &quot;toolbar&quot;: &quot;Full&quot;, &quot;height&quot;: 291, &quot;width&quot;: 835, &quot;filebrowserWindowWidth&quot;: 940, &quot;filebrowserWindowHeight&quot;: 725, &quot;language&quot;: &quot;en-us&quot;}" data-external-plugin-resources="[]" data-id="id_description" data-type="ckeditortype"></textarea>
+</div></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <button class="btn btn-primary mb-3" type="submit">Save</button>
+         </form>
+      </div>
+        <!-- [ sample-page ] end -->
+      </div>
+      <!-- [ Main Content ] end -->
+    </div>
   </div>
   <!-- [ Main Content ] end -->
-</div>
-</div>
-<!-- [ Main Content ] end -->
 
 
     <footer class="pc-footer">
