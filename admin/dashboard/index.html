@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="en">
+  <!-- [Head] start -->
+
+  <head>
+    <title>Dashboard - The CodeGrammer</title>
+    <!-- [Meta] -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Light Able admin and dashboard template offer a variety of UI elements and pages, ensuring your admin panel is both fast and effective."
+    />
+    <meta name="author" content="phoenixcoded" />
+
+    <!-- [Favicon] icon -->
+    <link rel="icon" href="https://agency.thecodegrammer.net/media/app_config/facicon.png" type="image/x-icon">
+      <link rel="shortcut icon" href="https://agency.thecodegrammer.net/media/app_config/facicon.png" type="image/x-icon">
+ <!-- [Google Font : Public Sans] icon -->
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<!-- [phosphor Icons] https://phosphoricons.com/ -->
+<link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/phosphor/duotone/style.css" />
+<!-- [Tabler Icons] https://tablericons.com -->
+<link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/tabler-icons.min.css" />
+<!-- [Feather Icons] https://feathericons.com -->
+<link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/feather.css" />
+<!-- [Font Awesome Icons] https://fontawesome.com/icons -->
+<link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/fontawesome.css" />
+<!-- [Material Icons] https://fonts.google.com/icons -->
+<link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/material.css" />
+<!-- [Template CSS Files] -->
+<link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/css/style.css" id="main-style-link" />
+<link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/css/style-preset.css" />
+<link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/css/plugins/style.css" />
+    <style>
+      .ckf{
+    border:none !important; 
+    background:transparent !important; 
+    padding: 0px !important;
+    }
+    .cke {
+      width: 100% !important;
+      }
+
+      .django-ckeditor-widget {
+    width: 100% !important;
+}
+
+      /* Logo theme switching */
+      .logo-light {
+        display: none;
+      }
+      .logo-dark {
+        display: block;
+      }
+      
+      [data-pc-theme="dark"] .logo-light,
+      [data-bs-theme="dark"] .logo-light {
+        display: block;
+      }
+      
+      [data-pc-theme="dark"] .logo-dark,
+      [data-bs-theme="dark"] .logo-dark {
+        display: none;
+      }
+    </style>
+  </head>
+  <!-- [Head] end -->
+  <!-- [Body] Start -->
+
+  <body data-pc-preset="preset-1" data-pc-sidebar-theme="dark" data-pc-theme="dark" data-pc-sidebar-caption="true" data-pc-direction="ltr">
+    <!-- [ Pre-loader ] start -->
+<div class="loader-bg">
+  <div class="loader-track">
+    <div class="loader-fill"></div>
+  </div>
+</div>
+<!-- [ Pre-loader ] End -->
+ <!-- [ Sidebar Menu ] start -->
+<nav class="pc-sidebar">
+  <div class="navbar-wrapper">
+    <div class="m-header">
+      <a href="/admin/dashboard/index.html" class="b-brand text-primary">
+          <!-- ========   Change your logo from here   ============ -->
+          <img src="https://agency.thecodegrammer.net/media/app_config/logolight.png" alt="logo image" class="logo-light" width="200" height="45" />
+          <img src="https://agency.thecodegrammer.net/media/app_config/logodark.png" alt="logo image" class="logo-dark" width="200" height="45" />
+      </a>
+    </div>
+    <div class="navbar-content">
+      <ul class="pc-navbar">
+        <li class="pc-item pc-caption">
+          <label data-i18n="Navigation">Navigation</label>
+          <i class="ph-duotone ph-gauge"></i>
+        </li>
+        <li class="pc-item">
+          <a href="/admin/dashboard/index.html" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-gauge"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Dashboard">Dashboard</span>
+          </a>
+        </li>
+        
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-file"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Pages">Pages</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/home-page.html" data-i18n="Home Page">Home Page</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/about-page.html" data-i18n="About Page">About Page</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/service-page.html" data-i18n="Service Page">Service Page</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/projects-page.html" data-i18n="Project Page">Project Page</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/pricing-page.html" data-i18n="Pricing Page">Pricing Page</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/contact-page.html" data-i18n="Contact Page">Contact Page</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/blogs-page.html" data-i18n="Blog Page">Blog Page</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/terms-page" data-i18n="Terms Page">Terms Page</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/policy-page" data-i18n="Policy Page">Policy Page</a></li>
+          </ul>
+        </li>
+        
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-file-text"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Custom Pages">Custom Pages</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/custom-pages/index.html" data-i18n="All Pages">All Pages</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/custom-pages/create.html" data-i18n="Create Page">Create Page</a></li>
+          </ul>
+        </li>
+        
+        <li class="pc-item pc-caption">
+          <label data-i18n="Others">Site Configuration</label>
+          <i class="ph-duotone ph-chart-pie"></i>
+        </li>
+        
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-file-text"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Blogs">Blogs</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/blogs" data-i18n="Blog Lists">Blog Lists</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/blog/create" data-i18n="Create Blog">Create Blog</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/blog-category" data-i18n="Blog Categories">Blog Categories</a></li>
+          </ul>
+        </li>
+
+        
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-briefcase"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Projects">Projects</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/projects" data-i18n="Project Lists">Project Lists</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/project/create" data-i18n="Create Project">Create Project</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/project-category" data-i18n="Project Categories">Project Categories</a></li>
+          </ul>
+        </li>
+
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-wrench"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Services">Services</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/services" data-i18n="Service Lists">Service Lists</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/service/create" data-i18n="Create Service">Create Service</a></li>
+          </ul>
+        </li>
+
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-package"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Elements">Elements</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/element/sliders" data-i18n="Slider">Slider</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/element/fun-facts" data-i18n="Fun Facts">Fun Facts</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/element/clients" data-i18n="Clients">Clients</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/element/testimonials" data-i18n="Testimonials">Testimonials</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/element/teams" data-i18n="Team Members">Team Members</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/element/pricings" data-i18n="Pricing">Pricing</a></li>
+          </ul>
+        </li>
+
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-user"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Users">Users</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/users/user-list/" data-i18n="User Lists">User Lists</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/user/create" data-i18n="Create User">Create User</a></li>
+          </ul>
+        </li>
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-table"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Form Data">Form Data</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/contacts" data-i18n="Contact Form">Contact Form</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/subscribers" data-i18n="Subscribe Form">Subscribe Form</a></li>
+          </ul>
+        </li>
+
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-link"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Menus">Menus</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/menus/primary-menu" data-i18n="Primary Menu">Primary Menu</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/menus/sub-menu" data-i18n="Sub Menu">Sub Menu</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/primary-menu/create" data-i18n="Create New">Create New</a></li>
+          </ul>
+        </li>
+
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-gear"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Settings">Settings</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/settings/website-settings" data-i18n="Website Settings">Website Settings</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/settings/template-settings" data-i18n="Template Settings">Template Settings</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/settings/header-footer" data-i18n="Header Footer">Header Footer</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/settings/seo" data-i18n="SEO">SEO</a></li>
+          </ul>
+        </li>
+        
+
+        <li class="pc-item pc-caption">
+          <label data-i18n="Applications">Applications</label>
+          <i class="ph-duotone ph-chart-pie"></i>
+        </li>
+
+        <li class="pc-item pc-hasmenu">
+          <a href="javascript:void(0)" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-paper-plane-tilt"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Marketing Tools">Marketing Tools</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
+          ></a>
+          <ul class="pc-submenu">
+            
+            <li class="pc-item"><a class="pc-link" href="/admin/marketing/email-marketing/" data-i18n="Email Marketing">Email Marketing</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/marketing/sms-marketing/" data-i18n="SMS Marketing">SMS Marketing</a></li>
+            
+            <li class="pc-item"><a class="pc-link" href="/admin/marketing/email-formator/" data-i18n="Email Formator">Email Formator</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/marketing/number-formator/" data-i18n="Number Formator">Number Formator</a></li>
+          </ul>
+        </li>
+
+        <li class="pc-item">
+          <a href="https://agency.thecodegrammer.net/sitemap.xml" class="pc-link">
+            <span class="pc-micon">
+              <i class="ph-duotone ph-compass"></i>
+            </span>
+            <span class="pc-mtext" data-i18n="Sitemap">Sitemap</span>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+    <div class="card pc-user-card">
+      <div class="card-body">
+        <div class="d-flex align-items-center">
+          <div class="flex-shrink-0">
+            <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="user-image" class="user-avtar wid-45 rounded-circle" />
+          </div>
+          <div class="flex-grow-1 ms-3">
+            <div class="dropdown">
+              <a href="javascript:void(0)" class="arrow-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,20">
+                <div class="d-flex align-items-center">
+                  <div class="flex-grow-1 me-2">
+                    <h6 class="mb-0">admin</h6>
+                    <small>Admin</small>
+                  </div>
+                  <div class="flex-shrink-0">
+                    <div class="btn btn-icon btn-link-secondary avtar">
+                      <i class="ph-duotone ph-windows-logo"></i>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <div class="dropdown-menu">
+                <ul>
+                  <li>
+                    <a class="pc-user-links" href="/admin/edit-profile/1">
+                      <i class="ph-duotone ph-user"></i>
+                      <span>My Account</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="pc-user-links" href="/admin/user/change-password/1">
+                      <i class="ph-duotone ph-key"></i>
+                      <span>Change Pass</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="pc-user-links" href="/admin/settings/website-settings">
+                      <i class="ph-duotone ph-gear"></i>
+                      <span>Settings</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="pc-user-links" href="/logout/">
+                      <i class="ph-duotone ph-power"></i>
+                      <span>Logout</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- [ Sidebar Menu ] end -->
+ <!-- [ Header Topbar ] start -->
+<header class="pc-header">
+  <div class="header-wrapper"> <!-- [Mobile Media Block] start -->
+<div class="me-auto pc-mob-drp">
+  <ul class="list-unstyled">
+    <!-- ======= Menu collapse Icon ===== -->
+    <li class="pc-h-item pc-sidebar-collapse">
+      <a href="javascript:void(0)" class="pc-head-link ms-0" id="sidebar-hide">
+        <i class="ti ti-menu-2"></i>
+      </a>
+    </li>
+    <li class="pc-h-item pc-sidebar-popup">
+      <a href="javascript:void(0)" class="pc-head-link ms-0" id="mobile-collapse">
+        <i class="ti ti-menu-2"></i>
+      </a>
+    </li>
+    <li class="dropdown pc-h-item d-inline-flex d-md-none">
+      <a
+        class="pc-head-link dropdown-toggle arrow-none m-0"
+        data-bs-toggle="dropdown"
+        href="javascript:void(0)"
+        role="button"
+        aria-haspopup="false"
+        aria-expanded="false"
+      >
+        <i class="ph-duotone ph-magnifying-glass"></i>
+      </a>
+      <div class="dropdown-menu pc-h-dropdown drp-search">
+        <form class="px-3">
+          <div class="mb-0 d-flex align-items-center">
+            <input type="search" class="form-control border-0 shadow-none" placeholder="Search..." />
+            <button class="btn btn-light-secondary btn-search">Search</button>
+          </div>
+        </form>
+      </div>
+    </li>
+    <li class="pc-h-item d-none d-md-inline-flex">
+      <form class="form-search">
+        <i class="ph-duotone ph-magnifying-glass icon-search"></i>
+        <input type="search" class="form-control" placeholder="Search..." />
+
+        <button class="btn btn-search" style="padding: 0"><kbd>ctrl+k</kbd></button>
+      </form>
+    </li>
+  </ul>
+</div>
+<!-- [Mobile Media Block end] -->
+<div class="ms-auto">
+  <ul class="list-unstyled">
+    <li class="pc-h-item">
+      <a
+        class="pc-head-link arrow-none me-0"
+        id="pc-theme-toggle"
+        href="javascript:void(0)"
+        role="button"
+        aria-haspopup="false"
+        aria-expanded="false"
+      >
+        <i class="ph-duotone ph-sun-dim"></i>
+      </a>
+    </li>
+    <li class="pc-h-item">
+      <a class="pc-head-link pct-c-btn" href="javascript:void(0)" data-bs-toggle="offcanvas" data-bs-target="#offcanvas_pc_layout">
+        <i class="ph-duotone ph-gear-six"></i>
+      </a>
+    </li>
+    <li class="dropdown pc-h-item header-user-profile">
+      <a
+        class="pc-head-link dropdown-toggle arrow-none me-0"
+        data-bs-toggle="dropdown"
+        href="javascript:void(0)"
+        role="button"
+        aria-haspopup="false"
+        data-bs-auto-close="outside"
+        aria-expanded="false"
+      >
+        <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="user-image" class="user-avtar" />
+      </a>
+      <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
+        <div class="dropdown-header d-flex align-items-center justify-content-between">
+          <h5 class="m-0">Profile</h5>
+        </div>
+        <div class="dropdown-body">
+          <div class="profile-notification-scroll position-relative" style="max-height: calc(100vh - 225px)">
+            <ul class="list-group list-group-flush w-100">
+              <li class="list-group-item">
+                <div class="d-flex align-items-center">
+                  <div class="flex-shrink-0">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="user-image" class="wid-50 rounded-circle" />
+                  </div>
+                  <div class="flex-grow-1 mx-3">
+                    <h5 class="mb-0">admin</h5>
+                    <a class="link-primary" href="mailto:admin@gmail.com">admin@gmail.com</a>
+                  </div>
+                  <span class="badge bg-primary">Admin</span>
+                </div>
+              </li>
+              <li class="list-group-item">
+                <a href="/admin/user/change-password/1" class="dropdown-item">
+                  <span class="d-flex align-items-center">
+                    <i class="ph-duotone ph-key"></i>
+                    <span>Change password</span>
+                  </span>
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="/admin/edit-profile/1" class="dropdown-item">
+                  <span class="d-flex align-items-center">
+                    <i class="ph-duotone ph-user-circle"></i>
+                    <span>Edit profile</span>
+                  </span>
+                </a>
+                
+                <a href="/admin/settings/website-settings" class="dropdown-item">
+                  <span class="d-flex align-items-center">
+                    <i class="ph-duotone ph-gear-six"></i>
+                    <span>Settings</span>
+                  </span>
+                </a>
+                
+              </li>
+              <li class="list-group-item">
+                <a href="/logout/" class="dropdown-item">
+                  <span class="d-flex align-items-center">
+                    <i class="ph-duotone ph-power"></i>
+                    <span>Logout</span>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+ </div>
+</header>
+<!-- [ Header ] end -->
+    <!-- [ Main Content ] start -->
+    <div class="pc-container">
+      <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+          <div class="page-block">
+            <div class="row align-items-center">
+              <div class="col-md-12">
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/admin/dashboard/index.html">Dashboard</a></li>
+                  <li class="breadcrumb-item" aria-current="page">Overview</li>
+                </ul>
+              </div>
+              <div class="col-md-12">
+                <div class="page-header-title">
+                  <h2 class="mb-0">Dashboard</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+
+        <!-- [ Main Content ] start -->
+        <div class="row">
+          <div class="col-md-4 col-sm-6">
+            <div class="card statistics-card-1 overflow-hidden ">
+              <div class="card-body">
+                <img src="https://agency.thecodegrammer.net/static/dashboard/assets/images/widget/img-status-4.svg" alt="img" class="img-fluid img-bg" />
+                <h5 class="mb-4">Total Users</h5>
+                <div class="d-flex align-items-center mt-3">
+                  <h3 class="f-w-300 d-flex align-items-center m-b-0">2</h3>
+                  <!-- <span class="badge bg-light-success ms-2">36%</span> -->
+                </div>
+                <!-- <p class="text-muted mb-2 text-sm mt-3">You made an extra 35,000 this year</p> -->
+                <div class="progress" style="height: 7px">
+                  <div class="progress-bar bg-brand-color-3" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="card statistics-card-1 overflow-hidden ">
+              <div class="card-body">
+                <img src="https://agency.thecodegrammer.net/static/dashboard/assets/images/widget/img-status-5.svg" alt="img" class="img-fluid img-bg" />
+                <h5 class="mb-4">Total Projects</h5>
+                <div class="d-flex align-items-center mt-3">
+                  <h3 class="f-w-300 d-flex align-items-center m-b-0">11</h3>
+                  <!-- <span class="badge bg-light-primary ms-2">20%</span> -->
+                </div>
+                <!-- <p class="text-muted mb-2 text-sm mt-3">You made an extra 35,000 this year</p> -->
+                <div class="progress" style="height: 7px">
+                  <div class="progress-bar bg-brand-color-3" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+            <div class="card statistics-card-1 overflow-hidden ">
+              <div class="card-body">
+                <img src="https://agency.thecodegrammer.net/static/dashboard/assets/images/widget/img-status-6.svg" alt="img" class="img-fluid img-bg" />
+                <h5 class="mb-4">Total Blogs</h5>
+                <div class="d-flex align-items-center mt-3">
+                  <h3 class="f-w-300 d-flex align-items-center m-b-0">3</h3>
+                  <!-- <span class="badge bg-light-danger ms-2">10%</span> -->
+                </div>
+                <!-- <p class="text-muted mb-2 text-sm mt-3">You made an extra 35,000 this year</p> -->
+                <div class="progress" style="height: 7px">
+                  <div class="progress-bar bg-brand-color-3" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xxl-4">
+            <div class="card">
+              <div class="card-header d-flex align-items-center justify-content-between">
+                <h5>Recent Contacts</h5>
+            
+              </div>
+              <div class="card-body">
+                
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0">
+                            <!-- <div class="avtar avtar-s bg-light-secondary">
+                                <i class="ph-duotone ph-chart-bar f-20"></i>
+                            </div> -->
+                            <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="user-image" class="user-avtar wid-45 rounded-circle" />
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-0">Robert Fox</h6>
+                            <p class="mb-0 text-muted">Web Design</p>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <p class="mb-0 text-muted">1 year, 2 months ago</p>
+                    </div>
+                </div>
+                
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0">
+                            <!-- <div class="avtar avtar-s bg-light-secondary">
+                                <i class="ph-duotone ph-chart-bar f-20"></i>
+                            </div> -->
+                            <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="user-image" class="user-avtar wid-45 rounded-circle" />
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-0">Alexander</h6>
+                            <p class="mb-0 text-muted">Web Design</p>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <p class="mb-0 text-muted">1 year, 2 months ago</p>
+                    </div>
+                </div>
+                
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0">
+                            <!-- <div class="avtar avtar-s bg-light-secondary">
+                                <i class="ph-duotone ph-chart-bar f-20"></i>
+                            </div> -->
+                            <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="user-image" class="user-avtar wid-45 rounded-circle" />
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-0">Ralph Edwards</h6>
+                            <p class="mb-0 text-muted">Web Development</p>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <p class="mb-0 text-muted">1 year, 2 months ago</p>
+                    </div>
+                </div>
+                
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0">
+                            <!-- <div class="avtar avtar-s bg-light-secondary">
+                                <i class="ph-duotone ph-chart-bar f-20"></i>
+                            </div> -->
+                            <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="user-image" class="user-avtar wid-45 rounded-circle" />
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-0">Alexander</h6>
+                            <p class="mb-0 text-muted">App Development</p>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <p class="mb-0 text-muted">1 year, 2 months ago</p>
+                    </div>
+                </div>
+                
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <div class="d-flex align-items-center">
+                        <div class="flex-shrink-0">
+                            <!-- <div class="avtar avtar-s bg-light-secondary">
+                                <i class="ph-duotone ph-chart-bar f-20"></i>
+                            </div> -->
+                            <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="user-image" class="user-avtar wid-45 rounded-circle" />
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-0">Robert Fox</h6>
+                            <p class="mb-0 text-muted">Web Design</p>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <p class="mb-0 text-muted">1 year, 2 months ago</p>
+                    </div>
+                </div>
+                
+                <div class="d-grid mt-2">
+                    <a href="/admin/contacts" class="btn btn-primary">View All</a>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                  <h5>Recent Subscribers</h5>
+              
+                </div>
+                <div class="card-body">
+                  
+                  <div class="d-flex align-items-center justify-content-between mb-2">
+                      <div class="d-flex align-items-center">
+                          <div class="flex-shrink-0">
+                              <!-- <div class="avtar avtar-s bg-light-secondary">
+                                  <i class="ph-duotone ph-chart-bar f-20"></i>
+                              </div> -->
+                              <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="user-image" class="user-avtar wid-45 rounded-circle" />
+                          </div>
+                          <div class="flex-grow-1 ms-3">
+                              <h6 class="mb-0">admin@gmail.com</h6>
+                              <!-- <p class="mb-0 text-muted">Web Design</p> -->
+                          </div>
+                      </div>
+                      <div class="flex-shrink-0">
+                          <p class="mb-0 text-muted">1 year, 2 months ago</p>
+                      </div>
+                  </div>
+                  
+                  <div class="d-grid mt-2">
+                    <a href="/admin/subscribers" class="btn btn-primary">View All</a>
+                </div>
+                </div>
+              </div>
+          </div>
+          <div class="col-md-6 col-xxl-8">
+            <div class="card">
+              <div class="card-header">
+                <h5>Contacts Data</h5>
+              </div>
+              <div class="card-body">
+                <div id="growth-chart"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- [ Main Content ] end -->
+      </div>
+    </div>
+    <!-- [ Main Content ] end -->
+    <footer class="pc-footer">
+      <div class="footer-wrapper container-fluid">
+        <div class="row">
+          <div class="col-sm-6 my-1">
+            <p class="m-0">The CodeGrammer &#9829; Crafted by Team <a href="https://thecodegrammer.net/" target="_blank">The CodeGrammer</a></p>
+          </div>
+          <!-- <div class="col-sm-6 ms-auto my-1">
+            <ul class="list-inline footer-link mb-0 justify-content-sm-end d-flex">
+              <li class="list-inline-item"><a href="../index.html">Home</a></li>
+              <li class="list-inline-item"><a href="https://phoenixcoded.gitbook.io/light-able-bootstrap/" target="_blank">Documentation</a></li>
+              <li class="list-inline-item"><a href="https://phoenixcoded.authordesk.app/" target="_blank">Support</a></li>
+            </ul>
+          </div> -->
+        </div>
+      </div>
+    </footer>
+ <!-- [Page Specific JS] start -->
+ <script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/apexcharts.min.js"></script>
+ 
+ <!-- [Page Specific JS] end -->
+ <!-- Required Js -->
+ <script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/popper.min.js"></script>
+ <script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/simplebar.min.js"></script>
+ <script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/bootstrap.min.js"></script>
+ <script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/fonts/custom-font.js"></script>
+ <script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/pcoded.js"></script>
+ <script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/feather.min.js"></script>
+ <script src="/src/admin-ui.js"></script>
+
+ <script>
+    (function () {
+      var options = {
+        series: [
+          {
+            name: 'Total Contacts',
+            data: [
+            
+            2, 
+            
+            1, 
+            
+            1, 
+            
+            1, 
+            
+            ],
+          },
+          // {
+          //   name: 'Total Subscribers',
+          //   data: [30, 60, 40, 70, 50, 90],
+          // },
+        ],
+        chart: {
+          height: 340,
+          type: 'area',
+          stacked: false,
+          toolbar: {
+            show: false,
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          curve: 'smooth',
+          width: 5,
+        },
+        colors: [ '#5952db', '#212529'],
+        fill: {
+          type: 'gradient',
+          gradient: {
+            shadeIntensity: 1,
+            inverseColors: false,
+            opacityFrom: 0.45,
+            opacityTo: 0.05,
+            stops: [20, 100],
+          },
+        },
+        xaxis: {
+          categories: [
+          
+           'Oct 2023',
+          
+           'May 2024',
+          
+           'Jun 2024',
+          
+           'Jul 2024',
+          
+          ],
+        },
+        // yaxis: {
+        //   min: 0,
+        //   max: 100,
+        //   labels: {
+        //     style: {
+        //       colors: '#000', // Set Y-axis text color to white
+        //     },
+        //   },
+        // },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: -10,
+        },
+      };
+  
+      var chart = new ApexCharts(document.querySelector('#growth-chart'), options);
+      chart.render();
+    })();
+  </script>
+<script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/simple-datatables.js"></script>
+ <script>
+  const dataTable = new simpleDatatables.DataTable('#pc-dt-simple', {
+    sortable: false,
+    perPage: 5
+  });
+</script>
+
+   
+  </body>
+  <!-- [Body] end -->
+</html>

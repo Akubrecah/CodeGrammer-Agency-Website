@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+  <!-- [Head] start -->
+  <head>
+    <title>Service Page - The CodeGrammer</title>
+    <!-- [Meta] -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Light Able admin and dashboard template." />
+    <meta name="author" content="phoenixcoded" />
+
+    <!-- [Favicon] icon -->
+    <link rel="icon" href="https://agency.thecodegrammer.net/media/app_config/facicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="https://agency.thecodegrammer.net/media/app_config/facicon.png" type="image/x-icon">
+    <!-- [Google Font : Public Sans] icon -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- [phosphor Icons] -->
+    <link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/phosphor/duotone/style.css" />
+    <!-- [Tabler Icons] -->
+    <link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/tabler-icons.min.css" />
+    <!-- [Feather Icons] -->
+    <link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/feather.css" />
+    <!-- [Font Awesome Icons] -->
+    <link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/fontawesome.css" />
+    <!-- [Material Icons] -->
+    <link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/material.css" />
+    <!-- [Template CSS Files] -->
+    <link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/css/style.css" id="main-style-link" />
+    <link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/css/style-preset.css" />
+    <link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/css/plugins/style.css" />
+    <style>
+      .logo-light { display: none; }
+      .logo-dark { display: block; }
+      [data-pc-theme="dark"] .logo-light { display: block; }
+      [data-pc-theme="dark"] .logo-dark { display: none; }
+    </style>
+  </head>
+  <!-- [Head] end -->
+  <!-- [Body] Start -->
+  <body data-pc-preset="preset-1" data-pc-sidebar-theme="dark" data-pc-theme="dark" data-pc-sidebar-caption="true" data-pc-direction="ltr">
+    <!-- [ Pre-loader ] start -->
+    <div class="loader-bg">
+      <div class="loader-track">
+        <div class="loader-fill"></div>
+      </div>
+    </div>
+    <!-- [ Pre-loader ] End -->
+    
+    <!-- [ Sidebar Menu ] start -->
+    <nav class="pc-sidebar">
+      <div class="navbar-wrapper">
+        <div class="m-header">
+          <a href="/admin/dashboard/index.html" class="b-brand text-primary">
+              <img src="https://agency.thecodegrammer.net/media/app_config/logolight.png" alt="logo image" class="logo-light" width="200" height="45" />
+              <img src="https://agency.thecodegrammer.net/media/app_config/logodark.png" alt="logo image" class="logo-dark" width="200" height="45" />
+          </a>
+        </div>
+        <div class="navbar-content">
+          <ul class="pc-navbar">
+            <li class="pc-item pc-caption">
+              <label data-i18n="Navigation">Navigation</label>
+              <i class="ph-duotone ph-gauge"></i>
+            </li>
+            <li class="pc-item">
+              <a href="/admin/dashboard/index.html" class="pc-link">
+                <span class="pc-micon"><i class="ph-duotone ph-gauge"></i></span>
+                <span class="pc-mtext" data-i18n="Dashboard">Dashboard</span>
+              </a>
+            </li>
+            <li class="pc-item pc-hasmenu active pc-trigger">
+              <a href="javascript:void(0)" class="pc-link">
+                <span class="pc-micon"><i class="ph-duotone ph-file"></i></span>
+                <span class="pc-mtext" data-i18n="Pages">Pages</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+              </a>
+              <ul class="pc-submenu" style="display: block;">
+                <li class="pc-item active"><a class="pc-link" href="/admin/pages/home-page.html" data-i18n="Home Page">Service Page</a></li>
+                <li class="pc-item"><a class="pc-link" href="/admin/pages/about-page.html" data-i18n="About Page">About Page</a></li>
+                <li class="pc-item"><a class="pc-link" href="/admin/pages/service-page.html" data-i18n="Service Page">Service Page</a></li>
+                <li class="pc-item"><a class="pc-link" href="/admin/pages/projects-page.html" data-i18n="Project Page">Project Page</a></li>
+                <li class="pc-item"><a class="pc-link" href="/admin/pages/pricing-page.html" data-i18n="Pricing Page">Pricing Page</a></li>
+                <li class="pc-item"><a class="pc-link" href="/admin/pages/contact-page.html" data-i18n="Contact Page">Contact Page</a></li>
+                <li class="pc-item"><a class="pc-link" href="/admin/pages/blogs-page.html" data-i18n="Blog Page">Blog Page</a></li>
+              </ul>
+            </li>
+            <li class="pc-item pc-hasmenu">
+              <a href="javascript:void(0)" class="pc-link">
+                <span class="pc-micon"><i class="ph-duotone ph-file-text"></i></span>
+                <span class="pc-mtext" data-i18n="Custom Pages">Custom Pages</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+              </a>
+              <ul class="pc-submenu">
+                <li class="pc-item"><a class="pc-link" href="/admin/custom-pages/index.html" data-i18n="All Pages">All Pages</a></li>
+                <li class="pc-item"><a class="pc-link" href="/admin/custom-pages/create.html" data-i18n="Create Page">Create Page</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- [ Sidebar Menu ] end -->
+
+    <!-- [ Header Topbar ] start -->
+    <header class="pc-header">
+      <div class="header-wrapper">
+        <!-- [Mobile Media Block] start -->
+        <div class="me-auto pc-mob-drp">
+          <ul class="list-unstyled">
+            <li class="pc-h-item pc-sidebar-collapse">
+              <a href="javascript:void(0)" class="pc-head-link ms-0" id="sidebar-hide"><i class="ti ti-menu-2"></i></a>
+            </li>
+            <li class="pc-h-item pc-sidebar-popup">
+              <a href="javascript:void(0)" class="pc-head-link ms-0" id="mobile-collapse"><i class="ti ti-menu-2"></i></a>
+            </li>
+          </ul>
+        </div>
+        <!-- [Mobile Media Block end] -->
+        <div class="ms-auto">
+          <ul class="list-unstyled">
+             <li class="pc-h-item">
+              <a class="pc-head-link arrow-none me-0" id="pc-theme-toggle" href="javascript:void(0)">
+                <i class="ph-duotone ph-sun-dim"></i>
+              </a>
+            </li>
+            <li class="dropdown pc-h-item header-user-profile">
+              <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="javascript:void(0)">
+                <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="user-image" class="user-avtar" />
+              </a>
+              <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
+                <div class="dropdown-header d-flex align-items-center justify-content-between">
+                  <h5 class="m-0">Profile</h5>
+                </div>
+                <div class="dropdown-body">
+                  <div class="profile-notification-scroll position-relative" style="max-height: calc(100vh - 225px)">
+                    <ul class="list-group list-group-flush w-100">
+                      <li class="list-group-item">
+                        <div class="d-flex align-items-center">
+                          <div class="flex-shrink-0">
+                            <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="user-image" class="wid-50 rounded-circle" />
+                          </div>
+                          <div class="flex-grow-1 mx-3">
+                            <h5 class="mb-0">admin</h5>
+                            <a class="link-primary" href="mailto:admin@gmail.com">admin@gmail.com</a>
+                          </div>
+                          <span class="badge bg-primary">Admin</span>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="/logout/" class="dropdown-item">
+                          <span class="d-flex align-items-center"><i class="ph-duotone ph-power"></i><span>Logout</span></span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!-- [ Header ] end -->
+
+    <!-- [ Main Content ] start -->
+    <div class="pc-container">
+      <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+          <div class="page-block">
+            <div class="row align-items-center">
+              <div class="col-md-12">
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/admin/dashboard/index.html">Dashboard</a></li>
+                  <li class="breadcrumb-item"><a href="javascript: void(0)">Pages</a></li>
+                  <li class="breadcrumb-item" aria-current="page">Service Page</li>
+                </ul>
+              </div>
+              <div class="col-md-12">
+                <div class="page-header-title">
+                  <h2 class="mb-0">Service Page</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        
+        <!-- [ Section Selector Dropdown ] -->
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <label class="form-label fw-bold">Jump to Section to Edit:</label>
+                        <select class="form-select" id="section-selector">
+                            <option value="" selected disabled>Select a section...</option>
+                            <option value="sec-seo">SEO Configuration</option>
+                            <option value="sec-slider">Slider Section</option>
+                            <option value="sec-services">Service Section</option>
+                            <option value="sec-about">About Section</option>
+                            <option value="sec-funfact">Fun Fact Section</option>
+                            <option value="sec-projects">Project Section</option>
+                            <option value="sec-clients">Client Section</option>
+                            <option value="sec-pricing">Pricing Section</option>
+                            <option value="sec-testimonials">Testimonial Section</option>
+                            <option value="sec-team">Team Section</option>
+                            <option value="sec-blog">Blog Section</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- [ Main Content ] start -->
+        <div class="row">
+          <div class="col-sm-12">
+               
+            <!-- SEO Section -->
+            <div class="row mb-1" id="sec-seo">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header"><h5 class="mb-0">SEO Configuration</h5></div>
+                        <div class="card-body">
+                            <form method="post">
+                                <div class="row">
+                                    <div class="col-md-6 mb-2">
+                                        <label for="id_meta_title">Meta Title </label>
+                                        <input type="text" name="meta_title" value="The CodeGrammer" class="form-control" id="id_meta_title">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="id_meta_description">Meta Description </label>
+                                        <input type="text" name="meta_description" value="Best Web &amp; Application Developer" class="form-control" id="id_meta_description">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-3 w-100">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slider Section -->
+            <div class="row mb-1" id="sec-slider">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header"><h5 class="mb-0">Slider Section</h5></div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-start">
+                                <a href="#" class="btn btn-primary me-2 disabled">View Sliders</a>
+                                <a href="#" class="btn btn-success disabled">Add Slider</a>
+                            </div>
+                            <small class="text-muted mt-2 d-block">Slider management is handled via separate module (Coming Soon)</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Section -->
+            <div class="row mb-1" id="sec-services">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header"><h5 class="mb-0">Service Section</h5></div>
+                        <div class="card-body">
+                            <form method="post">
+                                <div class="row mb-3">
+                                  <div class="col-md-6">
+                                    <label class="form-label">Section Title 1</label>
+                                    <input type="text" name="service_title_small" value="Our Solutions" class="form-control" data-cms-bind="service_title_small">
+                                  </div>
+                                  <div class="col-md-6">
+                                    <label class="form-label">Section Title 2</label>
+                                    <input type="text" name="service_title_big" value="Services" class="form-control" data-cms-bind="service_title_big">
+                                  </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mb-3">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <div class="row mb-1" id="sec-about">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header"><h5 class="mb-0">About Section</h5></div>
+                        <div class="card-body">
+                            <form method="post">
+                                <div class="row mb-2">
+                                    <div class="col-md-6 mb-2">
+                                        <label>Sub Title </label>
+                                        <input type="text" name="about_subtitle" value="Get To Know" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Title</label>
+                                        <input type="text" name="about_title" value="About Us" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-12">
+                                        <label>Short Description</label>
+                                        <input type="text" name="about_short_desc" value="We Do Design, Code &amp; Develop Software Finally Launch." class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-12">
+                                        <label>Long Description</label>
+                                        <textarea name="about_long_desc" class="form-control" rows="4">Integer purus odio, placerat nec rhoncu in, ullamcorper nec dolor.</textarea>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-3 w-100">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fun Fact Section -->
+            <div class="row mb-1" id="sec-funfact">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header"><h5 class="mb-0">Fun Fact Section</h5></div>
+                        <div class="card-body">
+                            <form method="post">
+                                <div class="row mb-3">
+                                  <div class="col-md-6">
+                                    <label class="form-label">Section Title 1</label>
+                                    <input type="text" name="funfact_title_small" value="Care Study" class="form-control">
+                                  </div>
+                                  <div class="col-md-6">
+                                    <label class="form-label">Section Title 2</label>
+                                    <input type="text" name="funfact_title_big" value="Fun Facts" class="form-control">
+                                  </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mb-3">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Section -->
+            <div class="row mb-1" id="sec-projects">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header"><h5 class="mb-0">Project Section</h5></div>
+                        <div class="card-body">
+                            <form method="post">
+                                <div class="row mb-3">
+                                  <div class="col-md-6">
+                                    <label class="form-label">Section Title 1</label>
+                                    <input type="text" name="project_title_small" value="Most Popular" class="form-control">
+                                  </div>
+                                  <div class="col-md-6">
+                                    <label class="form-label">Section Title 2</label>
+                                    <input type="text" name="project_title_big" value="Projects" class="form-control">
+                                  </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mb-3">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Client Section -->
+            <div class="row mb-1" id="sec-clients">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header"><h5 class="mb-0">Client Section</h5></div>
+                        <div class="card-body">
+                            <form method="post">
+                                <div class="row mb-3">
+                                  <div class="col-md-6">
+                                    <label class="form-label">Section Title 1</label>
+                                    <input type="text" name="client_title_small" value="Satisfied Client" class="form-control">
+                                  </div>
+                                  <div class="col-md-6">
+                                    <label class="form-label">Section Title 2</label>
+                                    <input type="text" name="client_title_big" value="Our Partner" class="form-control">
+                                  </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mb-3">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing Section -->
+            <div class="row mb-1" id="sec-pricing">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header"><h5 class="mb-0">Pricing Section</h5></div>
+                        <div class="card-body">
+                            <form method="post">
+                                <div class="row mb-3">
+                                  <div class="col-md-6">
+                                    <label class="form-label">Section Title 1</label>
+                                    <input type="text" name="pricing_title_small" value="Getting Start" class="form-control">
+                                  </div>
+                                  <div class="col-md-6">
+                                    <label class="form-label">Section Title 2</label>
+                                    <input type="text" name="pricing_title_big" value="Pricing Plan" class="form-control">
+                                  </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mb-3">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial Section -->
+            <div class="row mb-1" id="sec-testimonials">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header"><h5 class="mb-0">Testimonial Section</h5></div>
+                        <div class="card-body">
+                            <form method="post">
+                                <div class="row mb-3">
+                                  <div class="col-md-6">
+                                    <label class="form-label">Section Title 1</label>
+                                    <input type="text" name="testimonial_title_small" value="Testimonial" class="form-control">
+                                  </div>
+                                  <div class="col-md-6">
+                                    <label class="form-label">Section Title 2</label>
+                                    <input type="text" name="testimonial_title_big" value="Client Say About Us" class="form-control">
+                                  </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mb-3">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Section -->
+            <div class="row mb-1" id="sec-team">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header"><h5 class="mb-0">Team Section</h5></div>
+                        <div class="card-body">
+                            <form method="post">
+                                <div class="row mb-3">
+                                  <div class="col-md-6">
+                                    <label class="form-label">Section Title 1</label>
+                                    <input type="text" name="team_title_small" value="Our Team" class="form-control">
+                                  </div>
+                                  <div class="col-md-6">
+                                    <label class="form-label">Section Title 2</label>
+                                    <input type="text" name="team_title_big" value="Meet Our Team" class="form-control">
+                                  </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mb-3">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Section -->
+            <div class="row mb-1" id="sec-blog">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header"><h5 class="mb-0">Blog Section</h5></div>
+                        <div class="card-body">
+                            <form method="post">
+                                <div class="row mb-3">
+                                  <div class="col-md-6">
+                                    <label class="form-label">Section Title 1</label>
+                                    <input type="text" name="blog_title_small" value="All Blog" class="form-control">
+                                  </div>
+                                  <div class="col-md-6">
+                                    <label class="form-label">Section Title 2</label>
+                                    <input type="text" name="blog_title_big" value="Latest Post" class="form-control">
+                                  </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mb-3">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- [ Main Content ] end -->
+      </div>
+    </div>
+    
+    <footer class="pc-footer">
+      <div class="footer-wrapper container-fluid">
+        <div class="row">
+          <div class="col-sm-6 my-1">
+            <p class="m-0">Copyright © 2025 <a href="#">The CodeGrammer</a></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Required Js -->
+    <script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/popper.min.js"></script>
+    <script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/simplebar.min.js"></script>
+    <script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/icon/custom-font.js"></script>
+    <script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/pcoded.js"></script>
+    <script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/feather.min.js"></script>
+    
+    <!-- CMS Script -->
+    <script src="/src/admin-cms.js"></script>
+    <script src="/src/admin-ui.js"></script>
+
+  </body>
+</html>

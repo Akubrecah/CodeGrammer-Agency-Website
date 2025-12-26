@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+  <!-- [Head] start -->
+  <head>
+    <title>Custom Pages - The CodeGrammer</title>
+    <!-- [Meta] -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Custom Pages List" />
+    
+    <!-- [Favicon] icon -->
+    <link rel="icon" href="https://agency.thecodegrammer.net/media/app_config/facicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="https://agency.thecodegrammer.net/media/app_config/facicon.png" type="image/x-icon">
+
+    <!-- [Google Font] -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- [Fonts/CSS] -->
+    <link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/phosphor/duotone/style.css" />
+    <link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/tabler-icons.min.css" />
+    <link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/feather.css" />
+    <link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/fontawesome.css" />
+    <link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/material.css" />
+    <link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/css/style.css" id="main-style-link" />
+    <link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/css/style-preset.css" />
+    <style>
+      .logo-light { display: none; }
+      .logo-dark { display: block; }
+      [data-pc-theme="dark"] .logo-light { display: block; }
+      [data-pc-theme="dark"] .logo-dark { display: none; }
+    </style>
+  </head>
+  <!-- [Head] end -->
+
+  <body data-pc-preset="preset-1" data-pc-sidebar-theme="dark" data-pc-theme="dark" data-pc-sidebar-caption="true" data-pc-direction="ltr">
+    <!-- [ Pre-loader ] start -->
+    <div class="loader-bg">
+      <div class="loader-track">
+        <div class="loader-fill"></div>
+      </div>
+    </div>
+    <!-- [ Pre-loader ] End -->
+
+    <!-- Sidebar Menu (Simplified for brevity, usually included via template) -->
+    <!-- Ideally we should include the same sidebar as dashboard -->
+    <!-- [ Sidebar Menu ] start -->
+    <nav class="pc-sidebar">
+      <div class="navbar-wrapper">
+        <div class="m-header">
+           <a href="/admin/dashboard/index.html" class="b-brand text-primary">
+              <img src="https://agency.thecodegrammer.net/media/app_config/logolight.png" alt="logo image" class="logo-light" width="200" height="45" />
+              <img src="https://agency.thecodegrammer.net/media/app_config/logodark.png" alt="logo image" class="logo-dark" width="200" height="45" />
+          </a>
+        </div>
+        <div class="navbar-content">
+           <ul class="pc-navbar">
+            <li class="pc-item pc-caption"><label>Navigation</label></li>
+            <li class="pc-item"><a href="/admin/dashboard/index.html" class="pc-link"><span class="pc-micon"><i class="ph-duotone ph-gauge"></i></span><span class="pc-mtext">Dashboard</span></a></li>
+            
+            <li class="pc-item pc-hasmenu">
+               <a href="javascript:void(0)" class="pc-link">
+               <span class="pc-micon"><i class="ph-duotone ph-file"></i></span>
+               <span class="pc-mtext">Pages</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+               </a>
+               <ul class="pc-submenu">
+                    <li class="pc-item"><a class="pc-link" href="/admin/pages/home-page.html">Home Page</a></li>
+                    <li class="pc-item"><a class="pc-link" href="/admin/pages/about-page.html">About Page</a></li>
+                    <li class="pc-item"><a class="pc-link" href="/admin/pages/service-page.html">Service Page</a></li>
+                    <li class="pc-item"><a class="pc-link" href="/admin/pages/projects-page.html">Project Page</a></li>
+                    <li class="pc-item"><a class="pc-link" href="/admin/pages/pricing-page.html">Pricing Page</a></li>
+                    <li class="pc-item"><a class="pc-link" href="/admin/pages/contact-page.html">Contact Page</a></li>
+                    <li class="pc-item"><a class="pc-link" href="/admin/pages/blogs-page.html">Blog Page</a></li>
+               </ul>
+            </li>
+
+            <li class="pc-item pc-hasmenu active pc-trigger">
+              <a href="javascript:void(0)" class="pc-link">
+                <span class="pc-micon"><i class="ph-duotone ph-file-text"></i></span>
+                <span class="pc-mtext">Custom Pages</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+              </a>
+              <ul class="pc-submenu" style="display: block;">
+                <li class="pc-item active"><a class="pc-link" href="/admin/custom-pages/index.html">All Pages</a></li>
+                <li class="pc-item"><a class="pc-link" href="/admin/custom-pages/create.html">Create Page</a></li>
+              </ul>
+            </li>
+           </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- [ Sidebar Menu ] end -->
+
+    <!-- [ Header Topbar ] start -->
+    <header class="pc-header">
+       <div class="header-wrapper">
+         <div class="me-auto pc-mob-drp">
+           <ul class="list-unstyled">
+             <li class="pc-h-item pc-sidebar-collapse"><a href="javascript:void(0)" class="pc-head-link ms-0" id="sidebar-hide"><i class="ti ti-menu-2"></i></a></li>
+             <li class="pc-h-item pc-sidebar-popup"><a href="javascript:void(0)" class="pc-head-link ms-0" id="mobile-collapse"><i class="ti ti-menu-2"></i></a></li>
+           </ul>
+         </div>
+         <div class="ms-auto">
+            <ul class="list-unstyled">
+                <li class="pc-h-item"><a class="pc-head-link arrow-none me-0" id="pc-theme-toggle" href="javascript:void(0)"><i class="ph-duotone ph-sun-dim"></i></a></li>
+                <li class="dropdown pc-h-item header-user-profile"><a class="pc-head-link dropdown-toggle arrow-none me-0" href="javascript:void(0)" data-bs-toggle="dropdown"><img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="user-image" class="user-avtar" /></a></li>
+            </ul>
+         </div>
+       </div>
+    </header>
+    <!-- [ Header ] end -->
+
+    <!-- [ Main Content ] start -->
+    <div class="pc-container">
+      <div class="pc-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+          <div class="page-block">
+            <div class="row align-items-center">
+              <div class="col-md-12">
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/admin/dashboard/index.html">Dashboard</a></li>
+                  <li class="breadcrumb-item" aria-current="page">Custom Pages</li>
+                </ul>
+              </div>
+              <div class="col-md-12">
+                <div class="page-header-title">
+                  <h2 class="mb-0">All Custom Pages</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        
+        <div class="row">
+           <div class="col-md-12">
+              <div class="card">
+                 <div class="card-header d-flex align-items-center justify-content-between">
+                    <h5>Custom Pages List</h5>
+                    <a href="/admin/custom-pages/create.html" class="btn btn-primary btn-sm">Create New Page</a>
+                 </div>
+                 <div class="card-body">
+                    <div class="table-responsive">
+                       <table class="table table-hover">
+                          <thead>
+                             <tr>
+                                <th>#</th>
+                                <th>Page Title</th>
+                                <th>Slug</th>
+                                <th>Status</th>
+                                <th>Date Created</th>
+                                <th>Action</th>
+                             </tr>
+                          </thead>
+                          <tbody>
+                             <tr>
+                                <td>1</td>
+                                <td>Campaign Landing</td>
+                                <td>/campaign-2024</td>
+                                <td><span class="badge bg-light-success">Published</span></td>
+                                <td>Oct 12, 2024</td>
+                                <td>
+                                   <a href="#" class="btn btn-icon btn-link-success"><i class="ph-duotone ph-pencil-simple"></i></a>
+                                   <a href="#" class="btn btn-icon btn-link-danger"><i class="ph-duotone ph-trash"></i></a>
+                                </td>
+                             </tr>
+                             <tr>
+                                <td>2</td>
+                                <td>Beta Signup</td>
+                                <td>/beta-signup</td>
+                                <td><span class="badge bg-light-warning">Draft</span></td>
+                                <td>Dec 05, 2024</td>
+                                <td>
+                                   <a href="#" class="btn btn-icon btn-link-success"><i class="ph-duotone ph-pencil-simple"></i></a>
+                                   <a href="#" class="btn btn-icon btn-link-danger"><i class="ph-duotone ph-trash"></i></a>
+                                </td>
+                             </tr>
+                          </tbody>
+                       </table>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- [ Main Content ] end -->
+
+    <footer class="pc-footer">
+       <div class="footer-wrapper container-fluid">
+          <div class="row">
+             <div class="col-sm-6 my-1">
+                <p class="m-0">The CodeGrammer</p>
+             </div>
+          </div>
+       </div>
+    </footer>
+
+    <!-- Required Js -->
+    <script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/popper.min.js"></script>
+    <script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/simplebar.min.js"></script>
+    <script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/fonts/custom-font.js"></script>
+    <script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/pcoded.js"></script>
+    <script src="https://agency.thecodegrammer.net/static/dashboard/assets/js/plugins/feather.min.js"></script>
+    <script src="/src/admin-ui.js"></script>
+  </body>
+</html>
