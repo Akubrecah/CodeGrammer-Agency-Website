@@ -111,6 +111,7 @@
             <span class="pc-mtext" data-i18n="Pages">Pages</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
           ></a>
           <ul class="pc-submenu">
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/page-editor.html" data-i18n="Page Editor"><i class="fas fa-edit me-1"></i> Page Editor</a></li>
             <li class="pc-item"><a class="pc-link" href="/admin/pages/home-page.html" data-i18n="Home Page">Home Page</a></li>
             <li class="pc-item"><a class="pc-link" href="/admin/pages/about-page.html" data-i18n="About Page">About Page</a></li>
             <li class="pc-item"><a class="pc-link" href="/admin/pages/service-page.html" data-i18n="Service Page">Service Page</a></li>
@@ -528,8 +529,8 @@
                             <h6 class="mb-3">SEO</h6>
                             <div class="row">
                                 <div class="col-12">
-                                    <form method="post">
-                                        <input type="hidden" name="csrfmiddlewaretoken" value="m60dQtCB0OUQHrNspQWAKrOhcGDqjXFh36Ll0VOxK3Wn61pbeVMKTpO1MRB7UuZF">  
+                                    <form id="seo-form" method="post">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="dummy">  
                                         <div class="row">
                                             <div class="col-md-6 col-sm-12 mb-2">
                                                 <label for="id_meta_title">Meta Title </label>
@@ -569,17 +570,17 @@
                     <div class="card">
                         <div class="card-body">
                             <h6 class="mb-3">Service Section</h6>
-                            <form method="post">
-                                <input type="hidden" name="csrfmiddlewaretoken" value="m60dQtCB0OUQHrNspQWAKrOhcGDqjXFh36Ll0VOxK3Wn61pbeVMKTpO1MRB7UuZF">
+                            <form id="services-form" method="post">
+                                <input type="hidden" name="csrfmiddlewaretoken" value="dummy">
                                 <input type="hidden" name="service_section_title">
                                 <div class="row mb-3">
                                   <div class="col-md-6">
                                     <label for="id_title_small" class="form-label">Section Title 1</label>
-                                    <input type="text" name="title_small" value="Our Solutions" maxlength="100" class="form-control" id="id_title_small">
+                                    <input type="text" name="title_small" value="Our Solutions" maxlength="100" class="form-control" id="id_service_title_small">
                                   </div>
                                   <div class="col-md-6">
                                     <label for="id_title_big" class="form-label">Section Title 2</label>
-                                    <input type="text" name="title_big" value="Services" maxlength="100" class="form-control" id="id_title_big">
+                                    <input type="text" name="title_big" value="Services" maxlength="100" class="form-control" id="id_service_title_big">
                                   </div>
                                 </div>
                                 <div class="row mb-3">
@@ -606,8 +607,8 @@
                             <h6 class="mb-3">About Section</h6>
                             <div class="row">
                                 <div class="col-12">
-                                    <form method="post" enctype="multipart/form-data">
-                                        <input type="hidden" name="csrfmiddlewaretoken" value="m60dQtCB0OUQHrNspQWAKrOhcGDqjXFh36Ll0VOxK3Wn61pbeVMKTpO1MRB7UuZF">  
+                                    <form id="about-form" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="dummy">  
                                           
                                         <div class="row mb-2">
                                             <div class="col-md-6 col-sm-12 mb-2">
@@ -617,7 +618,7 @@
 <input type="checkbox" name="image-clear" id="image-clear_id">
 <label for="image-clear_id">Clear</label><br>
 Change:
-<input type="file" name="image" accept="image/*" class="form-control" id="id_image">
+<input type="file" name="image" accept="image/*" class="form-control" id="id_about_image">
                                             </div>
                                             <div class="col-md-6 col-sm-12 mb-2">
                                                 <label for="id_video_thumbnail">Video Thumbnail</label><br>
@@ -632,47 +633,47 @@ Change:
                                         <div class="row mb-2">
                                             <div class="col-md-6 col-sm-12 mb-2">
                                                 <label for="id_subtitle">Sub Title </label>
-                                                <input type="text" name="subtitle" value="Get To Know" maxlength="200" class="form-control" id="id_subtitle">
+                                                <input type="text" name="subtitle" value="Get To Know" maxlength="200" class="form-control" id="id_about_subtitle">
                                             </div>
                                             <div class="col-md-6 col-sm-12">
                                                 <label for="id_title">Title</label>
-                                                <input type="text" name="title" value="About Us" maxlength="200" class="form-control" id="id_title">
+                                                <input type="text" name="title" value="About Us" maxlength="200" class="form-control" id="id_about_title">
                                             </div>
                                         </div>
 
                                         <div class="row mb-2">
                                             <div class="col-md-6 col-sm-12 mb-2">
                                                 <label for="id_short_description">Short Description</label>
-                                                <input type="text" name="short_description" value="We Do Design, Code &amp; Develop Software Finally Launch." maxlength="200" class="form-control" id="id_short_description">
+                                                <input type="text" name="short_description" value="We Do Design, Code &amp; Develop Software Finally Launch." maxlength="200" class="form-control" id="id_about_short_description">
                                             </div>
                                             <div class="col-md-6 col-sm-12">
                                                 <label for="id_tag_line">Tag Line</label>
-                                                <input type="text" name="tag_line" value="Best Creative IT Agency And Solutions" maxlength="200" class="form-control" id="id_tag_line">
+                                                <input type="text" name="tag_line" value="Best Creative IT Agency And Solutions" maxlength="200" class="form-control" id="id_about_tag_line">
                                             </div>
                                         </div>
 
                                         <div class="row mb-2">
                                             <div class="col-md-6 col-sm-12 mb-2">
                                                 <label for="id_ranking_number">Ranking</label>
-                                                <input type="number" name="ranking_number" value="1" class="form-control" id="id_ranking_number">
+                                                <input type="number" name="ranking_number" value="1" class="form-control" id="id_about_ranking_number">
                                             </div>
                                             <div class="col-md-6 col-sm-12">
                                                 <label for="id_experience">Experience</label>
-                                                <input type="text" name="experience" value="Since 2005." placeholder="eg. Since 2005." maxlength="200" class="form-control" id="id_experience">
+                                                <input type="text" name="experience" value="Since 2005." placeholder="eg. Since 2005." maxlength="200" class="form-control" id="id_about_experience">
                                             </div>
                                         </div>
 
                                         <div class="row mb-2">
                                             <div class="col-md-12 col-sm-12 mb-2">
                                                 <label for="id_video_url">Video URL</label>
-                                                <input type="text" name="video_url" value="https://www.youtube.com/watch?v=lQjtQmnxw3o" maxlength="500" class="form-control" id="id_video_url">
+                                                <input type="text" name="video_url" value="https://www.youtube.com/watch?v=lQjtQmnxw3o" maxlength="500" class="form-control" id="id_about_video_url">
                                             </div>
                                         </div>
 
                                         <div class="row mb-2">
                                             <div class="col-md-12 col-sm-12 mb-2">
                                                 <label for="id_long_description">Long Description</label>
-                                                <textarea name="long_description" cols="40" rows="4" class="form-control" id="id_long_description">
+                                                <textarea name="long_description" cols="40" rows="4" class="form-control" id="id_about_long_description">
 Integer purus odio, placerat nec rhoncus in, ullamcorper nec dolor. Class onlin aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos only himenaeos. Praesent nec neque at dolor venenatis consectetur eu quis ex. the Donec lacinia placerat felis non aliquam.</textarea>
                                             </div>
                                         </div>
@@ -691,17 +692,17 @@ Integer purus odio, placerat nec rhoncus in, ullamcorper nec dolor. Class onlin 
                     <div class="card">
                         <div class="card-body">
                             <h6 class="mb-3">Fun Fact Section</h6>
-                            <form method="post" enctype="multipart/form-data">
-                                <input type="hidden" name="csrfmiddlewaretoken" value="m60dQtCB0OUQHrNspQWAKrOhcGDqjXFh36Ll0VOxK3Wn61pbeVMKTpO1MRB7UuZF">
+                            <form id="funfact-form" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="csrfmiddlewaretoken" value="dummy">
                                 <input type="hidden" name="funfact_section_title">
                                 <div class="row mb-3">
                                   <div class="col-md-6">
                                     <label for="id_title_small" class="form-label">Section Title 1</label>
-                                    <input type="text" name="title_small" value="Care Study" maxlength="100" class="form-control" id="id_title_small">
+                                    <input type="text" name="title_small" value="Care Study" maxlength="100" class="form-control" id="id_funfact_title_small">
                                   </div>
                                   <div class="col-md-6">
                                     <label for="id_title_big" class="form-label">Section Title 2</label>
-                                    <input type="text" name="title_big" value="Fun Facts" maxlength="100" class="form-control" id="id_title_big">
+                                    <input type="text" name="title_big" value="Fun Facts" maxlength="100" class="form-control" id="id_funfact_title_big">
                                   </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary mb-3">Save</button>
@@ -720,27 +721,27 @@ Integer purus odio, placerat nec rhoncus in, ullamcorper nec dolor. Class onlin 
                     <div class="card">
                         <div class="card-body">
                             <h6 class="mb-3">Project Section</h6>
-                            <form method="post">
-                                <input type="hidden" name="csrfmiddlewaretoken" value="m60dQtCB0OUQHrNspQWAKrOhcGDqjXFh36Ll0VOxK3Wn61pbeVMKTpO1MRB7UuZF">
+                            <form id="projects-form" method="post">
+                                <input type="hidden" name="csrfmiddlewaretoken" value="dummy">
                                 <input type="hidden" name="project_section_title">
                                 <div class="row mb-3">
                                   <div class="col-md-6">
                                     <label for="id_title_small" class="form-label">Section Title 1</label>
-                                    <input type="text" name="title_small" value="Most Popular" maxlength="200" class="form-control" id="id_title_small">
+                                    <input type="text" name="title_small" value="Most Popular" maxlength="200" class="form-control" id="id_project_title_small">
                                   </div>
                                   <div class="col-md-6">
                                     <label for="id_title_big" class="form-label">Section Title 2</label>
-                                    <input type="text" name="title_big" value="Projects" maxlength="300" class="form-control" id="id_title_big">
+                                    <input type="text" name="title_big" value="Projects" maxlength="300" class="form-control" id="id_project_title_big">
                                   </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-md-12">
                                       <label for="id_all_work_text" class="form-label">All Work Text ( This text will be shown at the first of the project category filter )</label>
-                                      <input type="text" name="all_work_text" value="All Work" maxlength="200" class="form-control" id="id_all_work_text">
+                                      <input type="text" name="all_work_text" value="All Work" maxlength="200" class="form-control" id="id_project_all_work_text">
                                     </div>
                                     <div class="col-md-12 mt-3">
                                         <label for="id_view_button_text" class="form-label">View Button Text</label>
-                                        <input type="text" name="view_button_text" value="View Details" maxlength="200" class="form-control" id="id_view_button_text">
+                                        <input type="text" name="view_button_text" value="View Details" maxlength="200" class="form-control" id="id_project_view_button_text">
                                       </div>
                                   </div>
                                 <button type="submit" class="btn btn-primary mb-3">Save</button>
@@ -759,17 +760,17 @@ Integer purus odio, placerat nec rhoncus in, ullamcorper nec dolor. Class onlin 
                     <div class="card">
                         <div class="card-body">
                             <h6 class="mb-3">Client Section</h6>
-                            <form method="post">
-                                <input type="hidden" name="csrfmiddlewaretoken" value="m60dQtCB0OUQHrNspQWAKrOhcGDqjXFh36Ll0VOxK3Wn61pbeVMKTpO1MRB7UuZF">
+                            <form id="clients-form" method="post">
+                                <input type="hidden" name="csrfmiddlewaretoken" value="dummy">
                                 <input type="hidden" name="client_section_title">
                                 <div class="row mb-3">
                                   <div class="col-md-6">
                                     <label for="id_title_small" class="form-label">Section Title 1</label>
-                                    <input type="text" name="title_small" value="Satisfied Client" maxlength="200" class="form-control" id="id_title_small">
+                                    <input type="text" name="title_small" value="Satisfied Client" maxlength="200" class="form-control" id="id_client_title_small">
                                   </div>
                                   <div class="col-md-6">
                                     <label for="id_title_big" class="form-label">Section Title 2</label>
-                                    <input type="text" name="title_big" value="Our Partner" maxlength="300" class="form-control" id="id_title_big">
+                                    <input type="text" name="title_big" value="Our Partner" maxlength="300" class="form-control" id="id_client_title_big">
                                   </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary mb-3">Save</button>
@@ -788,17 +789,17 @@ Integer purus odio, placerat nec rhoncus in, ullamcorper nec dolor. Class onlin 
                     <div class="card">
                         <div class="card-body">
                             <h6 class="mb-3">Pricing Section</h6>
-                            <form method="post">
-                                <input type="hidden" name="csrfmiddlewaretoken" value="m60dQtCB0OUQHrNspQWAKrOhcGDqjXFh36Ll0VOxK3Wn61pbeVMKTpO1MRB7UuZF">
+                            <form id="pricing-form" method="post">
+                                <input type="hidden" name="csrfmiddlewaretoken" value="dummy">
                                 <input type="hidden" name="pricing_section_title">
                                 <div class="row mb-3">
                                   <div class="col-md-6">
                                     <label for="id_title_small" class="form-label">Section Title 1</label>
-                                    <input type="text" name="title_small" value="Getting Start" maxlength="200" class="form-control" id="id_title_small">
+                                    <input type="text" name="title_small" value="Getting Start" maxlength="200" class="form-control" id="id_pricing_title_small">
                                   </div>
                                   <div class="col-md-6">
                                     <label for="id_title_big" class="form-label">Section Title 2</label>
-                                    <input type="text" name="title_big" value="Pricing Plan" maxlength="300" class="form-control" id="id_title_big">
+                                    <input type="text" name="title_big" value="Pricing Plan" maxlength="300" class="form-control" id="id_pricing_title_big">
                                   </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary mb-3">Save</button>
@@ -817,17 +818,17 @@ Integer purus odio, placerat nec rhoncus in, ullamcorper nec dolor. Class onlin 
                     <div class="card">
                         <div class="card-body">
                             <h6 class="mb-3">Testimonial Section</h6>
-                            <form method="post">
-                                <input type="hidden" name="csrfmiddlewaretoken" value="m60dQtCB0OUQHrNspQWAKrOhcGDqjXFh36Ll0VOxK3Wn61pbeVMKTpO1MRB7UuZF">
+                            <form id="testimonial-form" method="post">
+                                <input type="hidden" name="csrfmiddlewaretoken" value="dummy">
                                 <input type="hidden" name="testimonial_section_title">
                                 <div class="row mb-3">
                                   <div class="col-md-6">
                                     <label for="id_title_small" class="form-label">Section Title 1</label>
-                                    <input type="text" name="title_small" value="Testimonial" maxlength="200" class="form-control" id="id_title_small">
+                                    <input type="text" name="title_small" value="Testimonial" maxlength="200" class="form-control" id="id_testimonial_title_small">
                                   </div>
                                   <div class="col-md-6">
                                     <label for="id_title_big" class="form-label">Section Title 2</label>
-                                    <input type="text" name="title_big" value="Client Say About Us" maxlength="300" class="form-control" id="id_title_big">
+                                    <input type="text" name="title_big" value="Client Say About Us" maxlength="300" class="form-control" id="id_testimonial_title_big">
                                   </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary mb-3">Save</button>
@@ -846,17 +847,17 @@ Integer purus odio, placerat nec rhoncus in, ullamcorper nec dolor. Class onlin 
                     <div class="card">
                         <div class="card-body">
                             <h6 class="mb-3">Team Section</h6>
-                            <form method="post">
-                                <input type="hidden" name="csrfmiddlewaretoken" value="m60dQtCB0OUQHrNspQWAKrOhcGDqjXFh36Ll0VOxK3Wn61pbeVMKTpO1MRB7UuZF">
+                            <form id="team-form" method="post">
+                                <input type="hidden" name="csrfmiddlewaretoken" value="dummy">
                                 <input type="hidden" name="team_section_title">
                                 <div class="row mb-3">
                                   <div class="col-md-6">
                                     <label for="id_title_small" class="form-label">Section Title 1</label>
-                                    <input type="text" name="title_small" value="Our Team" maxlength="200" class="form-control" id="id_title_small">
+                                    <input type="text" name="title_small" value="Our Team" maxlength="200" class="form-control" id="id_team_title_small">
                                   </div>
                                   <div class="col-md-6">
                                     <label for="id_title_big" class="form-label">Section Title 2</label>
-                                    <input type="text" name="title_big" value="Meet Our Team" maxlength="300" class="form-control" id="id_title_big">
+                                    <input type="text" name="title_big" value="Meet Our Team" maxlength="300" class="form-control" id="id_team_title_big">
                                   </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary mb-3">Save</button>
@@ -875,17 +876,17 @@ Integer purus odio, placerat nec rhoncus in, ullamcorper nec dolor. Class onlin 
                     <div class="card">
                         <div class="card-body">
                             <h6 class="mb-3">Blog Section</h6>
-                            <form method="post">
-                                <input type="hidden" name="csrfmiddlewaretoken" value="m60dQtCB0OUQHrNspQWAKrOhcGDqjXFh36Ll0VOxK3Wn61pbeVMKTpO1MRB7UuZF">
+                            <form id="blog-form" method="post">
+                                <input type="hidden" name="csrfmiddlewaretoken" value="dummy">
                                 <input type="hidden" name="blog_section_title">
                                 <div class="row mb-3">
                                   <div class="col-md-6">
                                     <label for="id_title_small" class="form-label">Section Title 1</label>
-                                    <input type="text" name="title_small" value="All Blog" maxlength="200" class="form-control" id="id_title_small">
+                                    <input type="text" name="title_small" value="All Blog" maxlength="200" class="form-control" id="id_blog_title_small">
                                   </div>
                                   <div class="col-md-6">
                                     <label for="id_title_big" class="form-label">Section Title 2</label>
-                                    <input type="text" name="title_big" value="Latest Post" maxlength="300" class="form-control" id="id_title_big">
+                                    <input type="text" name="title_big" value="Latest Post" maxlength="300" class="form-control" id="id_blog_title_big">
                                   </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary mb-3">Save</button>
@@ -1234,7 +1235,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   
-<script type="module" src="/admin/assets/js/page-saver.js"></script>
+<script type="module" src="/admin/assets/js/home-page-manager.js"></script>
 
 <script src="/admin/assets/js/link-fixer.js"></script>
 <script type="module" src="/admin/assets/js/auth-guard.js"></script>

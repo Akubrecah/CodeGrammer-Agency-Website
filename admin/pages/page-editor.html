@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Page Editor - The CodeGrammer</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/assets/images/app_config/favicon.webp" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/phosphor/duotone/style.css" />
+    <link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/fonts/tabler-icons.min.css" />
+    <link rel="stylesheet" href="https://agency.thecodegrammer.net/static/dashboard/assets/css/style.css" id="main-style-link" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        .page-editor-container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .section-card { background: var(--bs-card-bg, #fff); border-radius: 12px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); overflow: hidden; }
+        .section-header { background: linear-gradient(135deg, #4680ff 0%, #3575f3 100%); color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        .section-header.orange { background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%); }
+        .section-header.purple { background: linear-gradient(135deg, #9f7aea 0%, #805ad5 100%); }
+        .section-header.green { background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); }
+        .section-header.red { background: linear-gradient(135deg, #fc8181 0%, #e53e3e 100%); }
+        .section-header.teal { background: linear-gradient(135deg, #38b2ac 0%, #319795 100%); }
+        .section-header h3 { margin: 0; font-size: 16px; font-weight: 600; }
+        .section-header .toggle-icon { transition: transform 0.3s; }
+        .section-header.collapsed .toggle-icon { transform: rotate(-90deg); }
+        .section-body { padding: 20px; }
+        .section-body.collapsed { display: none; }
+        .field-group { margin-bottom: 15px; }
+        .field-group label { display: block; font-weight: 500; margin-bottom: 5px; color: #5b6b79; }
+        .field-group input, .field-group textarea, .field-group select { width: 100%; padding: 10px 15px; border: 1px solid #dbe0e5; border-radius: 8px; font-size: 14px; transition: border-color 0.2s, box-shadow 0.2s; }
+        .field-group input:focus, .field-group textarea:focus { outline: none; border-color: #4680ff; box-shadow: 0 0 0 3px rgba(70, 128, 255, 0.15); }
+        .field-group textarea { min-height: 80px; resize: vertical; }
+        .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .field-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; }
+        @media (max-width: 768px) { .field-row, .field-row-3 { grid-template-columns: 1fr; } }
+        .save-bar { position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(135deg, #1a1f36 0%, #2d3450 100%); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 -4px 20px rgba(0,0,0,0.15); z-index: 1000; }
+        .save-bar .status { color: #a0aec0; font-size: 14px; }
+        .save-bar .status.saved { color: #48bb78; }
+        .save-bar .status.unsaved { color: #f6ad55; }
+        .btn-save-all { background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); color: white; border: none; padding: 12px 30px; border-radius: 8px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: transform 0.2s, box-shadow 0.2s; }
+        .btn-save-all:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4); }
+        .btn-save-all:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+        .toast { position: fixed; top: 20px; right: 20px; padding: 15px 25px; border-radius: 8px; color: white; font-weight: 500; z-index: 9999; animation: slideIn 0.3s ease; }
+        .toast.success { background: linear-gradient(135deg, #48bb78 0%, #38a169 100%); }
+        .toast.error { background: linear-gradient(135deg, #fc8181 0%, #e53e3e 100%); }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .page-header { background: linear-gradient(135deg, #1a1f36 0%, #2d3450 100%); color: white; padding: 30px; margin: -20px -20px 30px -20px; border-radius: 0 0 20px 20px; }
+        .page-header h1 { margin: 0 0 10px 0; font-size: 28px; }
+        .page-header p { margin: 0; opacity: 0.8; }
+        .page-selector { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+        .page-btn { padding: 10px 20px; border: 2px solid rgba(255,255,255,0.3); background: transparent; color: white; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+        .page-btn:hover, .page-btn.active { background: rgba(255,255,255,0.2); border-color: white; }
+        .preview-link { color: #4680ff; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
+        .back-btn { display: inline-flex; align-items: center; gap: 8px; color: white; text-decoration: none; padding: 8px 16px; border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; margin-bottom: 15px; transition: all 0.2s; }
+        .back-btn:hover { background: rgba(255,255,255,0.1); border-color: white; color: white; }
+        body { padding-bottom: 80px; }
+        .loading-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 9999; }
+        .loading-overlay.hidden { display: none; }
+        .spinner { width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .item-list { margin-top: 15px; }
+        .item-card { background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 10px; padding: 15px; margin-bottom: 12px; position: relative; }
+        .item-card:hover { border-color: #4680ff; }
+        .item-card .item-number { position: absolute; top: -10px; left: 15px; background: #4680ff; color: white; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+        .item-card .item-actions { position: absolute; top: 10px; right: 10px; display: flex; gap: 5px; }
+        .item-card .btn-icon { width: 30px; height: 30px; border-radius: 6px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+        .item-card .btn-delete { background: #fee2e2; color: #dc2626; }
+        .item-card .btn-delete:hover { background: #dc2626; color: white; }
+        .btn-add-item { background: linear-gradient(135deg, #4680ff 0%, #3575f3 100%); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-weight: 500; margin-top: 10px; }
+        .btn-add-item:hover { opacity: 0.9; }
+        .item-fields { margin-top: 10px; }
+        .featured-badge { display: inline-block; padding: 2px 8px; background: #fef3c7; color: #d97706; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 10px; }
+        .form-check-input { width: 18px; height: 18px; }
+    </style>
+</head>
+<body data-pc-preset="preset-1" data-pc-sidebar-theme="light">
+
+<div class="loading-overlay hidden" id="loadingOverlay">
+    <div class="spinner"></div>
+</div>
+
+<div class="page-editor-container">
+    <div class="page-header">
+        <a href="/admin/dashboard/index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </a>
+        <h1><i class="fas fa-edit me-2"></i> Page Editor</h1>
+        <p>Edit your website content in one place. Make changes and click "Save All Changes" to push updates.</p>
+        <div class="page-selector">
+            <button class="page-btn active" data-page="home"><i class="fas fa-home me-1"></i> Home</button>
+            <button class="page-btn" data-page="sliders"><i class="fas fa-images me-1"></i> Sliders</button>
+            <button class="page-btn" data-page="funfacts"><i class="fas fa-chart-bar me-1"></i> Fun Facts</button>
+            <button class="page-btn" data-page="projects"><i class="fas fa-briefcase me-1"></i> Projects</button>
+            <button class="page-btn" data-page="clients"><i class="fas fa-handshake me-1"></i> Clients</button>
+            <button class="page-btn" data-page="testimonials"><i class="fas fa-quote-left me-1"></i> Testimonials</button>
+            <button class="page-btn" data-page="team"><i class="fas fa-users me-1"></i> Team</button>
+            <button class="page-btn" data-page="pricing"><i class="fas fa-tags me-1"></i> Pricing</button>
+            <button class="page-btn" data-page="about"><i class="fas fa-info-circle me-1"></i> About</button>
+            <button class="page-btn" data-page="contact"><i class="fas fa-envelope me-1"></i> Contact</button>
+        </div>
+    </div>
+
+    <div id="editorContent"></div>
+</div>
+
+<div class="save-bar">
+    <div class="status" id="saveStatus"><i class="fas fa-circle me-1"></i> <span>All changes saved</span></div>
+    <div style="display: flex; gap: 15px; align-items: center;">
+        <a href="/" target="_blank" class="preview-link"><i class="fas fa-external-link-alt"></i> Preview Site</a>
+        <button class="btn-save-all" id="saveAllBtn"><i class="fas fa-cloud-upload-alt"></i> Save All Changes</button>
+    </div>
+</div>
+
+<script type="module">
+import { supabase } from '../../src/supabase-client.js';
+
+let currentPage = 'home';
+let hasUnsavedChanges = false;
+let pageData = {};
+let collectionsData = {
+    sliders: [], funFacts: [], projects: [], clients: [], testimonials: [], team: [], pricing: []
+};
+
+const pageConfigs = {
+    home: {
+        sections: [
+            { key: 'home_seo', title: '🔍 SEO Settings', fields: [
+                { name: 'meta_title', label: 'Page Title', type: 'text' },
+                { name: 'meta_description', label: 'Meta Description', type: 'textarea' }
+            ]},
+            { key: 'home_services', title: '⚙️ Services Section', fields: [
+                { name: 'title_small', label: 'Small Title', type: 'text' },
+                { name: 'title_big', label: 'Main Title', type: 'text' }
+            ]},
+            { key: 'home_about', title: '👤 About Section', fields: [
+                { name: 'subtitle', label: 'Subtitle', type: 'text' },
+                { name: 'title', label: 'Title', type: 'text' },
+                { name: 'short_description', label: 'Short Description', type: 'text' },
+                { name: 'long_description', label: 'Long Description', type: 'textarea' }
+            ]},
+            { key: 'home_funfact', title: '📊 Fun Facts Titles', fields: [
+                { name: 'title_small', label: 'Small Title', type: 'text' },
+                { name: 'title_big', label: 'Main Title', type: 'text' }
+            ]},
+            { key: 'home_projects', title: '🚀 Projects Titles', fields: [
+                { name: 'title_small', label: 'Small Title', type: 'text' },
+                { name: 'title_big', label: 'Main Title', type: 'text' }
+            ]},
+            { key: 'home_clients', title: '🤝 Clients Titles', fields: [
+                { name: 'title_small', label: 'Small Title', type: 'text' },
+                { name: 'title_big', label: 'Main Title', type: 'text' }
+            ]},
+            { key: 'home_pricing', title: '💰 Pricing Titles', fields: [
+                { name: 'title_small', label: 'Small Title', type: 'text' },
+                { name: 'title_big', label: 'Main Title', type: 'text' }
+            ]},
+            { key: 'home_testimonial', title: '💬 Testimonials Titles', fields: [
+                { name: 'title_small', label: 'Small Title', type: 'text' },
+                { name: 'title_big', label: 'Main Title', type: 'text' }
+            ]},
+            { key: 'home_team', title: '👥 Team Titles', fields: [
+                { name: 'title_small', label: 'Small Title', type: 'text' },
+                { name: 'title_big', label: 'Main Title', type: 'text' }
+            ]},
+            { key: 'home_blog', title: '📝 Blog Titles', fields: [
+                { name: 'title_small', label: 'Small Title', type: 'text' },
+                { name: 'title_big', label: 'Main Title', type: 'text' }
+            ]}
+        ]
+    },
+    about: {
+        sections: [
+            { key: 'about_seo', title: '🔍 SEO Settings', fields: [
+                { name: 'meta_title', label: 'Page Title', type: 'text' },
+                { name: 'meta_description', label: 'Meta Description', type: 'textarea' }
+            ]},
+            { key: 'about_content', title: '📄 Main Content', fields: [
+                { name: 'title', label: 'Section Title', type: 'text' },
+                { name: 'description', label: 'Description', type: 'textarea' },
+                { name: 'mission', label: 'Our Mission', type: 'textarea' },
+                { name: 'vision', label: 'Our Vision', type: 'textarea' }
+            ]}
+        ]
+    },
+    contact: {
+        sections: [
+            { key: 'contact_seo', title: '🔍 SEO Settings', fields: [
+                { name: 'meta_title', label: 'Page Title', type: 'text' },
+                { name: 'meta_description', label: 'Meta Description', type: 'textarea' }
+            ]},
+            { key: 'contact_info', title: '📞 Contact Information', fields: [
+                { name: 'address', label: 'Address', type: 'textarea' },
+                { name: 'email', label: 'Email', type: 'text' },
+                { name: 'phone', label: 'Phone', type: 'text' },
+                { name: 'working_hours', label: 'Working Hours', type: 'text' }
+            ]}
+        ]
+    }
+};
+
+function showToast(message, type = 'success') {
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'} me-2"></i>${message}`;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+}
+
+function setLoading(show) { document.getElementById('loadingOverlay').classList.toggle('hidden', !show); }
+
+function updateSaveStatus(saved = true) {
+    const status = document.getElementById('saveStatus');
+    status.className = saved ? 'status saved' : 'status unsaved';
+    status.innerHTML = saved ? '<i class="fas fa-check-circle me-1"></i> All changes saved' : '<i class="fas fa-exclamation-circle me-1"></i> Unsaved changes';
+    hasUnsavedChanges = !saved;
+}
+
+async function loadAllData() {
+    setLoading(true);
+    try {
+        const [settingsRes, slidersRes, funFactsRes, projectsRes, clientsRes, testimonialsRes, teamRes, pricingRes] = await Promise.all([
+            supabase.from('site_settings').select('*'),
+            supabase.from('sliders').select('*').order('serial_number', { ascending: true }),
+            supabase.from('fun_facts').select('*').order('created_at', { ascending: true }),
+            supabase.from('projects').select('*').order('created_at', { ascending: false }),
+            supabase.from('clients').select('*').order('created_at', { ascending: true }),
+            supabase.from('testimonials').select('*').order('created_at', { ascending: true }),
+            supabase.from('team_members').select('*').order('created_at', { ascending: true }),
+            supabase.from('pricing_plans').select('*').order('created_at', { ascending: true })
+        ]);
+
+        pageData = {};
+        (settingsRes.data || []).forEach(item => { pageData[item.key] = item.value; });
+        
+        collectionsData = {
+            sliders: slidersRes.data || [],
+            funFacts: funFactsRes.data || [],
+            projects: projectsRes.data || [],
+            clients: clientsRes.data || [],
+            testimonials: testimonialsRes.data || [],
+            team: teamRes.data || [],
+            pricing: pricingRes.data || []
+        };
+
+        renderEditor();
+    } catch (err) {
+        console.error(err);
+        showToast('Failed to load data', 'error');
+    }
+    setLoading(false);
+}
+
+function renderEditor() {
+    const container = document.getElementById('editorContent');
+    const collectionPages = ['sliders', 'funfacts', 'projects', 'clients', 'testimonials', 'team', 'pricing'];
+    
+    if (collectionPages.includes(currentPage)) {
+        renderCollectionEditor(container, currentPage);
+    } else if (pageConfigs[currentPage]) {
+        renderSettingsEditor(container);
+    } else {
+        container.innerHTML = '<p>Page not found</p>';
+    }
+}
+
+function renderSettingsEditor(container) {
+    const config = pageConfigs[currentPage];
+    let html = '';
+    config.sections.forEach(section => {
+        const data = pageData[section.key] || {};
+        html += `<div class="section-card" data-section="${section.key}">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h3>${section.title}</h3>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="section-body">${renderFields(section.fields, data, section.key)}</div>
+        </div>`;
+    });
+    container.innerHTML = html;
+    addChangeListeners(container);
+}
+
+function renderCollectionEditor(container, type) {
+    const configs = {
+        sliders: { title: '🖼️ Hero Sliders', color: 'orange', data: collectionsData.sliders, render: renderSliderCard },
+        funfacts: { title: '📊 Fun Facts', color: 'purple', data: collectionsData.funFacts, render: renderFunFactCard },
+        projects: { title: '🚀 Projects', color: 'green', data: collectionsData.projects, render: renderProjectCard },
+        clients: { title: '🤝 Clients', color: 'teal', data: collectionsData.clients, render: renderClientCard },
+        testimonials: { title: '💬 Testimonials', color: 'purple', data: collectionsData.testimonials, render: renderTestimonialCard },
+        team: { title: '👥 Team Members', color: 'green', data: collectionsData.team, render: renderTeamCard },
+        pricing: { title: '💰 Pricing Plans', color: 'orange', data: collectionsData.pricing, render: renderPricingCard }
+    };
+    const cfg = configs[type];
+    
+    // Special handling for pricing - show link to dedicated create page
+    const addBtnHtml = type === 'pricing' 
+        ? `<div style="display: flex; gap: 10px; flex-wrap: wrap;">
+             <button class="btn-add-item" onclick="addNew('${type}')"><i class="fas fa-plus"></i> Quick Add</button>
+             <a href="/admin/elements/create-pricing.html" class="btn-add-item" style="text-decoration: none;"><i class="fas fa-file-alt"></i> Create with Full Form</a>
+             <a href="/admin/elements/pricing.html" class="btn-add-item" style="text-decoration: none; background: linear-gradient(135deg, #9f7aea 0%, #805ad5 100%);"><i class="fas fa-list"></i> View All Plans</a>
+           </div>`
+        : `<button class="btn-add-item" onclick="addNew('${type}')"><i class="fas fa-plus"></i> Add New</button>`;
+    
+    let html = `<div class="section-card">
+        <div class="section-header ${cfg.color}"><h3>${cfg.title} (${cfg.data.length} items)</h3></div>
+        <div class="section-body">
+            <div class="item-list" id="${type}List">${cfg.data.map((item, i) => cfg.render(item, i)).join('')}</div>
+            ${addBtnHtml}
+        </div>
+    </div>`;
+    container.innerHTML = html;
+    addChangeListeners(container);
+}
+
+function renderSliderCard(item, i) {
+    return `<div class="item-card" data-id="${item.id}">
+        <span class="item-number">Slide ${i + 1}</span>
+        <div class="item-actions"><button class="btn-icon btn-delete" onclick="deleteItem('sliders', '${item.id}')"><i class="fas fa-trash"></i></button></div>
+        <div class="item-fields">
+            <div class="field-row"><div class="field-group"><label>Title</label><input type="text" data-field="title" value="${item.title || ''}"></div>
+            <div class="field-group"><label>Subtitle</label><input type="text" data-field="subtitle" value="${item.subtitle || ''}"></div></div>
+            <div class="field-group"><label>Description</label><textarea data-field="description">${item.description || ''}</textarea></div>
+            <div class="field-row"><div class="field-group"><label>Button Text</label><input type="text" data-field="button_text" value="${item.button_text || ''}"></div>
+            <div class="field-group"><label>Button Link</label><input type="text" data-field="button_link" value="${item.button_link || ''}"></div></div>
+            <div class="field-row"><div class="field-group"><label>Image URL</label><input type="text" data-field="image" value="${item.image || ''}"></div>
+            <div class="field-group"><label>Order</label><input type="number" data-field="serial_number" value="${item.serial_number || 0}"></div></div>
+        </div>
+    </div>`;
+}
+
+function renderFunFactCard(item, i) {
+    return `<div class="item-card" data-id="${item.id}">
+        <span class="item-number">Fact ${i + 1}</span>
+        <div class="item-actions"><button class="btn-icon btn-delete" onclick="deleteItem('funfacts', '${item.id}')"><i class="fas fa-trash"></i></button></div>
+        <div class="item-fields">
+            <div class="field-row"><div class="field-group"><label>Title</label><input type="text" data-field="title" value="${item.title || ''}"></div>
+            <div class="field-group"><label>Count</label><input type="text" data-field="count" value="${item.count || ''}"></div></div>
+            <div class="field-group"><label>Icon Class</label><input type="text" data-field="icon" value="${item.icon || ''}" placeholder="e.g. fas fa-users"></div>
+        </div>
+    </div>`;
+}
+
+function renderProjectCard(item, i) {
+    return `<div class="item-card" data-id="${item.id}">
+        <span class="item-number">Project ${i + 1}</span>
+        <div class="item-actions"><button class="btn-icon btn-delete" onclick="deleteItem('projects', '${item.id}')"><i class="fas fa-trash"></i></button></div>
+        <div class="item-fields">
+            <div class="field-row"><div class="field-group"><label>Title</label><input type="text" data-field="title" value="${item.title || ''}"></div>
+            <div class="field-group"><label>Category</label><input type="text" data-field="category" value="${item.category || ''}"></div></div>
+            <div class="field-row"><div class="field-group"><label>Client</label><input type="text" data-field="client_name" value="${item.client_name || ''}"></div>
+            <div class="field-group"><label>Duration</label><input type="text" data-field="duration" value="${item.duration || ''}"></div></div>
+            <div class="field-group"><label>Description</label><textarea data-field="description">${item.description || ''}</textarea></div>
+            <div class="field-row"><div class="field-group"><label>Image URL</label><input type="text" data-field="image" value="${item.image || ''}"></div>
+            <div class="field-group"><label>Link</label><input type="text" data-field="link" value="${item.link || ''}"></div></div>
+        </div>
+    </div>`;
+}
+
+function renderClientCard(item, i) {
+    return `<div class="item-card" data-id="${item.id}">
+        <span class="item-number">Client ${i + 1}</span>
+        <div class="item-actions"><button class="btn-icon btn-delete" onclick="deleteItem('clients', '${item.id}')"><i class="fas fa-trash"></i></button></div>
+        <div class="item-fields">
+            <div class="field-row"><div class="field-group"><label>Name</label><input type="text" data-field="name" value="${item.name || ''}"></div>
+            <div class="field-group"><label>Link</label><input type="text" data-field="link" value="${item.link || ''}"></div></div>
+            <div class="field-group"><label>Logo URL</label><input type="text" data-field="image" value="${item.image || ''}"></div>
+        </div>
+    </div>`;
+}
+
+function renderTestimonialCard(item, i) {
+    return `<div class="item-card" data-id="${item.id}">
+        <span class="item-number">Testimonial ${i + 1}</span>
+        <div class="item-actions"><button class="btn-icon btn-delete" onclick="deleteItem('testimonials', '${item.id}')"><i class="fas fa-trash"></i></button></div>
+        <div class="item-fields">
+            <div class="field-row"><div class="field-group"><label>Name</label><input type="text" data-field="name" value="${item.name || ''}"></div>
+            <div class="field-group"><label>Role/Position</label><input type="text" data-field="role" value="${item.role || ''}"></div></div>
+            <div class="field-group"><label>Review</label><textarea data-field="review">${item.review || ''}</textarea></div>
+            <div class="field-row"><div class="field-group"><label>Image URL</label><input type="text" data-field="image" value="${item.image || ''}"></div>
+            <div class="field-group"><label>Rating (1-5)</label><input type="number" data-field="rating" value="${item.rating || 5}" min="1" max="5"></div></div>
+        </div>
+    </div>`;
+}
+
+function renderTeamCard(item, i) {
+    return `<div class="item-card" data-id="${item.id}">
+        <span class="item-number">Member ${i + 1}</span>
+        <div class="item-actions"><button class="btn-icon btn-delete" onclick="deleteItem('team', '${item.id}')"><i class="fas fa-trash"></i></button></div>
+        <div class="item-fields">
+            <div class="field-row"><div class="field-group"><label>Name</label><input type="text" data-field="name" value="${item.name || ''}"></div>
+            <div class="field-group"><label>Role</label><input type="text" data-field="role" value="${item.role || ''}"></div></div>
+            <div class="field-group"><label>Image URL</label><input type="text" data-field="image" value="${item.image || ''}"></div>
+            <div class="field-row-3"><div class="field-group"><label>Facebook</label><input type="text" data-field="facebook" value="${item.facebook || ''}"></div>
+            <div class="field-group"><label>Twitter</label><input type="text" data-field="twitter" value="${item.twitter || ''}"></div>
+            <div class="field-group"><label>LinkedIn</label><input type="text" data-field="linkedin" value="${item.linkedin || ''}"></div></div>
+        </div>
+    </div>`;
+}
+
+function renderPricingCard(item, i) {
+    return `<div class="item-card" data-id="${item.id}">
+        <span class="item-number">Plan ${i + 1}</span>${item.is_featured ? '<span class="featured-badge">Featured</span>' : ''}
+        <div class="item-actions"><button class="btn-icon btn-delete" onclick="deleteItem('pricing', '${item.id}')"><i class="fas fa-trash"></i></button></div>
+        <div class="item-fields">
+            <div class="field-row-3"><div class="field-group"><label>Title</label><input type="text" data-field="title" value="${item.title || ''}"></div>
+            <div class="field-group"><label>Price</label><input type="text" data-field="price" value="${item.price || ''}"></div>
+            <div class="field-group"><label>Duration</label><input type="text" data-field="duration" value="${item.duration || ''}" placeholder="e.g. /month"></div></div>
+            <div class="field-group"><label>Features (one per line)</label><textarea data-field="features" rows="4">${item.features || ''}</textarea></div>
+            <div class="field-row"><div class="field-group"><label>Button Text</label><input type="text" data-field="button_text" value="${item.button_text || ''}"></div>
+            <div class="field-group"><label>Button Link</label><input type="text" data-field="button_link" value="${item.button_link || ''}"></div></div>
+            <div class="field-group"><label><input type="checkbox" class="form-check-input me-2" data-field="is_featured" ${item.is_featured ? 'checked' : ''}> Mark as Featured Plan</label></div>
+        </div>
+    </div>`;
+}
+
+function renderFields(fields, data, sectionKey) {
+    let html = '<div class="field-row">';
+    fields.forEach(f => {
+        const val = data[f.name] || '';
+        const id = `${sectionKey}_${f.name}`;
+        if (f.type === 'textarea') {
+            html += `</div><div class="field-group"><label>${f.label}</label><textarea id="${id}" name="${f.name}">${val}</textarea></div><div class="field-row">`;
+        } else {
+            html += `<div class="field-group"><label>${f.label}</label><input type="${f.type}" id="${id}" name="${f.name}" value="${val}"></div>`;
+        }
+    });
+    return html + '</div>';
+}
+
+function addChangeListeners(container) {
+    container.querySelectorAll('input, textarea, select').forEach(el => {
+        el.addEventListener('input', () => updateSaveStatus(false));
+        el.addEventListener('change', () => updateSaveStatus(false));
+    });
+}
+
+window.toggleSection = function(header) {
+    header.classList.toggle('collapsed');
+    header.nextElementSibling.classList.toggle('collapsed');
+};
+
+const tableMap = { sliders: 'sliders', funfacts: 'fun_facts', projects: 'projects', clients: 'clients', testimonials: 'testimonials', team: 'team_members', pricing: 'pricing_plans' };
+const dataMap = { sliders: 'sliders', funfacts: 'funFacts', projects: 'projects', clients: 'clients', testimonials: 'testimonials', team: 'team', pricing: 'pricing' };
+
+window.addNew = async function(type) {
+    const defaults = {
+        sliders: { title: 'New Slide', subtitle: 'Subtitle', description: 'Description...', button_text: 'Learn More', button_link: '/', serial_number: collectionsData.sliders.length + 1 },
+        funfacts: { title: 'New Stat', count: '0', icon: 'fas fa-star' },
+        projects: { title: 'New Project', category: 'Web', client_name: 'Client', description: 'Description...' },
+        clients: { name: 'New Client', link: '#', image: '' },
+        testimonials: { name: 'New Review', role: 'Customer', review: 'Great service!', rating: 5 },
+        team: { name: 'New Member', role: 'Position', image: '' },
+        pricing: { title: 'New Plan', price: '0', duration: '/month', features: 'Feature 1\nFeature 2', button_text: 'Get Started', button_link: '#', is_featured: false }
+    };
+    
+    const { data, error } = await supabase.from(tableMap[type]).insert([defaults[type]]).select();
+    if (error) { showToast('Failed to add item', 'error'); return; }
+    collectionsData[dataMap[type]].push(data[0]);
+    renderEditor();
+    showToast('Item added!', 'success');
+    updateSaveStatus(false);
+};
+
+window.deleteItem = async function(type, id) {
+    if (!confirm('Delete this item?')) return;
+    const { error } = await supabase.from(tableMap[type]).delete().eq('id', id);
+    if (error) { showToast('Failed to delete', 'error'); return; }
+    collectionsData[dataMap[type]] = collectionsData[dataMap[type]].filter(x => x.id !== id);
+    renderEditor();
+    showToast('Item deleted!', 'success');
+};
+
+async function saveAllChanges() {
+    const btn = document.getElementById('saveAllBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+    
+    try {
+        const collectionPages = ['sliders', 'funfacts', 'projects', 'clients', 'testimonials', 'team', 'pricing'];
+        
+        if (collectionPages.includes(currentPage)) {
+            const cards = document.querySelectorAll(`#${currentPage}List .item-card`);
+            for (const card of cards) {
+                const id = card.dataset.id;
+                const updates = {};
+                card.querySelectorAll('[data-field]').forEach(input => {
+                    if (input.type === 'checkbox') {
+                        updates[input.dataset.field] = input.checked;
+                    } else {
+                        updates[input.dataset.field] = input.value;
+                    }
+                });
+                const { error } = await supabase.from(tableMap[currentPage]).update(updates).eq('id', id);
+                if (error) throw error;
+            }
+        } else if (pageConfigs[currentPage]) {
+            const config = pageConfigs[currentPage];
+            const updates = [];
+            for (const section of config.sections) {
+                const sectionEl = document.querySelector(`[data-section="${section.key}"]`);
+                const data = {};
+                section.fields.forEach(f => {
+                    const input = sectionEl.querySelector(`[name="${f.name}"]`);
+                    if (input) data[f.name] = input.value;
+                });
+                updates.push({ key: section.key, value: data, updated_at: new Date().toISOString() });
+            }
+            const { error } = await supabase.from('site_settings').upsert(updates, { onConflict: 'key' });
+            if (error) throw error;
+            updates.forEach(u => { pageData[u.key] = u.value; });
+        }
+        
+        showToast('All changes saved!', 'success');
+        updateSaveStatus(true);
+    } catch (err) {
+        console.error(err);
+        showToast('Failed to save: ' + err.message, 'error');
+    }
+    
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Save All Changes';
+}
+
+document.querySelectorAll('.page-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        if (hasUnsavedChanges && !confirm('Unsaved changes. Switch anyway?')) return;
+        document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentPage = btn.dataset.page;
+        renderEditor();
+        updateSaveStatus(true);
+    });
+});
+
+document.getElementById('saveAllBtn').addEventListener('click', saveAllChanges);
+
+window.addEventListener('beforeunload', (e) => {
+    if (hasUnsavedChanges) { e.preventDefault(); e.returnValue = ''; }
+});
+
+// URL param handling
+const urlParams = new URLSearchParams(window.location.search);
+const pageParam = urlParams.get('page');
+if (pageParam) {
+    currentPage = pageParam;
+    document.querySelectorAll('.page-btn').forEach(b => b.classList.toggle('active', b.dataset.page === pageParam));
+}
+
+loadAllData();
+</script>
+
+<script type="module" src="/admin/assets/js/auth-guard.js"></script>
+</body>
+</html>

@@ -111,12 +111,15 @@
             <span class="pc-mtext" data-i18n="Pages">Pages</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
           ></a>
           <ul class="pc-submenu">
-            <li class="pc-item"><a class="pc-link" href="/admin/pages/home-page.html" data-i18n="Home Page">Home Page</a></li>
-            <li class="pc-item"><a class="pc-link" href="/admin/pages/about-page.html" data-i18n="About Page">About Page</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/page-editor.html" data-i18n="Page Editor" style="color: #4680ff; font-weight: 600;"><i class="fas fa-edit me-1"></i> Page Editor</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/page-editor.html?page=home" data-i18n="Home Page">Home Page</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/page-editor.html?page=about" data-i18n="About Page">About Page</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/page-editor.html?page=sliders" data-i18n="Sliders">Sliders</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/page-editor.html?page=funfacts" data-i18n="Fun Facts">Fun Facts</a></li>
+            <li class="pc-item"><a class="pc-link" href="/admin/pages/page-editor.html?page=contact" data-i18n="Contact Page">Contact Page</a></li>
             <li class="pc-item"><a class="pc-link" href="/admin/pages/service-page.html" data-i18n="Service Page">Service Page</a></li>
             <li class="pc-item"><a class="pc-link" href="/admin/pages/project-page.html" data-i18n="Project Page">Project Page</a></li>
             <li class="pc-item"><a class="pc-link" href="/admin/pages/pricing-page.html" data-i18n="Pricing Page">Pricing Page</a></li>
-            <li class="pc-item"><a class="pc-link" href="/admin/pages/contact-page.html" data-i18n="Contact Page">Contact Page</a></li>
             <li class="pc-item"><a class="pc-link" href="/admin/pages/blogs-page.html" data-i18n="Blog Page">Blog Page</a></li>
             <li class="pc-item"><a class="pc-link" href="/admin/pages/terms-page.html" data-i18n="Terms Page">Terms Page</a></li>
             <li class="pc-item"><a class="pc-link" href="/admin/pages/policy-page.html" data-i18n="Policy Page">Policy Page</a></li>
@@ -984,129 +987,21 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 </style>
 
-    <!-- Supabase Create/Edit Service Logic -->
-    <script type="module">
-        import { supabase } from '../../src/supabase-client.js';
-        import { requireAuth, setupLogout } from '../admin-core.js';
 
-        requireAuth();
-        setupLogout();
-
-        const form = document.querySelector('form');
-        const submitBtn = form.querySelector('button[type="submit"]');
-
-        const urlParams = new URLSearchParams(window.location.search);
-        const serviceId = urlParams.get('id');
-        const isEditMode = !!serviceId;
-
-        if (isEditMode) {
-            document.querySelector('.page-header-title h2').textContent = 'Edit Service';
-            document.querySelector('.breadcrumb-item[aria-current]').textContent = 'Edit Service';
-            loadServiceData(serviceId);
+    <!-- Slug Auto-Generation -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const titleInput = document.getElementById('id_name');
+        const slugInput = document.getElementById('id_slug');
+        if(titleInput && slugInput) {
+            titleInput.addEventListener('keyup', function() {
+                const slug = titleInput.value.toLowerCase()
+                    .replace(/[^\w ]+/g, '')
+                    .replace(/ +/g, '-');
+                slugInput.value = slug;
+            });
         }
-
-        async function loadServiceData(id) {
-            const { data, error } = await supabase
-                .from('company_services')
-                .select('*')
-                .eq('id', id)
-                .single();
-
-            if (error) {
-                alert('Error loading service: ' + error.message);
-                return;
-            }
-
-            document.getElementById('id_name').value = data.title || '';
-            document.getElementById('id_fontawesome_icon_class').value = data.icon_class || '';
-            document.getElementById('id_short_description').value = data.short_description || '';
-            
-            // Description
-            if (window.CKEDITOR && CKEDITOR.instances.id_detail_page_description) {
-                CKEDITOR.instances.id_detail_page_description.setData(data.full_description || '');
-            } else {
-                document.getElementById('id_detail_page_description').value = data.full_description || '';
-            }
-        }
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Saving...';
-
-            try {
-                // 1. Image Upload
-                const imageInput = document.getElementById('id_detail_page_image');
-                let imageUrl = null;
-                if (imageInput.files && imageInput.files[0]) {
-                    const file = imageInput.files[0];
-                    const fileExt = file.name.split('.').pop();
-                    const fileName = `service_${Date.now()}.${fileExt}`;
-                    const filePath = `services/${fileName}`;
-
-                    const { error: uploadError } = await supabase.storage
-                        .from('project-images') // Reuse bucket
-                        .upload(filePath, file);
-
-                    if (uploadError) throw uploadError;
-
-                    const { data: { publicUrl } } = supabase.storage
-                        .from('project-images')
-                        .getPublicUrl(filePath);
-                        
-                    imageUrl = publicUrl;
-                }
-
-                // 2. Data
-                const title = document.getElementById('id_name').value;
-                const icon_class = document.getElementById('id_fontawesome_icon_class').value;
-                const short_description = document.getElementById('id_short_description').value;
-                
-                let full_description = '';
-                if (window.CKEDITOR && CKEDITOR.instances.id_detail_page_description) {
-                    full_description = CKEDITOR.instances.id_detail_page_description.getData();
-                } else {
-                    full_description = document.getElementById('id_detail_page_description').value;
-                }
-
-                const serviceData = {
-                    title,
-                    icon_class,
-                    short_description,
-                    full_description,
-                    ...(imageUrl && { image_url: imageUrl })
-                };
-
-                // 3. Upsert
-                let error;
-                if (isEditMode) {
-                    ({ error } = await supabase
-                        .from('company_services')
-                        .update(serviceData)
-                        .eq('id', serviceId));
-                } else {
-                    ({ error } = await supabase
-                        .from('company_services')
-                        .insert([serviceData]));
-                }
-
-                if (error) throw error;
-
-                alert('Service saved successfully!');
-                window.location.href = '/admin/services/service-list.html';
-
-            } catch (err) {
-                console.error(err);
-                alert('Error submitting form: ' + err.message);
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Save';
-            }
-        });
-
-        const styles = document.querySelectorAll('style');
-        styles.forEach(s => {
-            if (s.textContent.includes('demo-alert')) s.remove();
-        });
+    });
     </script>
   
 <script src="/admin/assets/js/link-fixer.js"></script>

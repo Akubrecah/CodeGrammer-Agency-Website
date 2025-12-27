@@ -40,10 +40,10 @@ function parseBindKey(key) {
     if (key.startsWith('service_')) return ['home_services', key.replace('service_', '')];
     if (key.startsWith('about_')) return ['home_about', key.replace('about_', '')];
     if (key.startsWith('funfact_')) return ['home_funfact', key.replace('funfact_', '')];
-    if (key.startsWith('project_')) return ['home_project', key.replace('project_', '')];
+    if (key.startsWith('project_')) return ['home_projects', key.replace('project_', '')];
     if (key.startsWith('client_')) return ['home_clients', key.replace('client_', '')]; 
     if (key.startsWith('pricing_')) return ['home_pricing', key.replace('pricing_', '')];
-    if (key.startsWith('testimonial_')) return ['home_testimonials', key.replace('testimonial_', '')];
+    if (key.startsWith('testimonial_')) return ['home_testimonial', key.replace('testimonial_', '')];
     if (key.startsWith('team_')) return ['home_team', key.replace('team_', '')];
     if (key.startsWith('blog_')) return ['home_blog', key.replace('blog_', '')];
     

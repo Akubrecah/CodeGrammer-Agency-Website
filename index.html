@@ -359,7 +359,7 @@
                 <h2 data-cms-bind="funfact_title_big">Fun Facts</h2>
             </div>
         </div>
-        <div class="row g-4">
+        <div class="row g-4" id="fun-facts-container">
             
                 <div class="col-md-6 col-lg-3 wow animate fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
                     <div class="single-feature">
@@ -439,7 +439,7 @@
                 </ul>
             </div>
         </div>
-        <div class="row g-4 project-items">
+        <div class="row g-4 project-items" id="projects-container">
                 <div class="col-md-6 col-lg-4 single-item software">
                         <div class="item-img">
                             <a href="/projects/">
@@ -551,7 +551,7 @@
             </div>
             <div class="col-lg-9">
                 <div class="swiper partner-slider">
-                    <div class="swiper-wrapper">
+                    <div class="swiper-wrapper" id="clients-container">
                         <div class="swiper-slide">
                             <div class="single-partner">
                                     <img src="https://agency.thecodegrammer.net/media/Clients/partner-1.png" alt="partner">
@@ -597,7 +597,7 @@
 
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade active show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <div class="row g-4">
+                <div class="row g-4" id="pricing-container">
                         <div class="col-md-6 col-lg-4 wow animate fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
                             <div class="price-box layout2 ">
                                 <h3>Professional</h3>
@@ -683,7 +683,7 @@
             </div>
         </div>
         <div class="swiper testimonial-slider">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper" id="testimonials-container">
                     <div class="swiper-slide">
                         <div class="single-testimonial">
                             <div class="quote">
@@ -744,7 +744,7 @@
             </div>
         </div>
         <div class="swiper team-slider">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper" id="team-container">
                     <div class="swiper-slide wow animate fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
                         <div class="single-team layout2">
                             <div class="member-img">
@@ -1078,6 +1078,7 @@
     </script>
     
 <script src="/src/animations.js"></script>
+<script type="module" src="/src/dynamic-content-loader.js"></script>
 <script type="module" src="/src/cms-loader.js"></script>
 </body>
 
