@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '/admin/element/pricings': '/admin/elements/pricing.html', 
 
         // Elements (Create - Fallback to Lists as files differ/missing)
-        '/admin/element/slider/create': '/admin/elements/slider.html',
+        '/admin/element/slider/create': '/admin/elements/create-slider.html',
         '/admin/element/fun-fact/create': '/admin/elements/fun-fact.html',
         '/admin/element/client/create': '/admin/elements/clients.html',
         '/admin/element/testimonial/create': '/admin/elements/testmonials.html',
@@ -23,13 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Projects
         '/admin/projects': '/admin/project/project-list.html',
-        r'/admin/project/create': '/admin/project/create-project.html',
-        r'/admin/project-category': '/admin/project/project-category.html',
+        '/admin/project/create': '/admin/project/create-project.html',
+        '/admin/project-category': '/admin/project/project-category.html',
 
         // Blogs
-        r'/admin/blogs': '/admin/blogs/blog-list.html',
-        r'/admin/blog/create': '/admin/blogs/create-blog.html',
-        r'/admin/blog-category': '/admin/blogs/blog-category.html',
+        '/admin/blogs': '/admin/blogs/blog-list.html',
+        '/admin/blog/create': '/admin/blogs/create-blog.html',
+        '/admin/blog-category': '/admin/blogs/blog-category.html',
 
         // Users
         '/admin/users/user-list/': '/admin/users/users-list.html',
