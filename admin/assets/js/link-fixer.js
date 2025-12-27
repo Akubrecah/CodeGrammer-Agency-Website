@@ -1,23 +1,35 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const routeMap = {
-        // Elements
+        // Elements (Lists)
         '/admin/element/sliders': '/admin/elements/slider.html',
-        '/admin/element/slider/create': '/admin/elements/slider.html',
         '/admin/element/fun-facts': '/admin/elements/fun-fact.html',
-        '/admin/element/fun-fact/create': '/admin/elements/fun-fact.html',
         '/admin/element/clients': '/admin/elements/clients.html',
-        '/admin/element/client/create': '/admin/elements/clients.html',
         '/admin/element/testimonials': '/admin/elements/testmonials.html',
-        '/admin/element/testimonial/create': '/admin/elements/testmonials.html',
         '/admin/element/teams': '/admin/elements/team-members.html',
+        '/admin/element/pricings': '/admin/elements/pricing.html', 
+
+        // Elements (Create - Fallback to Lists as files differ/missing)
+        '/admin/element/slider/create': '/admin/elements/slider.html',
+        '/admin/element/fun-fact/create': '/admin/elements/fun-fact.html',
+        '/admin/element/client/create': '/admin/elements/clients.html',
+        '/admin/element/testimonial/create': '/admin/elements/testmonials.html',
         '/admin/element/team/create': '/admin/elements/team-members.html',
-        '/admin/element/pricings': '/admin/pages/pricing-page.html', // Fallback
-        '/admin/element/pricing/create': '/admin/pages/pricing-page.html',
+        '/admin/element/pricing/create': '/admin/elements/pricing.html',
 
         // Services
         '/admin/services': '/admin/services/service-list.html',
         '/admin/service/create': '/admin/services/create-service.html',
+
+        // Projects
+        '/admin/projects': '/admin/project/project-list.html',
+        r'/admin/project/create': '/admin/project/create-project.html',
+        r'/admin/project-category': '/admin/project/project-category.html',
+
+        // Blogs
+        r'/admin/blogs': '/admin/blogs/blog-list.html',
+        r'/admin/blog/create': '/admin/blogs/create-blog.html',
+        r'/admin/blog-category': '/admin/blogs/blog-category.html',
 
         // Users
         '/admin/users/user-list/': '/admin/users/users-list.html',
@@ -50,15 +62,20 @@ document.addEventListener('DOMContentLoaded', () => {
         '/admin/pages/home-page': '/admin/pages/home-page.html',
         '/admin/pages/about-page': '/admin/pages/about-page.html',
         '/admin/pages/service-page': '/admin/pages/service-page.html',
-        '/admin/pages/project-page': '/admin/pages/projects-page.html',
+        '/admin/pages/project-page': '/admin/pages/projects-page.html', // Note singular vs plural file
         '/admin/pages/pricing-page': '/admin/pages/pricing-page.html',
         '/admin/pages/contact-page': '/admin/pages/contact-page.html',
-        '/admin/pages/blog-page': '/admin/pages/blogs-page.html',
+        '/admin/pages/blog-page': '/admin/pages/blogs-page.html', // Note singular vs plural file
         '/admin/pages/terms-page': '/admin/pages/terms-page.html',
         '/admin/pages/policy-page': '/admin/pages/policy-page.html',
         
+        // Custom Pages
+        '/admin/custom-pages/': '/admin/custom-pages/index.html',
+        '/admin/create/custom-page/': '/admin/custom-pages/create.html',
+
         // Logs/Misc
-        '/logout/': '/admin/login/index.html'
+        '/logout/': '/admin/login/index.html',
+        '/admin/dashboard': '/admin/dashboard/index.html'
     };
 
     document.body.addEventListener('click', (e) => {
@@ -108,6 +125,24 @@ document.addEventListener('DOMContentLoaded', () => {
              e.preventDefault();
              window.location.href = `/admin/users/create-user.html?id=${userEditMatch[1]}`;
              return;
+        }
+        
+        // Element Edits (Fallback to List)
+        if (href.includes('/admin/element/') && href.includes('/edit/')) {
+             // Try to find the base type: /admin/element/TYPE/edit/...
+             // Fallback to strict map check by constructing 'create' path?
+             // e.g. /admin/element/pricing/edit/1 -> /admin/elements/pricing.html
+             if (href.includes('/pricing/')) window.location.href = '/admin/elements/pricing.html';
+             else if (href.includes('/slider/')) window.location.href = '/admin/elements/slider.html';
+             else if (href.includes('/fun-fact/')) window.location.href = '/admin/elements/fun-fact.html';
+             else if (href.includes('/client/')) window.location.href = '/admin/elements/clients.html';
+             else if (href.includes('/testimonial/')) window.location.href = '/admin/elements/testmonials.html';
+             else if (href.includes('/team/')) window.location.href = '/admin/elements/team-members.html';
+             
+             if (href.includes('/pricing/') || href.includes('/slider/') || href.includes('/fun-fact/') || href.includes('/client/') || href.includes('/testimonial/') || href.includes('/team/')) {
+                 e.preventDefault();
+                 return;
+             }
         }
 
         // Try fuzzy match (e.g. removing trailing slash)
