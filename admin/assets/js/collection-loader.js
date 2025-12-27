@@ -1,5 +1,5 @@
 
-import { supabase } from '../../src/supabase-client.js';
+import { supabase } from '../../../src/supabase-client.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     const tableElement = document.querySelector('[data-table-list]');
@@ -118,7 +118,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <td class="f-w-600">${index + 1}</td>
                         <td>${img(item.image)}</td>
                         <td class="f-w-600"><a href="${editUrl}">${item.title || 'Service'}</a></td>
-                        <td class="f-w-600">${(item.description || '').substring(0, 50)}...</td>
+                        <td class="f-w-600">${item.slug || '-'}</td>
+                        <td class="f-w-600">${(item.description || '').replace(/<[^>]*>/g, '').substring(0, 50)}...</td>
                          <td>${actions}</td>
                     `;
                  } else if (tableName === 'projects') {

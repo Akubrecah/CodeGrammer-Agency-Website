@@ -142,7 +142,7 @@
             
             try {
                 const { data: services, error } = await supabase
-                    .from('company_services')
+                    .from('services')
                     .select('*')
                     .order('created_at', { ascending: true });
                 
@@ -164,11 +164,11 @@
                     col.className = 'col-md-6 col-lg-4';
                     
                     const num = (index + 1).toString().padStart(2, '0');
-                    const imgHtml = service.image_url 
-                        ? `<img src="${service.image_url}" class="service-img" alt="${service.title}">`
-                        : `<div class="icon"><i class="fas fa-laptop-code service-ico"></i></div>`; // Fallback
+                    const imgHtml = service.image 
+                        ? `<img src="${service.image.startsWith('http') ? service.image : 'https://agency.thecodegrammer.net' + service.image}" class="service-img" alt="${service.title}">`
+                        : (service.icon ? `<div class="icon"><i class="${service.icon} service-ico"></i></div>` : `<div class="icon"><i class="fas fa-laptop-code service-ico"></i></div>`);
                         
-                    // Truncate description for card
+                    // Truncate description for card (strip HTML)
                     const tempDiv = document.createElement('div');
                     tempDiv.innerHTML = service.description || '';
                     const text = tempDiv.textContent || tempDiv.innerText || '';
@@ -181,7 +181,7 @@
                             <h4>${service.title}</h4>
                             <p>${snippet}</p>
                             <div class="read-btn">
-                                <a href="/service-details.html?id=${service.id}">Read More</a>
+                                <a href="/service-details.html?slug=${service.slug}">Read More</a>
                             </div>
                         </div>
                     `;
