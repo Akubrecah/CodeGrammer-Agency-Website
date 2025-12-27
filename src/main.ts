@@ -6,5 +6,6 @@
  */
 
 import './style.css';
+import './dynamic-content.js'; // Load dynamic Supabase content
 
 console.log('CodeGrammer Homepage Initialized');

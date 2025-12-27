@@ -30,10 +30,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
 
     // Elements to animate on scroll
+    // NOTE: .single-item and .project-card excluded to prevent conflict with Isotope filtering
     const animateOnScroll = [
         '.single-service',
-        '.single-item',
-        '.project-card',
+        // '.single-item', // Excluded - conflicts with Isotope
+        // '.project-card', // Excluded - conflicts with Isotope
         '.service-card',
         '.footer-widget',
         '.sidebar-widget',
