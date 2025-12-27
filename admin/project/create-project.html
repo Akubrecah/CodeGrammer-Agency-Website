@@ -984,53 +984,164 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 </style>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Create alert element
-    const alertTemplate = document.createElement('div');
-    alertTemplate.className = 'demo-alert';
-    alertTemplate.innerHTML = `
-        <span class="demo-alert-message"></span>
-        <button class="demo-alert-close">&times;</button>
-    `;
-    document.body.appendChild(alertTemplate);
+    <!-- Supabase Create/Edit Project Logic -->
+    <script type="module">
+        import { supabase } from '../../src/supabase-client.js';
+        import { requireAuth, setupLogout } from '../admin-core.js';
 
-    // Alert function
-    function showDemoAlert(message) {
-        const alert = document.querySelector('.demo-alert');
-        const messageEl = alert.querySelector('.demo-alert-message');
-        messageEl.textContent = message;
-        alert.classList.add('show');
+        requireAuth();
+        setupLogout();
 
-        // Auto hide after 5 seconds
-        setTimeout(() => {
-            alert.classList.remove('show');
-        }, 5000);
-    }
+        const form = document.querySelector('form');
+        const submitBtn = form.querySelector('button[type="submit"]');
+        
+        // Category Mapping
+        const categoryMap = {
+            'Software': '1',
+            'UI/UX': '2',
+            'Web Design': '3',
+            'Developing': '4',
+            'Graphic Design': '5'
+        };
+        const reverseCategoryMap = {
+            '1': 'Software',
+            '2': 'UI/UX',
+            '3': 'Web Design',
+            '4': 'Developing',
+            '5': 'Graphic Design'
+        };
 
-    // Close button handler
-    document.querySelector('.demo-alert-close').addEventListener('click', function() {
-        document.querySelector('.demo-alert').classList.remove('show');
-    });
+        // Check for Edit Mode
+        const urlParams = new URLSearchParams(window.location.search);
+        const projectId = urlParams.get('id');
+        const isEditMode = !!projectId;
 
-    // Handle all form submissions
-    document.addEventListener('submit', function(event) {
-        event.preventDefault();
-        showDemoAlert('Modifications are not allowed in demo mode.');
-    });
-
-    // Handle delete links
-    document.addEventListener('click', function(event) {
-        const link = event.target.closest('a');
-        if (link && link.href && link.href.includes('delete')) {
-            event.preventDefault();
-            showDemoAlert('Deletion is not allowed in demo mode.');
+        if (isEditMode) {
+            document.querySelector('.page-header-title h2').textContent = 'Edit Project';
+            document.querySelector('.breadcrumb-item[aria-current]').textContent = 'Edit Project';
+            loadProjectData(projectId);
         }
-    });
-});
-</script>
 
+        async function loadProjectData(id) {
+            const { data, error } = await supabase
+                .from('company_projects')
+                .select('*')
+                .eq('id', id)
+                .single();
 
-  </body>
+            if (error) {
+                alert('Error loading project: ' + error.message);
+                return;
+            }
+
+            // Populate Form
+            document.getElementById('id_title').value = data.title;
+            document.getElementById('id_client').value = data.client || '';
+            document.getElementById('id_company').value = data.company || '';
+            document.getElementById('id_duration').value = data.duration || '';
+            
+            // Category
+            const catValue = categoryMap[data.category] || '';
+            document.getElementById('id_category').value = catValue;
+
+            // Description (CKEditor)
+            if (window.CKEDITOR && CKEDITOR.instances.id_description) {
+                CKEDITOR.instances.id_description.setData(data.description || '');
+            } else {
+                document.getElementById('id_description').value = data.description || '';
+            }
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Saving...';
+
+            try {
+                // 1. Handle Image Upload
+                const imageInput = document.getElementById('id_image');
+                let imageUrl = null;
+                if (imageInput.files && imageInput.files[0]) {
+                    const file = imageInput.files[0];
+                    const fileExt = file.name.split('.').pop();
+                    const fileName = `${Date.now()}.${fileExt}`;
+                    const filePath = `projects/${fileName}`;
+
+                    const { error: uploadError } = await supabase.storage
+                        .from('project-images')
+                        .upload(filePath, file);
+
+                    if (uploadError) throw uploadError;
+
+                    const { data: { publicUrl } } = supabase.storage
+                        .from('project-images')
+                        .getPublicUrl(filePath);
+                        
+                    imageUrl = publicUrl;
+                }
+
+                // 2. Prepare Data
+                const title = document.getElementById('id_title').value;
+                const client = document.getElementById('id_client').value;
+                const company = document.getElementById('id_company').value;
+                const duration = document.getElementById('id_duration').value;
+                const catValue = document.getElementById('id_category').value;
+                const category = reverseCategoryMap[catValue] || 'Uncategorized';
+                
+                let description = '';
+                if (window.CKEDITOR && CKEDITOR.instances.id_description) {
+                    description = CKEDITOR.instances.id_description.getData();
+                } else {
+                    description = document.getElementById('id_description').value;
+                }
+
+                const projectData = {
+                    title,
+                    category,
+                    client,
+                    company,
+                    duration,
+                    description,
+                    // Only update image if new one uploaded
+                    ...(imageUrl && { image_url: imageUrl })
+                };
+
+                // 3. Upsert
+                let error;
+                if (isEditMode) {
+                    ({ error } = await supabase
+                        .from('company_projects')
+                        .update(projectData)
+                        .eq('id', projectId));
+                } else {
+                    ({ error } = await supabase
+                        .from('company_projects')
+                        .insert([projectData]));
+                }
+
+                if (error) throw error;
+
+                alert('Project saved successfully!');
+                window.location.href = '/admin/project/project-list.html';
+
+            } catch (err) {
+                console.error(err);
+                alert('Error submitting form: ' + err.message);
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Save';
+            }
+        });
+
+        // Remove demo styles
+        const styles = document.querySelectorAll('style');
+        styles.forEach(s => {
+            if (s.textContent.includes('demo-alert')) s.remove();
+        });
+    </script>
+  
+<script src="/admin/assets/js/link-fixer.js"></script>
+
+<script type="module" src="/admin/assets/js/page-saver.js"></script>
+</body>
   <!-- [Body] end -->
 </html>

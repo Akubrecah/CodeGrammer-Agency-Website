@@ -200,127 +200,126 @@
                     <div class="col-12">
                         <ul class="isotope-menu">
                             <li class="active" data-filter="*">All</li>
-                            
-                                <li data-filter=".software">Software</li>
-                            
-                                <li data-filter=".uiux">UI/UX</li>
-                            
-                                <li data-filter=".web-design">Web Design</li>
-                            
-                                <li data-filter=".developing">Developing</li>
-                            
-                                <li data-filter=".graphic-design">Graphic Design</li>
-                            
+                            <!-- Dynamic filters will be appended here -->
                         </ul>
                     </div>
                 </div>
                 <div class="row g-4 project-items">
-
-                    
-                        <div class="col-md-6 col-lg-4 single-item graphic-design">
-                            <div class="item-img">
-                                <a href="/project/details/low-poly-base-mesh/"><img src="/assets/images/projects/project-6.webp" alt></a>
-                            </div>
-                            <div class="item-inner-cnt">
-                                
-                                    <span>Graphic Design</span>
-                                
-                                <h4>Low Poly Base Mesh</h4>
-                                <div class="view-btn">
-                                    <a href="/project/details/low-poly-base-mesh/">view details</a>
-                                </div>
-                            </div>
+                    <div class="col-12 text-center" id="projects-loading">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
                         </div>
-                    
-                        <div class="col-md-6 col-lg-4 single-item web-design">
-                            <div class="item-img">
-                                <a href="/project/details/creative-agency/"><img src="/assets/images/projects/project-2.webp" alt></a>
-                            </div>
-                            <div class="item-inner-cnt">
-                                
-                                    <span>Web Design</span>
-                                
-                                <h4>Creative Agency</h4>
-                                <div class="view-btn">
-                                    <a href="/project/details/creative-agency/">view details</a>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="col-md-6 col-lg-4 single-item uiux">
-                            <div class="item-img">
-                                <a href="/project/details/art-deco-cocktails/"><img src="/assets/images/projects/project-5.webp" alt></a>
-                            </div>
-                            <div class="item-inner-cnt">
-                                
-                                    <span>UI/UX</span>
-                                
-                                <h4>Art Deco Cocktails</h4>
-                                <div class="view-btn">
-                                    <a href="/project/details/art-deco-cocktails/">view details</a>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="col-md-6 col-lg-4 single-item developing">
-                            <div class="item-img">
-                                <a href="/project/details/e-shop-ecommerce/"><img src="/assets/images/projects/project-4.webp" alt></a>
-                            </div>
-                            <div class="item-inner-cnt">
-                                
-                                    <span>Developing</span>
-                                
-                                <h4>E-Shop Ecommerce</h4>
-                                <div class="view-btn">
-                                    <a href="/project/details/e-shop-ecommerce/">view details</a>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="col-md-6 col-lg-4 single-item uiux">
-                            <div class="item-img">
-                                <a href="/project/details/desktop-mockup/"><img src="/assets/images/projects/project-1.webp" alt></a>
-                            </div>
-                            <div class="item-inner-cnt">
-                                
-                                    <span>UI/UX</span>
-                                
-                                <h4>Desktop Mockup</h4>
-                                <div class="view-btn">
-                                    <a href="/project/details/desktop-mockup/">view details</a>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="col-md-6 col-lg-4 single-item software">
-                            <div class="item-img">
-                                <a href="/project/details/mobile-crypto-wallet/"><img src="/assets/images/projects/project-3.webp" alt></a>
-                            </div>
-                            <div class="item-inner-cnt">
-                                
-                                    <span>Software</span>
-                                
-                                <h4>Mobile Crypto Wallet</h4>
-                                <div class="view-btn">
-                                    <a href="/project/details/mobile-crypto-wallet/">view details</a>
-                                </div>
-                            </div>
-                        </div>
-                    
-
+                    </div>
+                    <!-- Dynamic projects -->
                 </div>
             </div>
-            <div class="load-more">
-                <ul class="paginations">
-                    
-                    
-                        <li class="active"><a href="?page=1">1</a></li>
-                    
-                    
-                </ul>
-            </div>
-
         </section>
+
+        <script type="module">
+            import { supabase } from '../src/supabase-client.js';
+
+            async function fetchProjects() {
+                try {
+                    const { data: projects, error } = await supabase
+                        .from('company_projects')
+                        .select('*')
+                        .order('created_at', { ascending: false });
+
+                    if (error) throw error;
+
+                    const grid = document.querySelector('.project-items');
+                    const menu = document.querySelector('.isotope-menu');
+                    const loading = document.getElementById('projects-loading');
+                    if(loading) loading.remove();
+
+                    if (!projects || projects.length === 0) {
+                        grid.innerHTML = '<div class="col-12 text-center"><p>No projects found.</p></div>';
+                        return;
+                    }
+
+                    // 1. Generate Filter Menu
+                    const categories = [...new Set(projects.map(p => p.category).filter(Boolean))];
+                    categories.forEach(cat => {
+                        const slug = cat.toLowerCase().replace(/[^a-z0-9]/g, '-');
+                        // Check if exists
+                        if (!menu.querySelector(`[data-filter=".${slug}"]`)) {
+                            const li = document.createElement('li');
+                            li.setAttribute('data-filter', `.${slug}`);
+                            li.textContent = cat;
+                            menu.appendChild(li);
+                        }
+                    });
+
+                    // 2. Generate Items
+                    const itemsHtml = projects.map(project => {
+                        const catSlug = (project.category || '').toLowerCase().replace(/[^a-z0-9]/g, '-');
+                        const imageUrl = project.image_url || '/assets/images/projects/project-1.webp'; 
+                        // Use a generic details page
+                        const detailsUrl = `/project-details.html?id=${project.id}`;
+                        
+                        return `
+                            <div class="col-md-6 col-lg-4 single-item ${catSlug}">
+                                <div class="item-img">
+                                    <a href="${detailsUrl}"><img src="${imageUrl}" alt="${project.title}"></a>
+                                </div>
+                                <div class="item-inner-cnt">
+                                    <span>${project.category || 'Project'}</span>
+                                    <h4>${project.title}</h4>
+                                    <div class="view-btn">
+                                        <a href="${detailsUrl}">view details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+
+                    grid.innerHTML = itemsHtml;
+
+                    // 3. Update Isotope
+                    if (window.jQuery && window.jQuery(grid).isotope) {
+                        const $grid = window.jQuery(grid);
+                        
+                        // Fix Filtering Events (Delegate)
+                        const $menu = window.jQuery('.isotope-menu');
+                        $menu.find('li').off('click'); 
+                        $menu.off('click', 'li').on('click', 'li', function() {
+                             $menu.find('li').removeClass('active');
+                             window.jQuery(this).addClass('active');
+                             const filterValue = window.jQuery(this).attr('data-filter');
+                             $grid.isotope({ filter: filterValue });
+                        });
+
+                        // Image Loading Helper
+                        const waitForImages = () => {
+                           const imgs = Array.from(grid.querySelectorAll('img'));
+                           if(imgs.length === 0) return Promise.resolve();
+                           return Promise.all(imgs.map(img => {
+                               if(img.complete) return Promise.resolve();
+                               return new Promise(resolve => { img.onload = img.onerror = resolve; });
+                           }));
+                        };
+
+                        waitForImages().then(() => {
+                             if ($grid.data('isotope')) {
+                                $grid.isotope('reloadItems').isotope({ sortBy: 'original-order' });
+                             } else {
+                                $grid.isotope({
+                                    itemSelector: '.single-item',
+                                    layoutMode: 'fitRows',
+                                    percentPosition: true
+                                });
+                             }
+                        });
+                    }
+
+                } catch (err) {
+                    console.error('Error fetching projects:', err);
+                    document.querySelector('.project-items').innerHTML = '<p class="text-danger text-center">Failed to load projects.</p>';
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', fetchProjects);
+        </script>
 
 
         <!--====================== Blog Section ======================-->

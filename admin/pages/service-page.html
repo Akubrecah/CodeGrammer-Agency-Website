@@ -990,45 +990,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 
 
-<style>
-.demo-alert {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #ff4444;
-    color: white;
-    padding: 15px 25px;
-    border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    z-index: 9999;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-    max-width: 350px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
 
-.demo-alert.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.demo-alert-close {
-    background: none;
-    border: none;
-    color: white;
-    margin-left: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    padding: 0 5px;
-}
-
-.demo-alert-message {
-    margin-right: 10px;
-}
-</style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -1059,24 +1021,17 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.demo-alert').classList.remove('show');
     });
 
-    // Handle all form submissions
-    document.addEventListener('submit', function(event) {
-        event.preventDefault();
-        showDemoAlert('Modifications are not allowed in demo mode.');
-    });
+    // Demo Submit Handler Removed
 
-    // Handle delete links
-    document.addEventListener('click', function(event) {
-        const link = event.target.closest('a');
-        if (link && link.href && link.href.includes('delete')) {
-            event.preventDefault();
-            showDemoAlert('Deletion is not allowed in demo mode.');
-        }
-    });
+    // Demo Delete Handler Removed
 });
 </script>
 
 
-  </body>
+  
+<script type="module" src="/admin/assets/js/page-saver.js"></script>
+
+<script src="/admin/assets/js/link-fixer.js"></script>
+</body>
   <!-- [Body] end -->
 </html>

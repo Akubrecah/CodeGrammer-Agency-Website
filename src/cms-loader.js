@@ -1,58 +1,54 @@
-/* src/cms-loader.js - Logic for Main Site (Loading data) */
-// This script runs on index.html
 
-document.addEventListener('DOMContentLoaded', () => {
-    const CMS_KEY = 'cms_homepage_data';
-    let data = {};
-    try {
-        data = JSON.parse(localStorage.getItem(CMS_KEY)) || {};
-    } catch (e) {
-        return; // No data, stick to static
-    }
+import { supabase } from './supabase-client.js';
 
-    // Heuristics to map CMS data keys to DOM elements.
-    // Ideally we would add data-cms attributes to index.html, but let's try to target by content or structure 
-    // to match the user's "update directly" request without massive HTML refactoring if possible.
-    // However, reliability requires attributes. I will add data-cms attributes to index.html next.
-    
-    // Map: dataKey -> selector
-    const mappings = {
-        'meta_title': { selector: 'title', type: 'text' },
-        'meta_description': { selector: 'meta[name="description"]', type: 'attr', attr: 'content' },
-        
-        // Service Section
-        'title_small': { selector: '[data-cms-id="service_subtitle"]', type: 'text' }, // "Our Solutions"
-        'title_big': { selector: '[data-cms-id="service_title"]', type: 'text' },     // "Services"
-        
-        // About Section
-        'subtitle': { selector: '[data-cms-id="about_subtitle"]', type: 'text' },      // "Get To Know"
-        'title': { selector: '[data-cms-id="about_title"]', type: 'text' },            // "About Us"
-        'short_description': { selector: '[data-cms-id="about_short_desc"]', type: 'text' },
-        'tag_line': { selector: '[data-cms-id="about_tagline"]', type: 'text' },
-        'experience': { selector: '[data-cms-id="about_experience"]', type: 'text' },
-        'long_description': { selector: '[data-cms-id="about_long_desc"]', type: 'text' },
-        
-        // We'll stick to a naming convention in index.html like data-cms-bind="key_name"
-    };
+document.addEventListener('DOMContentLoaded', async () => {
+    // 1. Fetch Settings
+    const { data: settings, error } = await supabase
+        .from('site_settings')
+        .select('*')
+        .like('key', 'home_%');
 
-    // Generic binder
-    document.querySelectorAll('[data-cms-bind]').forEach(el => {
-        const key = el.getAttribute('data-cms-bind');
-        if (data[key]) {
+    if (error || !settings) return;
+
+    // Convert to Map
+    const dataMap = {};
+    settings.forEach(item => {
+        dataMap[item.key] = item.value;
+    });
+
+    // 2. Bind Elements
+    const elements = document.querySelectorAll('[data-cms-bind]');
+    elements.forEach(el => {
+        const bindKey = el.dataset.cmsBind;
+        const [section, field] = parseBindKey(bindKey); 
+
+        if (section && dataMap[section] && dataMap[section][field]) {
+            const value = dataMap[section][field];
+            
             if (el.tagName === 'IMG') {
-                el.src = data[key];
-            } else if (el.tagName === 'INPUT') {
-                el.value = data[key];
+                el.src = value;
+            } else if (el.tagName === 'A' && (field.includes('url') || field.includes('link'))) {
+                el.href = value;
             } else {
-                el.innerText = data[key];
+                el.innerHTML = value; // Use innerHTML to support basic formatting
             }
         }
     });
-
-    // Special handlers if needed (e.g. Meta tags)
-    if (data['meta_title']) document.title = data['meta_title'];
-    if (data['meta_description']) {
-        const meta = document.querySelector('meta[name="description"]');
-        if (meta) meta.setAttribute('content', data['meta_description']);
-    }
 });
+
+function parseBindKey(key) {
+    if (key.startsWith('service_')) return ['home_services', key.replace('service_', '')];
+    if (key.startsWith('about_')) return ['home_about', key.replace('about_', '')];
+    if (key.startsWith('funfact_')) return ['home_funfact', key.replace('funfact_', '')];
+    if (key.startsWith('project_')) return ['home_project', key.replace('project_', '')];
+    if (key.startsWith('client_')) return ['home_clients', key.replace('client_', '')]; 
+    if (key.startsWith('pricing_')) return ['home_pricing', key.replace('pricing_', '')];
+    if (key.startsWith('testimonial_')) return ['home_testimonials', key.replace('testimonial_', '')];
+    if (key.startsWith('team_')) return ['home_team', key.replace('team_', '')];
+    if (key.startsWith('blog_')) return ['home_blog', key.replace('blog_', '')];
+    
+    // SEO (meta tags - special case)
+    if (key.startsWith('meta_')) return ['home_seo', key];
+
+    return [null, null];
+}

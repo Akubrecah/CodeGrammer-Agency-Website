@@ -971,24 +971,17 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.demo-alert').classList.remove('show');
     });
 
-    // Handle all form submissions
-    document.addEventListener('submit', function(event) {
-        event.preventDefault();
-        showDemoAlert('Modifications are not allowed in demo mode.');
-    });
+    // Demo Submit Handler Removed
 
-    // Handle delete links
-    document.addEventListener('click', function(event) {
-        const link = event.target.closest('a');
-        if (link && link.href && link.href.includes('delete')) {
-            event.preventDefault();
-            showDemoAlert('Deletion is not allowed in demo mode.');
-        }
-    });
+    // Demo Delete Handler Removed
 });
 </script>
 
 
-  </body>
+  
+<script src="/admin/assets/js/link-fixer.js"></script>
+
+<script type="module" src="/admin/assets/js/page-saver.js"></script>
+</body>
   <!-- [Body] end -->
 </html>

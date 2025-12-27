@@ -984,53 +984,134 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 </style>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Create alert element
-    const alertTemplate = document.createElement('div');
-    alertTemplate.className = 'demo-alert';
-    alertTemplate.innerHTML = `
-        <span class="demo-alert-message"></span>
-        <button class="demo-alert-close">&times;</button>
-    `;
-    document.body.appendChild(alertTemplate);
+    <!-- Supabase Create/Edit Service Logic -->
+    <script type="module">
+        import { supabase } from '../../src/supabase-client.js';
+        import { requireAuth, setupLogout } from '../admin-core.js';
 
-    // Alert function
-    function showDemoAlert(message) {
-        const alert = document.querySelector('.demo-alert');
-        const messageEl = alert.querySelector('.demo-alert-message');
-        messageEl.textContent = message;
-        alert.classList.add('show');
+        requireAuth();
+        setupLogout();
 
-        // Auto hide after 5 seconds
-        setTimeout(() => {
-            alert.classList.remove('show');
-        }, 5000);
-    }
+        const form = document.querySelector('form');
+        const submitBtn = form.querySelector('button[type="submit"]');
 
-    // Close button handler
-    document.querySelector('.demo-alert-close').addEventListener('click', function() {
-        document.querySelector('.demo-alert').classList.remove('show');
-    });
+        const urlParams = new URLSearchParams(window.location.search);
+        const serviceId = urlParams.get('id');
+        const isEditMode = !!serviceId;
 
-    // Handle all form submissions
-    document.addEventListener('submit', function(event) {
-        event.preventDefault();
-        showDemoAlert('Modifications are not allowed in demo mode.');
-    });
-
-    // Handle delete links
-    document.addEventListener('click', function(event) {
-        const link = event.target.closest('a');
-        if (link && link.href && link.href.includes('delete')) {
-            event.preventDefault();
-            showDemoAlert('Deletion is not allowed in demo mode.');
+        if (isEditMode) {
+            document.querySelector('.page-header-title h2').textContent = 'Edit Service';
+            document.querySelector('.breadcrumb-item[aria-current]').textContent = 'Edit Service';
+            loadServiceData(serviceId);
         }
-    });
-});
-</script>
 
+        async function loadServiceData(id) {
+            const { data, error } = await supabase
+                .from('company_services')
+                .select('*')
+                .eq('id', id)
+                .single();
 
-  </body>
+            if (error) {
+                alert('Error loading service: ' + error.message);
+                return;
+            }
+
+            document.getElementById('id_name').value = data.title || '';
+            document.getElementById('id_fontawesome_icon_class').value = data.icon_class || '';
+            document.getElementById('id_short_description').value = data.short_description || '';
+            
+            // Description
+            if (window.CKEDITOR && CKEDITOR.instances.id_detail_page_description) {
+                CKEDITOR.instances.id_detail_page_description.setData(data.full_description || '');
+            } else {
+                document.getElementById('id_detail_page_description').value = data.full_description || '';
+            }
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Saving...';
+
+            try {
+                // 1. Image Upload
+                const imageInput = document.getElementById('id_detail_page_image');
+                let imageUrl = null;
+                if (imageInput.files && imageInput.files[0]) {
+                    const file = imageInput.files[0];
+                    const fileExt = file.name.split('.').pop();
+                    const fileName = `service_${Date.now()}.${fileExt}`;
+                    const filePath = `services/${fileName}`;
+
+                    const { error: uploadError } = await supabase.storage
+                        .from('project-images') // Reuse bucket
+                        .upload(filePath, file);
+
+                    if (uploadError) throw uploadError;
+
+                    const { data: { publicUrl } } = supabase.storage
+                        .from('project-images')
+                        .getPublicUrl(filePath);
+                        
+                    imageUrl = publicUrl;
+                }
+
+                // 2. Data
+                const title = document.getElementById('id_name').value;
+                const icon_class = document.getElementById('id_fontawesome_icon_class').value;
+                const short_description = document.getElementById('id_short_description').value;
+                
+                let full_description = '';
+                if (window.CKEDITOR && CKEDITOR.instances.id_detail_page_description) {
+                    full_description = CKEDITOR.instances.id_detail_page_description.getData();
+                } else {
+                    full_description = document.getElementById('id_detail_page_description').value;
+                }
+
+                const serviceData = {
+                    title,
+                    icon_class,
+                    short_description,
+                    full_description,
+                    ...(imageUrl && { image_url: imageUrl })
+                };
+
+                // 3. Upsert
+                let error;
+                if (isEditMode) {
+                    ({ error } = await supabase
+                        .from('company_services')
+                        .update(serviceData)
+                        .eq('id', serviceId));
+                } else {
+                    ({ error } = await supabase
+                        .from('company_services')
+                        .insert([serviceData]));
+                }
+
+                if (error) throw error;
+
+                alert('Service saved successfully!');
+                window.location.href = '/admin/services/service-list.html';
+
+            } catch (err) {
+                console.error(err);
+                alert('Error submitting form: ' + err.message);
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Save';
+            }
+        });
+
+        const styles = document.querySelectorAll('style');
+        styles.forEach(s => {
+            if (s.textContent.includes('demo-alert')) s.remove();
+        });
+    </script>
+  
+<script src="/admin/assets/js/link-fixer.js"></script>
+
+<script type="module" src="/admin/assets/js/page-saver.js"></script>
+</body>
   <!-- [Body] end -->
 </html>

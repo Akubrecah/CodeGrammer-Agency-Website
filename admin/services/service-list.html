@@ -1087,53 +1087,102 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 </style>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Create alert element
-    const alertTemplate = document.createElement('div');
-    alertTemplate.className = 'demo-alert';
-    alertTemplate.innerHTML = `
-        <span class="demo-alert-message"></span>
-        <button class="demo-alert-close">&times;</button>
-    `;
-    document.body.appendChild(alertTemplate);
+    <!-- Supabase Service List Logic -->
+    <script type="module">
+        import { supabase } from '../../src/supabase-client.js';
+        import { requireAuth, setupLogout } from '../admin-core.js';
 
-    // Alert function
-    function showDemoAlert(message) {
-        const alert = document.querySelector('.demo-alert');
-        const messageEl = alert.querySelector('.demo-alert-message');
-        messageEl.textContent = message;
-        alert.classList.add('show');
+        requireAuth();
+        setupLogout();
 
-        // Auto hide after 5 seconds
-        setTimeout(() => {
-            alert.classList.remove('show');
-        }, 5000);
-    }
+        const tableBody = document.querySelector('tbody');
 
-    // Close button handler
-    document.querySelector('.demo-alert-close').addEventListener('click', function() {
-        document.querySelector('.demo-alert').classList.remove('show');
-    });
+        async function loadServices() {
+            tableBody.innerHTML = '<tr><td colspan="5" class="text-center">Loading services...</td></tr>';
+            
+            const { data: services, error } = await supabase
+                .from('company_services')
+                .select('*')
+                .order('created_at', { ascending: false });
 
-    // Handle all form submissions
-    document.addEventListener('submit', function(event) {
-        event.preventDefault();
-        showDemoAlert('Modifications are not allowed in demo mode.');
-    });
+            if (error) {
+                console.error('Error loading services:', error);
+                tableBody.innerHTML = `<tr><td colspan="5" class="text-center text-danger">Error: ${error.message}</td></tr>`;
+                return;
+            }
 
-    // Handle delete links
-    document.addEventListener('click', function(event) {
-        const link = event.target.closest('a');
-        if (link && link.href && link.href.includes('delete')) {
-            event.preventDefault();
-            showDemoAlert('Deletion is not allowed in demo mode.');
+            if (!services || services.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="5" class="text-center">No services found.</td></tr>';
+                return;
+            }
+
+            renderServices(services);
         }
-    });
-});
-</script>
 
+        function renderServices(services) {
+            tableBody.innerHTML = '';
+            services.forEach((service, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="f-w-600">${index + 1}</td>
+                    <td><i class="${service.icon_class} f-24"></i></td>
+                    <td class="f-w-600"><a href="/admin/services/create-service.html?id=${service.id}">${service.title}</a></td>
+                    <td>${service.short_description || '-'}</td>
+                    <td>
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item m-0">
+                                <a href="/admin/services/create-service.html?id=${service.id}" class="btn btn-primary btn-sm">
+                                    <i class="ti ti-pencil f-18 text-white"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item m-0">
+                                <button type="button" class="btn bg-danger btn-sm delete-btn" data-id="${service.id}" data-title="${service.title}">
+                                    <i class="ti ti-trash f-18 text-white"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+            });
 
-  </body>
+            // Attach Delete Listeners
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    const id = btn.dataset.id;
+                    const title = btn.dataset.title;
+                    if (confirm(`Are you sure you want to delete "${title}"? This cannot be undone.`)) {
+                        await deleteService(id);
+                    }
+                });
+            });
+        }
+
+        async function deleteService(id) {
+            const { error } = await supabase
+                .from('company_services')
+                .delete()
+                .eq('id', id);
+
+            if (error) {
+                alert('Error deleting service: ' + error.message);
+            } else {
+                loadServices(); // Reload
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadServices);
+        
+        // Remove demo styles
+        const styles = document.querySelectorAll('style');
+        styles.forEach(s => {
+            if (s.textContent.includes('demo-alert')) s.remove();
+        });
+    </script>
+  
+<script src="/admin/assets/js/link-fixer.js"></script>
+
+<script type="module" src="/admin/assets/js/page-saver.js"></script>
+</body>
   <!-- [Body] end -->
 </html>
