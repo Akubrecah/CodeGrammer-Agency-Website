@@ -103,17 +103,63 @@
         time: 2000
     });
 
-    // Isotope Filter
-    var $grid = $('.project-items').isotope({
-        itemSelector: '.single-item',
-        layoutMode: 'fitRows'
-    });
-    $('.isotope-menu li').on('click', function() {
-        $('.isotope-menu li').removeClass('active');
-        $(this).addClass('active');
-        var filterValue = $(this).attr('data-filter');
-        $grid.isotope({ filter: filterValue });
-    });
+    // Isotope Filter - Wait for images to load
+    var $grid = $('.project-items');
+    
+    if ($grid.length) {
+        // Initialize Isotope after all images are loaded
+        $grid.imagesLoaded = function() {
+            return new Promise(resolve => {
+                let images = $grid.find('img');
+                let loadedCount = 0;
+                let totalImages = images.length;
+                
+                if (totalImages === 0) {
+                    resolve();
+                    return;
+                }
+                
+                images.each(function() {
+                    if (this.complete) {
+                        loadedCount++;
+                        if (loadedCount === totalImages) resolve();
+                    } else {
+                        $(this).on('load error', function() {
+                            loadedCount++;
+                            if (loadedCount === totalImages) resolve();
+                        });
+                    }
+                });
+            });
+        };
+        
+        // Initialize isotope
+        $grid.imagesLoaded().then(function() {
+            $grid.isotope({
+                itemSelector: '.single-item',
+                layoutMode: 'fitRows',
+                percentPosition: true
+            });
+        });
+        
+        // Filter click handler
+        $('.isotope-menu li').on('click', function() {
+            // Update active state
+            $('.isotope-menu li').removeClass('active');
+            $(this).addClass('active');
+            
+            // Get filter value
+            var filterValue = $(this).attr('data-filter');
+            
+            // Apply filter
+            $grid.isotope({ filter: filterValue });
+        });
+        
+        // Trigger layout after a short delay to ensure proper rendering
+        setTimeout(function() {
+            $grid.isotope('layout');
+        }, 500);
+    }
 
     // Video Popup
     $('.video-popup').magnificPopup({

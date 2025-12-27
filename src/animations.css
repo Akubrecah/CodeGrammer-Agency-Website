@@ -713,3 +713,52 @@ select:focus {
         animation: none;
     }
 }
+
+/* ============ ISOTOPE FILTER MENU STYLES ============ */
+
+.isotope-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    padding: 0;
+    list-style: none;
+}
+
+.isotope-menu li {
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.isotope-menu li:hover {
+    background-color: #2a2a2a;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.isotope-menu li.active {
+    background-color: #75dab4;
+    color: #1a1a1a;
+    border-color: #75dab4;
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(117, 218, 180, 0.4);
+}
+
+/* Smooth transitions for filtered items */
+.project-items .single-item {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.project-items .single-item.isotope-hidden {
+    opacity: 0;
+    transform: scale(0.8);
+}
