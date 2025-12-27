@@ -173,13 +173,71 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     await loadData();
 
+    // --- Collection Data Loading (New) ---
+    const collectionForms = document.querySelectorAll('form[data-table]');
+    collectionForms.forEach(async (form) => {
+        const table = form.dataset.table;
+        const urlParams = new URLSearchParams(window.location.search);
+        let id = urlParams.get('id');
+        
+        // Also check path-based ID as backup
+        if (!id) {
+             const urlParts = window.location.pathname.split('/');
+             const editIndex = urlParts.indexOf('edit');
+             if (editIndex !== -1 && urlParts[editIndex + 1]) {
+                 id = urlParts[editIndex + 1];
+             }
+        }
+
+        if (id && table) {
+            try {
+                const { data, error } = await supabase.from(table).select('*').eq('id', id).single();
+                if (error) throw error;
+                if (data) {
+                    for (const [key, value] of Object.entries(data)) {
+                        const input = form.querySelector(`[name="${key}"]`);
+                        if (input) {
+                           if (input.type === 'file') {
+                               // Can't set file input
+                               // Optional: Show preview link?
+                               if(value && typeof value === 'string' && value.startsWith('http')) {
+                                   const preview = document.createElement('div');
+                                   preview.innerHTML = `<small>Current: <a href="${value}" target="_blank">View File</a></small>`;
+                                   input.parentNode.appendChild(preview);
+                               }
+                           } else if (input.type === 'checkbox') {
+                               input.checked = value;
+                           } else {
+                               input.value = value;
+                           }
+                           
+                           // CKEditor handling
+                           if (window.CKEDITOR && window.CKEDITOR.instances[input.id]) {
+                               window.CKEDITOR.instances[input.id].setData(value);
+                           }
+                        }
+                    }
+                }
+            } catch (err) {
+                console.error("Error loading collection item:", err);
+                window.showToast("Error loading item: " + err.message, "error");
+            }
+        }
+    });
+
+    // 5. Submit Handler
     // 5. Submit Handler
     document.querySelectorAll('form').forEach(form => {
-        // Skip search forms or others without key
-        if (!getFullKey(form)) return;
-
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
+            
+            // Sync CKEditor
+            if (window.CKEDITOR) {
+                for (const instance in window.CKEDITOR.instances) {
+                    window.CKEDITOR.instances[instance].updateElement();
+                }
+            }
+
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalText = submitBtn ? submitBtn.textContent : 'Save';
             if (submitBtn) {
@@ -188,26 +246,19 @@ document.addEventListener('DOMContentLoaded', async function() {
             }
 
             try {
-                const key = getFullKey(form);
-                if (!key) throw new Error('Unknown form type');
-
-                const { data: currentData } = await supabase
-                    .from('site_settings')
-                    .select('value')
-                    .eq('key', key)
-                    .single();
-                
-                const newValue = currentData?.value || {};
+                const table = form.dataset.table;
                 const formData = new FormData(form);
+                const finalData = {};
 
-                for (const [fieldName, entry] of formData.entries()) {
-                    if (entry instanceof File) {
-                        if (entry.size > 0) {
-                            const fileExt = entry.name.split('.').pop();
-                            const fileName = `${key}_${fieldName}_${Date.now()}.${fileExt}`;
+                // Process Files & Data
+                for (const [key, value] of formData.entries()) {
+                    if (value instanceof File) {
+                        if (value.size > 0) {
+                            const fileExt = value.name.split('.').pop();
+                            const fileName = `uploads/${Date.now()}_${key}.${fileExt}`;
                             const { error: uploadError } = await supabase.storage
                                 .from('site-assets')
-                                .upload(fileName, entry);
+                                .upload(fileName, value);
                             
                             if (uploadError) throw uploadError;
 
@@ -215,20 +266,67 @@ document.addEventListener('DOMContentLoaded', async function() {
                                 .from('site-assets')
                                 .getPublicUrl(fileName);
                             
-                            newValue[fieldName] = publicUrl;
+                            finalData[key] = publicUrl;
                         }
                     } else {
-                        newValue[fieldName] = entry;
+                        // Skip internal Django tokens
+                        if (key !== 'csrfmiddlewaretoken') {
+                             finalData[key] = value;
+                        }
                     }
                 }
 
-                const { error: saveError } = await supabase
-                    .from('site_settings')
-                    .upsert({ key: key, value: newValue });
+                if (table) {
+                    // --- Collection Logic (Blogs, Sliders) ---
+                    const urlParts = window.location.pathname.split('/');
+                    // Heuristic: check if last segment is a UUID or number, or if 'edit' is present
+                    const editIndex = urlParts.indexOf('edit'); 
+                    let id = null;
+                    const urlParams = new URLSearchParams(window.location.search);
+                    
+                    if (urlParams.get('id')) {
+                        id = urlParams.get('id');
+                    } else if (editIndex !== -1 && urlParts[editIndex + 1]) {
+                        id = urlParts[editIndex + 1];
+                    }
 
-                if (saveError) throw saveError;
-                window.showToast('Settings saved successfully!', 'success');
-                if (form.querySelector('input[type="file"]')) await loadData();
+                    let error;
+                    if (id) {
+                         // Update
+                         ({ error } = await supabase.from(table).update(finalData).eq('id', id));
+                    } else {
+                         // Insert
+                         ({ error } = await supabase.from(table).insert(finalData));
+                    }
+                    if (error) throw error;
+                    
+                    window.showToast('Item saved successfully!', 'success');
+                     // Redirect to list? Optional. For now just toast.
+                     // window.location.href = `admin/${table}/list.html`; // Logic needed
+
+                } else {
+                    // --- Key-Value Logic (Site Settings) ---
+                    const key = getFullKey(form);
+                    if (!key) throw new Error('Unknown form type (no data-key or data-table)');
+
+                    // Fetch current to merge? Or just overwrite value blob?
+                    // Previous logic fetched current value to merge.
+                    const { data: currentData } = await supabase
+                        .from('site_settings')
+                        .select('value')
+                        .eq('key', key)
+                        .single();
+                    
+                    const newValue = { ...(currentData?.value || {}), ...finalData }; // Merge
+
+                    const { error } = await supabase
+                        .from('site_settings')
+                        .upsert({ key: key, value: newValue });
+
+                    if (error) throw error;
+                    window.showToast('Settings saved successfully!', 'success');
+                    if (form.querySelector('input[type="file"]')) await loadData();
+                }
 
             } catch (err) {
                 console.error('Save error:', err);

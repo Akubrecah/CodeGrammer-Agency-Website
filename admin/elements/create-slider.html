@@ -515,8 +515,8 @@
       <div class="row">
         <!-- [ sample-page ] start -->
         <div class="col-sm-12">
-         <form method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="csrfmiddlewaretoken" value="ulyf3hvTwsOsRaEIYow7bOBujnXNa7VAbljndJHPgHQZgKgrNtmhkMBeTyVuLEfY">
+         <form method="POST" enctype="multipart/form-data" data-table="sliders">
+            <input type="hidden" name="csrfmiddlewaretoken" value="dummy">
                
                                
             <div class="row mb-3">
@@ -626,6 +626,8 @@
 <script src="/static/dashboard/assets/js/multi-lang.js"></script>
 <script src="/static/dashboard/assets/js/plugins/feather.min.js"></script>
 <script src="/static/dashboard/assets/js/plugins/simple-datatables.js"></script>
+<!-- Page Saver & Logic -->
+<script type="module" src="/admin/assets/js/page-saver.js"></script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -929,6 +931,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <script src="/admin/assets/js/link-fixer.js"></script>
 <script type="module" src="/admin/assets/js/page-saver.js"></script>
 
-  </body>
+  <script type="module" src="/admin/assets/js/auth-guard.js"></script>
+</body>
   <!-- [Body] end -->
 </html>
