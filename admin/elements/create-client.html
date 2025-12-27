@@ -1,10 +1,9 @@
-
 <!doctype html>
 <html lang="en">
   <!-- [Head] start -->
 
   <head>
-    <title>Create Project - The CodeGrammer</title>
+    <title>Create Slider - The CodeGrammer</title>
     <!-- [Meta] -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
@@ -16,8 +15,8 @@
     <meta name="author" content="phoenixcoded" />
 
     <!-- [Favicon] icon -->
-    <link rel="icon" href="/assets/images/app_config/favicon.webp" type="image/x-icon">
-      <link rel="shortcut icon" href="/assets/images/app_config/favicon.webp" type="image/x-icon">
+    <link rel="icon" href="/media/app_config/facicon.png" type="image/x-icon">
+      <link rel="shortcut icon" href="/media/app_config/facicon.png" type="image/x-icon">
  <!-- [Google Font : Public Sans] icon -->
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <!-- [phosphor Icons] https://phosphoricons.com/ -->
@@ -84,8 +83,8 @@
     <div class="m-header">
       <a href="/admin/dashboard/index.html" class="b-brand text-primary">
           <!-- ========   Change your logo from here   ============ -->
-          <img src="/assets/images/app_config/logolight.webp" alt="logo image" class="logo-light" width="200" height="45" />
-          <img src="/assets/images/app_config/logodark.webp" alt="logo image" class="logo-dark" width="200" height="45" />
+          <img src="/media/app_config/logolight.png" alt="logo image" class="logo-light" width="200" height="45" />
+          <img src="/media/app_config/logodark.png" alt="logo image" class="logo-dark" width="200" height="45" />
       </a>
     </div>
     <div class="navbar-content">
@@ -374,21 +373,39 @@
         <i class="ph-duotone ph-magnifying-glass"></i>
       </a>
       <div class="dropdown-menu pc-h-dropdown drp-search">
-        <form data-table="projects" class="px-3">
-          <div class="mb-0 d-flex align-items-center">
-            <input type="search" class="form-control border-0 shadow-none" placeholder="Search..." />
-            <button class="btn btn-light-secondary btn-search">Search</button>
-          </div>
-        </form>
+        <form method="POST" enctype="multipart/form-data" data-table="clients">
+<input type="hidden" name="id">
+<div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" name="name">
+    </div><div class="mb-3">
+        <label class="form-label">Link URL</label>
+        <input type="text" class="form-control" name="link">
+    </div><div class="mb-3">
+        <label class="form-label">Logo</label>
+        <input type="file" class="form-control" name="image" accept="image/*">
+        <label class="text-muted mt-1">Upload Image</label>
+        <div class="mt-2 preview-container" id="preview_image"></div>
+    </div><button type="submit" class="btn btn-primary">Save</button>
+</form>
       </div>
     </li>
     <li class="pc-h-item d-none d-md-inline-flex">
-      <form data-table="projects" class="form-search">
-        <i class="ph-duotone ph-magnifying-glass icon-search"></i>
-        <input type="search" class="form-control" placeholder="Search..." />
-
-        <button class="btn btn-search" style="padding: 0"><kbd>ctrl+k</kbd></button>
-      </form>
+      <form method="POST" enctype="multipart/form-data" data-table="clients">
+<input type="hidden" name="id">
+<div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" name="name">
+    </div><div class="mb-3">
+        <label class="form-label">Link URL</label>
+        <input type="text" class="form-control" name="link">
+    </div><div class="mb-3">
+        <label class="form-label">Logo</label>
+        <input type="file" class="form-control" name="image" accept="image/*">
+        <label class="text-muted mt-1">Upload Image</label>
+        <div class="mt-2 preview-container" id="preview_image"></div>
+    </div><button type="submit" class="btn btn-primary">Save</button>
+</form>
     </li>
   </ul>
 </div>
@@ -497,13 +514,13 @@
             <div class="col-md-12">
               <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/admin/dashboard/index.html">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="/admin/project/project-list.html">Projects</a></li>
-                <li class="breadcrumb-item" aria-current="Create Project">Create Project</li>
+                <li class="breadcrumb-item"><a href="/admin/elements/slider.html">Create Client</a></li>
+                <li class="breadcrumb-item" aria-current="Create Slider">Create Slider</li>
               </ul>
             </div>
             <div class="col-md-12">
               <div class="page-header-title">
-                <h2 class="mb-0">Create Project</h2>
+                <h2 class="mb-0">Create Slider</h2>
               </div>
             </div>
           </div>
@@ -516,103 +533,21 @@
       <div class="row">
         <!-- [ sample-page ] start -->
         <div class="col-sm-12">
-         <form data-table="projects" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="csrfmiddlewaretoken" value="UmuqI2SMwnWJ7IdAqozGpjgKz3Rkj6vjBmfySu4IgCYgwiPjftpQyhgu9eP1UDPH">
-            <script src="/static/ckeditor/ckeditor-init.js" data-ckeditor-basepath="/static/ckeditor/ckeditor/" id="ckeditor-init-script"></script>
-<script src="/static/ckeditor/ckeditor/ckeditor.js"></script>   
-                               
-            <div class="row mb-3">
-               <div class="col-md-12">
-                  <div class="card">
-                     <div class="card-body">
-                        <label for="id_image" class="form-label">Image</label>
-                        <input type="file" name="image" accept="image/*" class="form-control" id="id_image">
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="row mb-3">
-               <div class="col-md-6">
-                  <div class="card">
-                     <div class="card-body">
-                        <label for="id_title" class="form-label">Title</label>
-                        <input type="text" name="title" maxlength="200" class="form-control" id="id_title">
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="card">
-                     <div class="card-body">
-                        <label for="id_slug" class="form-label">Slug ( Read Only )</label>
-                        <input type="text" name="slug" readonly="readonly" maxlength="50" class="form-control" id="id_slug">
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="row mb-3">
-               <div class="col-md-6">
-                  <div class="card">
-                     <div class="card-body">
-                        <label for="id_category" class="form-label">Category<span class="text-danger">*</span></label>
-                        <select name="category" class="form-control" id="id_category">
-  <option value="" selected>---------</option>
-
-  <option value="1">Software</option>
-
-  <option value="2">UI/UX</option>
-
-  <option value="3">Web Design</option>
-
-  <option value="4">Developing</option>
-
-  <option value="5">Graphic Design</option>
-
-</select>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="card">
-                     <div class="card-body">
-                        <label for="id_client" class="form-label">Client</label>
-                        <input type="text" name="client" maxlength="200" class="form-control" id="id_client">
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="row mb-3">
-               <div class="col-md-6">
-                  <div class="card">
-                     <div class="card-body">
-                        <label for="id_company" class="form-label">Company</label>
-                        <input type="text" name="company" maxlength="200" class="form-control" id="id_company">
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <div class="card">
-                     <div class="card-body">
-                        <label for="id_duration" class="form-label">Duration</label>
-                        <input type="text" name="duration" maxlength="100" class="form-control" id="id_duration">
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="row mb-1">
-               <div class="col-md-12">
-                  <div class="card">
-                     <div class="card-body">
-                        <label for="id_description" class="form-label">Description</label>
-                        <br>
-                        <div class="form-control ckf"><div class="django-ckeditor-widget" data-field-id="id_description" style="display: inline-block;">
-    <textarea name="description" cols="40" rows="10" class="form-control" id="id_description" data-processed="0" data-config="{&quot;skin&quot;: &quot;moono-lisa&quot;, &quot;toolbar_Basic&quot;: [[&quot;Source&quot;, &quot;-&quot;, &quot;Bold&quot;, &quot;Italic&quot;]], &quot;toolbar_Full&quot;: [[&quot;Styles&quot;, &quot;Format&quot;, &quot;Bold&quot;, &quot;Italic&quot;, &quot;Underline&quot;, &quot;Strike&quot;, &quot;SpellChecker&quot;, &quot;Undo&quot;, &quot;Redo&quot;], [&quot;Link&quot;, &quot;Unlink&quot;, &quot;Anchor&quot;], [&quot;Image&quot;, &quot;Flash&quot;, &quot;Table&quot;, &quot;HorizontalRule&quot;], [&quot;TextColor&quot;, &quot;BGColor&quot;], [&quot;Smiley&quot;, &quot;SpecialChar&quot;], [&quot;Source&quot;]], &quot;toolbar&quot;: &quot;Full&quot;, &quot;height&quot;: 291, &quot;width&quot;: 835, &quot;filebrowserWindowWidth&quot;: 940, &quot;filebrowserWindowHeight&quot;: 725, &quot;language&quot;: &quot;en-us&quot;}" data-external-plugin-resources="[]" data-id="id_description" data-type="ckeditortype"></textarea>
-</div></div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <button class="btn btn-primary mb-3" type="submit">Save</button>
-         </form>
+         <form method="POST" enctype="multipart/form-data" data-table="clients">
+<input type="hidden" name="id">
+<div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" name="name">
+    </div><div class="mb-3">
+        <label class="form-label">Link URL</label>
+        <input type="text" class="form-control" name="link">
+    </div><div class="mb-3">
+        <label class="form-label">Logo</label>
+        <input type="file" class="form-control" name="image" accept="image/*">
+        <label class="text-muted mt-1">Upload Image</label>
+        <div class="mt-2 preview-container" id="preview_image"></div>
+    </div><button type="submit" class="btn btn-primary">Save</button>
+</form>
       </div>
         <!-- [ sample-page ] end -->
       </div>
@@ -643,6 +578,8 @@
 <script src="/static/dashboard/assets/js/multi-lang.js"></script>
 <script src="/static/dashboard/assets/js/plugins/feather.min.js"></script>
 <script src="/static/dashboard/assets/js/plugins/simple-datatables.js"></script>
+<!-- Page Saver & Logic -->
+<script type="module" src="/admin/assets/js/page-saver.js"></script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -943,206 +880,10 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </div>
 
-
-<style>
-.demo-alert {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #ff4444;
-    color: white;
-    padding: 15px 25px;
-    border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    z-index: 9999;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-    max-width: 350px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.demo-alert.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.demo-alert-close {
-    background: none;
-    border: none;
-    color: white;
-    margin-left: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    padding: 0 5px;
-}
-
-.demo-alert-message {
-    margin-right: 10px;
-}
-</style>
-
-    <!-- Supabase Create/Edit Project Logic -->
-    <script type="module">
-        import { supabase } from '../../src/supabase-client.js';
-        import { requireAuth, setupLogout } from '../admin-core.js';
-
-        requireAuth();
-        setupLogout();
-
-        const form = document.querySelector('form');
-        const submitBtn = form.querySelector('button[type="submit"]');
-        
-        // Category Mapping
-        const categoryMap = {
-            'Software': '1',
-            'UI/UX': '2',
-            'Web Design': '3',
-            'Developing': '4',
-            'Graphic Design': '5'
-        };
-        const reverseCategoryMap = {
-            '1': 'Software',
-            '2': 'UI/UX',
-            '3': 'Web Design',
-            '4': 'Developing',
-            '5': 'Graphic Design'
-        };
-
-        // Check for Edit Mode
-        const urlParams = new URLSearchParams(window.location.search);
-        const projectId = urlParams.get('id');
-        const isEditMode = !!projectId;
-
-        if (isEditMode) {
-            document.querySelector('.page-header-title h2').textContent = 'Edit Project';
-            document.querySelector('.breadcrumb-item[aria-current]').textContent = 'Edit Project';
-            loadProjectData(projectId);
-        }
-
-        async function loadProjectData(id) {
-            const { data, error } = await supabase
-                .from('company_projects')
-                .select('*')
-                .eq('id', id)
-                .single();
-
-            if (error) {
-                alert('Error loading project: ' + error.message);
-                return;
-            }
-
-            // Populate Form
-            document.getElementById('id_title').value = data.title;
-            document.getElementById('id_client').value = data.client || '';
-            document.getElementById('id_company').value = data.company || '';
-            document.getElementById('id_duration').value = data.duration || '';
-            
-            // Category
-            const catValue = categoryMap[data.category] || '';
-            document.getElementById('id_category').value = catValue;
-
-            // Description (CKEditor)
-            if (window.CKEDITOR && CKEDITOR.instances.id_description) {
-                CKEDITOR.instances.id_description.setData(data.description || '');
-            } else {
-                document.getElementById('id_description').value = data.description || '';
-            }
-        }
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Saving...';
-
-            try {
-                // 1. Handle Image Upload
-                const imageInput = document.getElementById('id_image');
-                let imageUrl = null;
-                if (imageInput.files && imageInput.files[0]) {
-                    const file = imageInput.files[0];
-                    const fileExt = file.name.split('.').pop();
-                    const fileName = `${Date.now()}.${fileExt}`;
-                    const filePath = `projects/${fileName}`;
-
-                    const { error: uploadError } = await supabase.storage
-                        .from('project-images')
-                        .upload(filePath, file);
-
-                    if (uploadError) throw uploadError;
-
-                    const { data: { publicUrl } } = supabase.storage
-                        .from('project-images')
-                        .getPublicUrl(filePath);
-                        
-                    imageUrl = publicUrl;
-                }
-
-                // 2. Prepare Data
-                const title = document.getElementById('id_title').value;
-                const client = document.getElementById('id_client').value;
-                const company = document.getElementById('id_company').value;
-                const duration = document.getElementById('id_duration').value;
-                const catValue = document.getElementById('id_category').value;
-                const category = reverseCategoryMap[catValue] || 'Uncategorized';
-                
-                let description = '';
-                if (window.CKEDITOR && CKEDITOR.instances.id_description) {
-                    description = CKEDITOR.instances.id_description.getData();
-                } else {
-                    description = document.getElementById('id_description').value;
-                }
-
-                const projectData = {
-                    title,
-                    category,
-                    client,
-                    company,
-                    duration,
-                    description,
-                    // Only update image if new one uploaded
-                    ...(imageUrl && { image_url: imageUrl })
-                };
-
-                // 3. Upsert
-                let error;
-                if (isEditMode) {
-                    ({ error } = await supabase
-                        .from('company_projects')
-                        .update(projectData)
-                        .eq('id', projectId));
-                } else {
-                    ({ error } = await supabase
-                        .from('company_projects')
-                        .insert([projectData]));
-                }
-
-                if (error) throw error;
-
-                alert('Project saved successfully!');
-                window.location.href = '/admin/project/project-list.html';
-
-            } catch (err) {
-                console.error(err);
-                alert('Error submitting form: ' + err.message);
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Save';
-            }
-        });
-
-        // Remove demo styles
-        const styles = document.querySelectorAll('style');
-        styles.forEach(s => {
-            if (s.textContent.includes('demo-alert')) s.remove();
-        });
-    </script>
-  
 <script src="/admin/assets/js/link-fixer.js"></script>
-
 <script type="module" src="/admin/assets/js/page-saver.js"></script>
-<script type="module" src="/admin/assets/js/auth-guard.js"></script>
+
+  <script type="module" src="/admin/assets/js/auth-guard.js"></script>
 </body>
   <!-- [Body] end -->
 </html>

@@ -374,7 +374,7 @@
         <i class="ph-duotone ph-magnifying-glass"></i>
       </a>
       <div class="dropdown-menu pc-h-dropdown drp-search">
-        <form class="px-3">
+        <form data-table="services" class="px-3">
           <div class="mb-0 d-flex align-items-center">
             <input type="search" class="form-control border-0 shadow-none" placeholder="Search..." />
             <button class="btn btn-light-secondary btn-search">Search</button>
@@ -383,7 +383,7 @@
       </div>
     </li>
     <li class="pc-h-item d-none d-md-inline-flex">
-      <form class="form-search">
+      <form data-table="services" class="form-search">
         <i class="ph-duotone ph-magnifying-glass icon-search"></i>
         <input type="search" class="form-control" placeholder="Search..." />
 
@@ -528,7 +528,7 @@
       <div class="row">
         <!-- [ sample-page ] start -->
         <div class="col-sm-12">
-         <form method="POST" enctype="multipart/form-data">
+         <form data-table="services" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="csrfmiddlewaretoken" value="Coyc0t47HEFbezLIRJxbm8cvCB4rMuVLjojkaVg3rTHID9nrGOnlv6cfcM28n1f9">
             <script src="/static/ckeditor/ckeditor-init.js" data-ckeditor-basepath="/static/ckeditor/ckeditor/" id="ckeditor-init-script"></script>
 <script src="/static/ckeditor/ckeditor/ckeditor.js"></script>   
@@ -538,7 +538,7 @@
                   <div class="card">
                      <div class="card-body">
                         <label for="id_detail_page_image" class="form-label">Service Detail Page Image</label>
-                        <input type="file" name="detail_page_image" accept="image/*" class="form-control" id="id_detail_page_image">
+                        <input type="file" name="image" accept="image/*" class="form-control" id="id_detail_page_image">
                      </div>
                   </div>
                </div>
@@ -548,7 +548,7 @@
                   <div class="card">
                      <div class="card-body">
                         <label for="id_name" class="form-label">Name</label>
-                        <input type="text" name="name" maxlength="200" class="form-control" id="id_name">
+                        <input type="text" name="title" maxlength="200" class="form-control" id="id_name">
                      </div>
                   </div>
                </div>
@@ -566,7 +566,7 @@
                   <div class="card">
                      <div class="card-body">
                         <label for="id_fontawesome_icon_class" class="form-label">Font-Awesome Icon Class ( <a href="https://fontawesome.com/v5/search?m=free" target="_blank">Use V5</a> )</label>
-                        <input type="text" name="fontawesome_icon_class" placeholder="eg. fas fa-laptop-code" maxlength="100" class="form-control" id="id_fontawesome_icon_class">
+                        <input type="text" name="icon" placeholder="eg. fas fa-laptop-code" maxlength="100" class="form-control" id="id_fontawesome_icon_class">
                      </div>
                   </div>
                </div>
@@ -574,7 +574,7 @@
                   <div class="card">
                      <div class="card-body">
                         <label for="id_short_description" class="form-label">Short Description</label>
-                        <input type="text" name="short_description" maxlength="500" class="form-control" id="id_short_description">
+                        <input type="text" name="description" maxlength="500" class="form-control" id="id_short_description">
                      </div>
                   </div>
                </div>
@@ -586,7 +586,7 @@
                         <label for="id_detail_page_description" class="form-label">Detail Page Description</label>
                         <br>
                         <div class="form-control ckf"><div class="django-ckeditor-widget" data-field-id="id_detail_page_description" style="display: inline-block;">
-    <textarea name="detail_page_description" cols="40" rows="10" class="form-control" id="id_detail_page_description" data-processed="0" data-config="{&quot;skin&quot;: &quot;moono-lisa&quot;, &quot;toolbar_Basic&quot;: [[&quot;Source&quot;, &quot;-&quot;, &quot;Bold&quot;, &quot;Italic&quot;]], &quot;toolbar_Full&quot;: [[&quot;Styles&quot;, &quot;Format&quot;, &quot;Bold&quot;, &quot;Italic&quot;, &quot;Underline&quot;, &quot;Strike&quot;, &quot;SpellChecker&quot;, &quot;Undo&quot;, &quot;Redo&quot;], [&quot;Link&quot;, &quot;Unlink&quot;, &quot;Anchor&quot;], [&quot;Image&quot;, &quot;Flash&quot;, &quot;Table&quot;, &quot;HorizontalRule&quot;], [&quot;TextColor&quot;, &quot;BGColor&quot;], [&quot;Smiley&quot;, &quot;SpecialChar&quot;], [&quot;Source&quot;]], &quot;toolbar&quot;: &quot;Full&quot;, &quot;height&quot;: 291, &quot;width&quot;: 835, &quot;filebrowserWindowWidth&quot;: 940, &quot;filebrowserWindowHeight&quot;: 725, &quot;language&quot;: &quot;en-us&quot;}" data-external-plugin-resources="[]" data-id="id_detail_page_description" data-type="ckeditortype"></textarea>
+    <textarea name="detail_description" cols="40" rows="10" class="form-control" id="id_detail_page_description" data-processed="0" data-config="{&quot;skin&quot;: &quot;moono-lisa&quot;, &quot;toolbar_Basic&quot;: [[&quot;Source&quot;, &quot;-&quot;, &quot;Bold&quot;, &quot;Italic&quot;]], &quot;toolbar_Full&quot;: [[&quot;Styles&quot;, &quot;Format&quot;, &quot;Bold&quot;, &quot;Italic&quot;, &quot;Underline&quot;, &quot;Strike&quot;, &quot;SpellChecker&quot;, &quot;Undo&quot;, &quot;Redo&quot;], [&quot;Link&quot;, &quot;Unlink&quot;, &quot;Anchor&quot;], [&quot;Image&quot;, &quot;Flash&quot;, &quot;Table&quot;, &quot;HorizontalRule&quot;], [&quot;TextColor&quot;, &quot;BGColor&quot;], [&quot;Smiley&quot;, &quot;SpecialChar&quot;], [&quot;Source&quot;]], &quot;toolbar&quot;: &quot;Full&quot;, &quot;height&quot;: 291, &quot;width&quot;: 835, &quot;filebrowserWindowWidth&quot;: 940, &quot;filebrowserWindowHeight&quot;: 725, &quot;language&quot;: &quot;en-us&quot;}" data-external-plugin-resources="[]" data-id="id_detail_page_description" data-type="ckeditortype"></textarea>
 </div></div>
                      </div>
                   </div>
