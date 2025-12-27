@@ -1,0 +1,715 @@
+/* ============================================
+   COMPREHENSIVE WEBSITE ANIMATIONS
+   Enhanced animations for The CodeGrammer Website
+   ============================================ */
+
+/* ============ KEYFRAME ANIMATIONS ============ */
+
+/* Fade animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Scale animations */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.05);
+    }
+}
+
+/* Bounce animation */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(117, 218, 180, 0.4);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 15px rgba(117, 218, 180, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(117, 218, 180, 0);
+    }
+}
+
+/* Float animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Rotate animation */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Glow animation */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(117, 218, 180, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(117, 218, 180, 0.6);
+    }
+}
+
+/* Slide animations */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Text reveal animation */
+@keyframes revealText {
+    0% {
+        clip-path: inset(0 100% 0 0);
+    }
+    100% {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+/* Underline grow animation */
+@keyframes underlineGrow {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* ============ ANIMATION UTILITY CLASSES ============ */
+
+.animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.7s ease-out forwards;
+}
+
+.animate-fade-in-down {
+    animation: fadeInDown 0.7s ease-out forwards;
+}
+
+.animate-fade-in-left {
+    animation: fadeInLeft 0.7s ease-out forwards;
+}
+
+.animate-fade-in-right {
+    animation: fadeInRight 0.7s ease-out forwards;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-bounce {
+    animation: bounce 1s ease infinite;
+}
+
+.animate-pulse {
+    animation: pulse 2s ease infinite;
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+.animate-rotate {
+    animation: rotate 10s linear infinite;
+}
+
+.animate-glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Animation delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-800 { animation-delay: 0.8s; }
+.delay-900 { animation-delay: 0.9s; }
+.delay-1000 { animation-delay: 1s; }
+
+/* ============ HEADER ANIMATIONS ============ */
+
+.header-area {
+    animation: fadeInDown 0.5s ease-out;
+}
+
+.header-area .logo img {
+    transition: transform 0.3s ease;
+}
+
+.header-area .logo img:hover {
+    transform: scale(1.05);
+}
+
+.main-nav ul li a {
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #75dab4;
+    transition: width 0.3s ease;
+}
+
+.main-nav ul li a:hover::after,
+.main-nav ul li.active a::after {
+    width: 100%;
+}
+
+.main-nav ul li a:hover {
+    transform: translateY(-2px);
+}
+
+/* ============ BUTTON ANIMATIONS ============ */
+
+.cmn-btn {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cmn-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(117, 218, 180, 0.3);
+}
+
+.cmn-btn a {
+    transition: all 0.4s ease;
+}
+
+.subscribe-btn {
+    transition: all 0.3s ease !important;
+}
+
+.subscribe-btn:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 5px 20px rgba(117, 218, 180, 0.4) !important;
+}
+
+/* ============ BREADCRUMB ANIMATIONS ============ */
+
+.breadcrumb-cnt h1 {
+    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+.breadcrumb-cnt span {
+    animation: fadeInUp 0.8s ease-out 0.4s backwards;
+}
+
+/* ============ SERVICE/PROJECT CARD ANIMATIONS ============ */
+
+.single-service,
+.single-item,
+.project-card,
+.service-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.single-service:hover,
+.single-item:hover,
+.project-card:hover,
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.single-service .service-icon,
+.single-item .item-img,
+.service-ico {
+    transition: transform 0.4s ease;
+}
+
+.single-service:hover .service-icon,
+.single-item:hover .item-img,
+.single-service:hover .service-ico {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Item image zoom effect */
+.item-img {
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.item-img img {
+    transition: transform 0.5s ease;
+}
+
+.item-img:hover img,
+.single-item:hover .item-img img {
+    transform: scale(1.1);
+}
+
+/* ============ FOOTER ANIMATIONS ============ */
+
+footer {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.footer-widget {
+    transition: transform 0.3s ease;
+}
+
+.footer-widget:hover {
+    transform: translateY(-5px);
+}
+
+.footer-menu li a,
+.footer-bottom-menu li a {
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-menu li a:hover,
+.footer-bottom-menu li a:hover {
+    color: #75dab4;
+    padding-left: 10px;
+}
+
+.social-media-icons li a {
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-media-icons li a:hover {
+    transform: translateY(-5px) scale(1.1);
+    background-color: #75dab4;
+    box-shadow: 0 5px 20px rgba(117, 218, 180, 0.4);
+}
+
+/* ============ SIDEBAR ANIMATIONS ============ */
+
+.sidebar-widget {
+    animation: fadeInRight 0.6s ease-out backwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sidebar-widget:nth-child(1) { animation-delay: 0.1s; }
+.sidebar-widget:nth-child(2) { animation-delay: 0.2s; }
+.sidebar-widget:nth-child(3) { animation-delay: 0.3s; }
+
+.sidebar-widget:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar-banner {
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.category li a {
+    transition: all 0.3s ease;
+}
+
+.category li a:hover {
+    padding-left: 15px;
+    color: #75dab4;
+}
+
+/* ============ NEWSLETTER SECTION ANIMATIONS ============ */
+
+.subscribe-newsletter {
+    position: relative;
+    overflow: hidden;
+}
+
+.subscribe-cnt span,
+.subscribe-cnt h3,
+.subscribe-cnt strong {
+    animation: fadeInLeft 0.6s ease-out backwards;
+}
+
+.subscribe-cnt span { animation-delay: 0.1s; }
+.subscribe-cnt h3 { animation-delay: 0.2s; }
+.subscribe-cnt strong { animation-delay: 0.3s; }
+
+.subscribe-form {
+    animation: fadeInRight 0.6s ease-out 0.3s backwards;
+}
+
+.emailfield {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.emailfield:focus {
+    border-color: #75dab4 !important;
+    box-shadow: 0 0 10px rgba(117, 218, 180, 0.3) !important;
+}
+
+/* ============ PROJECT DETAILS ANIMATIONS ============ */
+
+.project-details-content {
+    animation: fadeInUp 0.7s ease-out;
+}
+
+.project-details-content h3 {
+    position: relative;
+    display: inline-block;
+}
+
+.project-details-content h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #75dab4, transparent);
+    animation: underlineGrow 1s ease-out 0.5s forwards;
+}
+
+.project-thumb {
+    animation: scaleIn 0.6s ease-out 0.3s backwards;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.project-thumb img {
+    transition: transform 0.5s ease;
+}
+
+.project-thumb:hover img {
+    transform: scale(1.05);
+}
+
+.client-box {
+    animation: fadeInRight 0.5s ease-out backwards;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.client-box:nth-child(1) { animation-delay: 0.1s; }
+.client-box:nth-child(2) { animation-delay: 0.2s; }
+.client-box:nth-child(3) { animation-delay: 0.3s; }
+.client-box:nth-child(4) { animation-delay: 0.4s; }
+
+.client-box:hover {
+    transform: translateX(5px);
+    background-color: rgba(117, 218, 180, 0.1);
+}
+
+/* ============ PROJECT SLIDER ANIMATIONS ============ */
+
+.project-slider {
+    animation: fadeInUp 0.7s ease-out 0.4s backwards;
+}
+
+.project-slider h4 {
+    position: relative;
+    display: inline-block;
+}
+
+.project-slider .arrow {
+    animation: fadeIn 0.5s ease-out 0.6s backwards;
+}
+
+.swiper-button-next-c,
+.swiper-button-prev-c {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.swiper-button-next-c:hover,
+.swiper-button-prev-c:hover {
+    transform: scale(1.2);
+    background-color: #75dab4;
+}
+
+/* ============ SCROLL PROGRESS BUTTON ============ */
+
+#progress {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#progress:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 20px rgba(117, 218, 180, 0.5);
+}
+
+/* ============ WHATSAPP BUTTON ANIMATIONS ============ */
+
+.codeless-add-purchase-button {
+    animation: pulse 2s ease-in-out infinite;
+    transition: transform 0.3s ease !important;
+}
+
+.codeless-add-purchase-button:hover {
+    transform: scale(1.15) !important;
+    animation: none !important;
+}
+
+/* ============ CURSOR ANIMATIONS ============ */
+
+.cursor {
+    transition: transform 0.1s ease, background-color 0.2s ease;
+}
+
+/* ============ LOADING ANIMATIONS ============ */
+
+.loading-shimmer {
+    background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+/* ============ CONTACT INFO ANIMATIONS ============ */
+
+.contact-info {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.cmpy-info {
+    transition: transform 0.3s ease;
+}
+
+.cmpy-info:hover {
+    transform: translateX(10px);
+}
+
+.cmpy-info .icon {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.cmpy-info:hover .icon {
+    transform: scale(1.1) rotate(10deg);
+    background-color: #75dab4;
+}
+
+/* ============ FORM INPUT ANIMATIONS ============ */
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+textarea,
+select {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #75dab4;
+    box-shadow: 0 0 15px rgba(117, 218, 180, 0.2);
+    transform: translateY(-2px);
+}
+
+/* ============ TAG ANIMATIONS ============ */
+
+.tag a {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.tag a:hover {
+    background-color: #75dab4;
+    transform: scale(1.05);
+}
+
+/* ============ VIEW BUTTON ANIMATIONS ============ */
+
+.view-btn a {
+    position: relative;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.view-btn a::before {
+    content: '→';
+    position: absolute;
+    left: -20px;
+    opacity: 0;
+    transition: left 0.3s ease, opacity 0.3s ease;
+}
+
+.view-btn a:hover {
+    padding-left: 25px;
+    color: #75dab4;
+}
+
+.view-btn a:hover::before {
+    left: 0;
+    opacity: 1;
+}
+
+/* ============ SECTION TITLE ANIMATIONS ============ */
+
+.sec-title {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.sec-title span {
+    animation: fadeInLeft 0.5s ease-out 0.1s backwards;
+}
+
+.sec-title h2 {
+    animation: fadeInUp 0.5s ease-out 0.2s backwards;
+}
+
+.sec-title p {
+    animation: fadeInUp 0.5s ease-out 0.3s backwards;
+}
+
+/* ============ HOVER LIFT EFFECT ============ */
+
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* ============ STAGGER ANIMATIONS ============ */
+
+.stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-animation > *:nth-child(6) { animation-delay: 0.6s; }
+
+/* ============ RESPONSIVE ANIMATIONS ============ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Disable some heavy animations on mobile for performance */
+@media (max-width: 767px) {
+    .animate-float,
+    .animate-rotate {
+        animation: none;
+    }
+    
+    .sidebar-banner {
+        animation: none;
+    }
+}
