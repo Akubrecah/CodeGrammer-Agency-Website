@@ -50,7 +50,7 @@ def fix_sidebar_links(root_dir):
         r'/admin/element/pricings': '/admin/elements/pricing.html',
         
         # Element Create (Missing files -> Redirect to List for now to avoid 404)
-        r'/admin/element/slider/create': '/admin/elements/slider.html',
+        r'/admin/element/slider/create': '/admin/elements/create-slider.html',
         r'/admin/element/pricing/create': '/admin/elements/pricing.html',
         # ... logic for others if present
         
