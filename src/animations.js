@@ -103,22 +103,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Smooth reveal for images
-    const images = document.querySelectorAll('img:not(.no-animate)');
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-fade-in');
-                imageObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    images.forEach(img => {
-        img.style.opacity = '0';
-        img.style.transition = 'opacity 0.5s ease';
-        imageObserver.observe(img);
-    });
+    // Images load normally without animation effects
+    // (removed fade-in animation for better performance)
 
     // Add hover effects to cards
     const cards = document.querySelectorAll('.single-service, .single-item, .sidebar-widget');

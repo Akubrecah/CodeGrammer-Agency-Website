@@ -410,7 +410,7 @@ video {
 .breadcrumbs {
     position: relative;
     height: 480px;
-    background-image: url(https://agency.thecodegrammer.net/static/front/assets/img/breadcrumb-bg.jpg);
+    background-image: url(/assets/images/front/breadcrumb-bg.webp);
     background-size: cover;
     background-position: center center;
     z-index: 1
